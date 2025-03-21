@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.pa.sugarcare.MainActivity
 import com.pa.sugarcare.databinding.ActivitySplashscreenBinding
+import com.pa.sugarcare.presentation.feature.onboarding.OnBoardingActivity
 
 @SuppressLint("CustomSplashScreen")
 class SplashscreenActivity : AppCompatActivity() {
@@ -28,7 +29,7 @@ class SplashscreenActivity : AppCompatActivity() {
         splashScreen.setKeepOnScreenCondition { false }
 
         binding.root.postDelayed({
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, OnBoardingActivity::class.java))
             finish()
         }, 1500)
     }

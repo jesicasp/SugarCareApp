@@ -56,4 +56,17 @@ dependencies {
     //dot indicator
     implementation(libs.dots.indicator)
 
+    //view pager
+    implementation(libs.androidx.viewpager2)
+
+
+    // View Model
+    implementation(libs.androidx.lifecycle.viewmodel)
+    implementation(libs.androidx.fragment.ktx)
+    implementation(libs.androidx.activity.ktx)
+
+    //datastore
+    implementation(libs.androidx.datastore.preferences)
+
+
 }

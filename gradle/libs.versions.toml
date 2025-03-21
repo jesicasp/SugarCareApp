@@ -10,7 +10,8 @@ material = "1.12.0"
 activity = "1.9.3"
 constraintlayout = "2.2.0"
 dots-indicator = "5.1.0"
-
+androidx-viewpager2 = "1.1.0"
+viewmodel-ktx = "2.8.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -23,6 +24,14 @@ androidx-activity = { group = "androidx.activity", name = "activity", version.re
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 androidx-core-splashscreen = "androidx.core:core-splashscreen:1.0.1"
 dots-indicator = { module = "com.tbuonomo:dotsindicator", version.ref = "dots-indicator" }
+androidx-viewpager2 = { module = "androidx.viewpager2:viewpager2", version.ref = "androidx-viewpager2" }
+androidx-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "viewmodel-ktx" }
+androidx-fragment-ktx = { module = "androidx.fragment:fragment-ktx", version = "1.8.6" }
+androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version = "1.10.1" }
+androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version = "1.1.3" }
+
+
+
 
 
 

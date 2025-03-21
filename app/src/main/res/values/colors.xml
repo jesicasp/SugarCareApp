@@ -5,5 +5,6 @@
     <color name="background">#FAFFFF</color>
     <color name="theme_primary">#5DE3B1</color>
     <color name="theme_secondary">#27B48A</color>
+    <color name="md_theme_surfaceVariant_highContrast">#E0E2ED</color>
 
 </resources>

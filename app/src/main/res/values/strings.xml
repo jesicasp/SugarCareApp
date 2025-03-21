@@ -6,5 +6,7 @@
     <string name="screen1">Onboarding screen 1</string>
     <string name="text_screen1">Ketahui sugar grade minuman kemasan  dan jaga asupan gula harian!</string>
     <string name="screen2">Onboarding screen 2</string>
+    <string name="text_screen2">Cukup unggah foto dari produk kemasan buat dapatin informasi sugar grade.</string>
     <string name="next">Selanjutnya</string>
+    <string name="sign_in">Sign In</string>
 </resources>

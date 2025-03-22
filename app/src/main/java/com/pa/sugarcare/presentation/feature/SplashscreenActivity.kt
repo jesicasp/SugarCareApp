@@ -6,7 +6,6 @@ import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import com.pa.sugarcare.MainActivity
 import com.pa.sugarcare.databinding.ActivitySplashscreenBinding
 import com.pa.sugarcare.presentation.feature.onboarding.OnBoardingActivity
 

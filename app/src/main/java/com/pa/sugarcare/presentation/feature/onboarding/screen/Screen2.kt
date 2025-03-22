@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import com.pa.sugarcare.MainActivity
 import com.pa.sugarcare.R
 import com.pa.sugarcare.databinding.FragmentScreen2Binding
 import com.pa.sugarcare.presentation.feature.onboarding.OnBoardViewModel

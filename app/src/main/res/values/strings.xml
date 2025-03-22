@@ -20,4 +20,8 @@
     <string name="jesica_sanditia">Jesica Sanditia</string>
     <string name="underline"><u>Jesicasanditia.sg@gmail.com</u></string>
     <string name="editprofile">Edit Profile</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_profile">User Profile</string>
+    <string name="title_camera">Camera</string>
 </resources>

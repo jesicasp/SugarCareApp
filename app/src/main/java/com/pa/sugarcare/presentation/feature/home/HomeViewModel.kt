@@ -1,4 +1,4 @@
-package com.pa.sugarcare.presentation.ui.home
+package com.pa.sugarcare.presentation.feature.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

@@ -16,4 +16,8 @@
     <string name="sign_up">Sign Up</string>
     <string name="sudah_punya_akun">Sudah punya akun?</string>
     <string name="fullname">Nama Lengkap</string>
+    <string name="foto_profil">Foto Profil</string>
+    <string name="jesica_sanditia">Jesica Sanditia</string>
+    <string name="underline"><u>Jesicasanditia.sg@gmail.com</u></string>
+    <string name="editprofile">Edit Profile</string>
 </resources>

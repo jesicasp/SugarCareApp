@@ -14,11 +14,11 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
-<!--    <style name="Button_Secondary_12_regular">-->
-<!--        <item name="android:background">@drawable/button_secondary_stroke</item>-->
-<!--        <item name="android:fontFamily">@font/poppins_bold</item>-->
-<!--        <item name="android:textColor">@color/theme_secondary</item>-->
-<!--    </style>-->
+    <style name="Button_Secondary_12_regular">
+        <item name="android:background">@drawable/button_secondary_stroke</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="android:textColor">@color/theme_secondary</item>
+    </style>
 
 
     <style name="Theme.SugarCare.Poppins_12_regular" parent="Base.Theme.SugarCare">
@@ -38,6 +38,19 @@
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/theme_secondary</item>
     </style>
+
+    <style name="Theme.SugarCare.Poppins_12_bold_black" parent="Base.Theme.SugarCare">
+        <item name="fontFamily">@font/poppins_bold</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="Theme.SugarCare.Poppins_12_normal_black" parent="Base.Theme.SugarCare">
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
 
     <style name="EditTextCustom_allradius_12" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="android:textColor">@color/theme_secondary</item>

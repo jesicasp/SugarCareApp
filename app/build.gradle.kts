@@ -59,6 +59,8 @@ dependencies {
     //view pager
     implementation(libs.androidx.viewpager2)
 
+    //crop profile image
+    implementation(libs.circleimageview)
 
     // View Model
     implementation(libs.androidx.lifecycle.viewmodel)

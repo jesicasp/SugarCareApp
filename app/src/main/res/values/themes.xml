@@ -14,11 +14,11 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
-    <style name="Button_Secondary_12_regular">
-        <item name="android:background">@drawable/button_secondary_stroke</item>
-        <item name="android:fontFamily">@font/poppins_bold</item>
-        <item name="android:textColor">@color/theme_secondary</item>
-    </style>
+<!--    <style name="Button_Secondary_12_regular">-->
+<!--        <item name="android:background">@drawable/button_secondary_stroke</item>-->
+<!--        <item name="android:fontFamily">@font/poppins_bold</item>-->
+<!--        <item name="android:textColor">@color/theme_secondary</item>-->
+<!--    </style>-->
 
 
     <style name="Theme.SugarCare.Poppins_12_regular" parent="Base.Theme.SugarCare">

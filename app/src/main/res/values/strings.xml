@@ -24,4 +24,11 @@
     <string name="title_home">Home</string>
     <string name="title_profile">User Profile</string>
     <string name="title_camera">Camera</string>
+    <string name="gambar_produk_kemasan">Gambar Produk Kemasan</string>
+    <string name="slash">/</string>
+    <string name="yellowgrade">Gula Sedang</string>
+    <string name="redgrade">Gula Tinggi</string>
+    <string name="greengrade">Rendah Gula</string>
+    <string name="tab_myconsumption">Konsumsi Saya</string>
+    <string name="tab_producthistory">Riwayat Produk</string>
 </resources>

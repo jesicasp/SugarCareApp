@@ -10,4 +10,5 @@
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
     tools:context=".presentation.feature.producthistory.ProductHistoryFragment"
-    tools:listitem="@layout/fragment_product_history" />
+    tools:listitem="@layout/fragment_product_history"
+    android:layout_marginVertical="5dp"/>

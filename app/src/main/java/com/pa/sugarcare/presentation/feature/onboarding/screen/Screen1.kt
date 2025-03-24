@@ -8,28 +8,22 @@ import android.view.ViewGroup
 import com.pa.sugarcare.databinding.FragmentScreen1Binding
 import com.pa.sugarcare.presentation.feature.onboarding.OnBoardingActivity
 
-
-/**
- * A simple [Fragment] subclass.
- * Use the [Screen1.newInstance] factory method to
- * create an instance of this fragment.
- */
 class Screen1 : Fragment() {
     private var _binding: FragmentScreen1Binding? = null
-    private val binding get() = _binding
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentScreen1Binding.inflate(inflater, container, false)
 
         val viewPager = (requireActivity() as OnBoardingActivity).getCurrentPager()
-        binding?.btnNext?.setOnClickListener {
+        binding.btnNext.setOnClickListener {
             viewPager.currentItem = 1
         }
 
-        return binding?.root
+        return binding.root
     }
 
     override fun onDestroy() {

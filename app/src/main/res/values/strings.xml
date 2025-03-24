@@ -31,4 +31,5 @@
     <string name="greengrade">Rendah Gula</string>
     <string name="tab_myconsumption">Konsumsi Saya</string>
     <string name="tab_producthistory">Riwayat Produk</string>
+    <string name="information">Informasi</string>
 </resources>

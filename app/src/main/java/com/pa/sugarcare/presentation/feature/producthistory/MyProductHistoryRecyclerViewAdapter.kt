@@ -3,47 +3,35 @@ package com.pa.sugarcare.presentation.feature.producthistory
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.TextView
-
-import com.pa.sugarcare.presentation.feature.producthistory.placeholder.PlaceholderContent.PlaceholderItem
 import com.pa.sugarcare.databinding.FragmentProductHistoryBinding
+import com.pa.sugarcare.presentation.feature.producthistory.placeholder.PlaceholderContent
 
-/**
- * [RecyclerView.Adapter] that can display a [PlaceholderItem].
- * TODO: Replace the implementation with code for your data type.
- */
 class MyProductHistoryRecyclerViewAdapter(
-    private val values: List<PlaceholderItem>
+    private val values: List<PlaceholderContent.PlaceholderItem2>
 ) : RecyclerView.Adapter<MyProductHistoryRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-
-        return ViewHolder(
-            FragmentProductHistoryBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
+        val binding = FragmentProductHistoryBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
         )
-
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = values[position]
-        holder.idView.text = item.id
-        holder.contentView.text = item.content
+        holder.bind(values[position])
     }
 
     override fun getItemCount(): Int = values.size
 
-    inner class ViewHolder(binding: FragmentProductHistoryBinding) :
+    inner class ViewHolder(private val binding: FragmentProductHistoryBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        val idView: TextView = binding.itemNumber
-        val contentView: TextView = binding.content
 
-        override fun toString(): String {
-            return super.toString() + " '" + contentView.text + "'"
+        fun bind(item: PlaceholderContent.PlaceholderItem2) {
+            binding.txtProductName.text = item.productName
+            binding.txtSugar.text = "Gula ${item.sugarAmount}g"
+            binding.txtMl.text = "${item.volume} ml"
         }
     }
-
 }

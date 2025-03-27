@@ -2,50 +2,37 @@ package com.pa.sugarcare.presentation.feature.myconsumption
 
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import com.pa.sugarcare.R
-
 import com.pa.sugarcare.presentation.feature.myconsumption.placeholder.PlaceholderContent.PlaceholderItem
 import com.pa.sugarcare.databinding.FragmentProductBinding
 
-/**
- * [RecyclerView.Adapter] that can display a [PlaceholderItem].
- * TODO: Replace the implementation with code for your data type.
- */
 class MyConsumptionRecyclerViewAdapter(
     private val values: List<PlaceholderItem>
 ) : RecyclerView.Adapter<MyConsumptionRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-
-        return ViewHolder(
-            FragmentProductBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
+        val binding = FragmentProductBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
         )
-
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = values[position]
-        holder.idView.text = item.id
-        holder.contentView.text = item.content
+        holder.bind(values[position]) // Langsung bind tanpa variabel tambahan
     }
 
     override fun getItemCount(): Int = values.size
 
-    inner class ViewHolder(binding: FragmentProductBinding) :
+    inner class ViewHolder(private val binding: FragmentProductBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        val idView: TextView = binding.itemNumber
-        val contentView: TextView = binding.content
 
-        override fun toString(): String {
-            return super.toString() + " '" + contentView.text + "'"
+        fun bind(item: PlaceholderItem) {
+            binding.txtDate.text = item.date
+            binding.txtProductName.text = item.productName
+            binding.txtSugar.text = "Gula ${item.sugarAmount}g"
+            binding.txtMl.text = "${item.volume} ml"
         }
     }
-
 }

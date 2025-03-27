@@ -36,22 +36,30 @@ object PlaceholderContent {
     }
 
     private fun createPlaceholderItem(position: Int): PlaceholderItem {
-        return PlaceholderItem(position.toString(), "Item " + position, makeDetails(position))
+        val sampleProducts = listOf("You C1000", "Teh Botol", "Coca Cola", "Sprite", "Fanta")
+        val sampleDates = listOf("26 Januari 2025", "27 Januari 2025", "28 Januari 2025", "29 Januari 2025", "30 Januari 2025")
+
+        return PlaceholderItem(
+            id = position.toString(),
+            date = sampleDates[position % sampleDates.size],
+            productName = sampleProducts[position % sampleProducts.size],
+            sugarAmount = (10..40).random(),
+            volume = listOf(200, 250, 300, 350, 500).random()
+        )
     }
 
-    private fun makeDetails(position: Int): String {
-        val builder = StringBuilder()
-        builder.append("Details about Item: ").append(position)
-        for (i in 0..position - 1) {
-            builder.append("\nMore details information here.")
-        }
-        return builder.toString()
-    }
 
     /**
      * A placeholder item representing a piece of content.
      */
-    data class PlaceholderItem(val id: String, val content: String, val details: String) {
-        override fun toString(): String = content
+    data class PlaceholderItem(
+        val id: String,
+        val date: String,
+        val productName: String,
+        val sugarAmount: Int,
+        val volume: Int
+    ) {
+        override fun toString(): String = productName
     }
+
 }

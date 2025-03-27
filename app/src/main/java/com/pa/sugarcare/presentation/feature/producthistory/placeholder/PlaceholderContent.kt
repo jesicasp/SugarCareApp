@@ -3,55 +3,40 @@ package com.pa.sugarcare.presentation.feature.producthistory.placeholder
 import java.util.ArrayList
 import java.util.HashMap
 
-/**
- * Helper class for providing sample content for user interfaces created by
- * Android template wizards.
- *
- * TODO: Replace all uses of this class before publishing your app.
- */
 object PlaceholderContent {
 
-    /**
-     * An array of sample (placeholder) items.
-     */
-    val ITEMS: MutableList<PlaceholderItem> = ArrayList()
-
-    /**
-     * A map of sample (placeholder) items, by ID.
-     */
-    val ITEM_MAP: MutableMap<String, PlaceholderItem> = HashMap()
-
+    val ITEMS: MutableList<PlaceholderItem2> = ArrayList()
+    val ITEM_MAP: MutableMap<String, PlaceholderItem2> = HashMap()
     private val COUNT = 25
 
     init {
-        // Add some sample items.
         for (i in 1..COUNT) {
-            addItem(createPlaceholderItem(i))
+            addItem(createPlaceholderItem2(i))
         }
     }
 
-    private fun addItem(item: PlaceholderItem) {
+    private fun addItem(item: PlaceholderItem2) {
         ITEMS.add(item)
-        ITEM_MAP.put(item.id, item)
+        ITEM_MAP[item.id] = item  // ✅ Menggunakan cara lebih idiomatis
     }
 
-    private fun createPlaceholderItem(position: Int): PlaceholderItem {
-        return PlaceholderItem(position.toString(), "Item " + position, makeDetails(position))
+    private fun createPlaceholderItem2(position: Int): PlaceholderItem2 { // ✅ Menambahkan return type
+        val sampleProducts = listOf("You C1000", "Teh Botol", "Coca Cola", "Sprite", "Fanta")
+
+        return PlaceholderItem2(
+            id = position.toString(),
+            productName = sampleProducts[position % sampleProducts.size],
+            sugarAmount = (10..40).random(),
+            volume = listOf(200, 250, 300, 350, 500).random()
+        )
     }
 
-    private fun makeDetails(position: Int): String {
-        val builder = StringBuilder()
-        builder.append("Details about Item: ").append(position)
-        for (i in 0..position - 1) {
-            builder.append("\nMore details information here.")
-        }
-        return builder.toString()
-    }
-
-    /**
-     * A placeholder item representing a piece of content.
-     */
-    data class PlaceholderItem(val id: String, val content: String, val details: String) {
-        override fun toString(): String = content
+    data class PlaceholderItem2(
+        val id: String,
+        val productName: String,
+        val sugarAmount: Int,
+        val volume: Int
+    ) {
+        override fun toString(): String = productName
     }
 }

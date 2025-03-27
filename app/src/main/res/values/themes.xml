@@ -89,21 +89,21 @@
         <item name="boxCornerRadiusTopStart">12dp</item>
     </style>
 
-    <style name="Base.Theme.SugarCare.SugarGrade.Yellow">
+    <style name="Theme.SugarCare.YellowGrade">
         <item name="android:background">@drawable/yellowgrade</item>
         <item name="android:fontFamily">@font/poppins_regular</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:text">@string/yellowgrade</item>
     </style>
 
-    <style name="Base.Theme.SugarCare.SugarGrade.Red">
+    <style name="Theme.SugarCare.RedGrade">
         <item name="android:background">@drawable/redgrade</item>
         <item name="android:fontFamily">@font/poppins_regular</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:text">@string/redgrade</item>
     </style>
 
-    <style name="Base.Theme.SugarCare.SugarGrade.Green">
+    <style name="Theme.SugarCare.GreenGrade">
         <item name="android:background">@drawable/greengrade</item>
         <item name="android:fontFamily">@font/poppins_regular</item>
         <item name="android:textColor">@color/black</item>

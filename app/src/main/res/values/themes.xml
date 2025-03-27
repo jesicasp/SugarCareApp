@@ -62,8 +62,6 @@
         <item name="android:textColor">@color/teal_green</item>
     </style>
 
-
-
     <style name="Theme.SugarCare.Poppins_12_bold_black" parent="Base.Theme.SugarCare">
         <item name="fontFamily">@font/poppins_bold</item>
         <item name="android:textSize">12sp</item>
@@ -120,6 +118,10 @@
         <item name="cornerSizeBottomRight">30dp</item>
     </style>
 
+    <style name="ShapeAppearance.FAB" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
 
 
 </resources>

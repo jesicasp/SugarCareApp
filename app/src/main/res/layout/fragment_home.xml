@@ -217,6 +217,9 @@
         android:src="@drawable/baseline_history_24"
         app:backgroundTint="@color/white"
         app:elevation="10dp"
+        app:fabSize="auto"
+        app:layout_constraintBottom_toBottomOf="@id/menu3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/menu3"/>
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.FAB"
+        app:tint="@null" />
 </androidx.constraintlayout.widget.ConstraintLayout>

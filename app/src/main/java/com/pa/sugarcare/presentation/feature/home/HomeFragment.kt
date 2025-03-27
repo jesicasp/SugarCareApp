@@ -1,11 +1,14 @@
 package com.pa.sugarcare.presentation.feature.home
 
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.PickVisualMediaRequest
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.pa.sugarcare.databinding.FragmentHomeBinding
 import com.pa.sugarcare.presentation.adapter.OnBoardingViewPagerAdapter
 import com.pa.sugarcare.presentation.feature.home.screen.Information1
@@ -23,6 +26,8 @@ class HomeFragment : Fragment() {
         Information2(),
         Information3()
     )
+    private var currentImageUri: Uri? = null
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,11 +43,32 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        pagerAdapter = OnBoardingViewPagerAdapter(listOnBoardingScreen, this.childFragmentManager, lifecycle)
+        pagerAdapter = OnBoardingViewPagerAdapter(listOnBoardingScreen, childFragmentManager, viewLifecycleOwner.lifecycle)
 
         binding.apply {
             viewPager.adapter = pagerAdapter
             dotsIndicator.attachTo(viewPager)
+        }
+
+        binding.cvMenuOpenGallery.setOnClickListener {
+            startGallery()
+        }
+
+    }
+
+    private fun startGallery() {
+        launcherGallery.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+    }
+
+    private val launcherGallery = registerForActivityResult(
+        ActivityResultContracts.PickVisualMedia()
+    ) { uri: Uri? ->
+        if (uri != null) {
+            currentImageUri = uri
+            Log.d("Photo Picker", "Uri + $currentImageUri")
+            
+        } else {
+            Log.d("Photo Picker", "No media selected")
         }
     }
 

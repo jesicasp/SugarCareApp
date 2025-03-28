@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
+    android:fitsSystemWindows="true"
     tools:context=".presentation.feature.home.HomeFragment">
 
     <androidx.viewpager2.widget.ViewPager2
@@ -42,13 +43,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/dots_indicator">
-
     </com.google.android.material.search.SearchBar>
+
+    <com.google.android.material.search.SearchView
+        android:id="@+id/searchView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:hint="@string/searchbar_hint"
+        app:layout_anchor="@id/searchBar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/menu1"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="160dp"
         android:layout_marginHorizontal="5dp"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -58,7 +69,7 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cvMenuOpenGallery"
             android:layout_width="match_parent"
-            android:layout_height="140dp"
+            android:layout_height="160dp"
             android:backgroundTint="@color/white"
             app:cardCornerRadius="15dp"
             app:cardElevation="10dp"
@@ -103,7 +114,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/menu2"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="140dp"
         android:layout_marginHorizontal="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -112,7 +123,7 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cvMenuInfo"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="140dp"
             android:backgroundTint="@color/aqua_green"
             app:cardCornerRadius="15dp"
             app:cardElevation="10dp"
@@ -158,7 +169,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/menu3"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="120dp"
         android:layout_marginHorizontal="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -167,7 +178,7 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cvMenuReport"
             android:layout_width="match_parent"
-            android:layout_height="140dp"
+            android:layout_height="120dp"
             android:backgroundTint="@color/white"
             app:cardCornerRadius="15dp"
             app:cardElevation="10dp"
@@ -220,7 +231,7 @@
         app:fabSize="auto"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_weight="1"
         app:shapeAppearanceOverlay="@style/ShapeAppearance.FAB"
-        app:tint="@null"
-        app:layout_constraintVertical_weight="1"/>
+        app:tint="@null" />
 </androidx.constraintlayout.widget.ConstraintLayout>

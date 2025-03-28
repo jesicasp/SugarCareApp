@@ -28,6 +28,11 @@ class ProductResultActivity : AppCompatActivity() {
             tab.text = resources.getString(TAB_TITLES[position])
         }.attach()
 
+        binding.topAppBar.setNavigationOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
+
+
         val imageUri = getImageUri()
         if (imageUri != null) {
             Log.d("IMAGE", "$imageUri")

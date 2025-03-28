@@ -4,7 +4,7 @@
     <string name="logo">logo</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="screen1">Onboarding screen 1</string>
-    <string name="text_screen1">Ketahui sugar grade minuman kemasan  dan jaga asupan gula harian!</string>
+    <string name="text_screen1">Ketahui sugar grade produk kemasan dan jaga asupan gula harian!</string>
     <string name="screen2">Onboarding screen 2</string>
     <string name="text_screen2">Cukup unggah foto dari produk kemasan buat dapatin informasi sugar grade.</string>
     <string name="next">Selanjutnya</string>
@@ -34,7 +34,7 @@
     <string name="tab_sugargrade">Sugar Grade</string>
     <string name="tab_otherinfo">Informasi Lainnya</string>
     <string name="information">Informasi</string>
-    <string name="menu1">Unggah gambar minuman kemasan dari galeri &amp; lihat sugar grade-nya!</string>
+    <string name="menu1">Unggah gambar produk kemasan dari galeri &amp; lihat sugar grade-nya!</string>
     <string name="menu2">Cari tahu apa itu sugar grade di sini!</string>
     <string name="menu3">Report Konsumsi Gula </string>
     <string name="clickhere">Klik di sini</string>
@@ -45,7 +45,7 @@
     <string name="gula_tinggi">Gula tinggi</string>
     <string name="desc_gula_tinggi">Produk ini mengandung kadar gula yang TINGGI. Pastikan untuk mengonsumsinya dengan bijak untuk menjaga asupan gula harian sesuai rekomendasi WHO, yaitu kurang dari 50 gram per hari.</string>
     <string name="consume_product">Konsumsi Produk Ini</string>
-    <string name="dummy_info">Minuman ini mengandung total gula sebanyak 23 gram per takaran saji 200 ml. Jika  kamu mengonsumsinya, pastikan asupan gula lainnya hari ini tidak lebih dari 27 gram untuk menjaga konsumsi gula tetap sesuai dengan rekomendasi harian.</string>
+    <string name="dummy_info">Produk ini mengandung total gula sebanyak 23 gram per takaran saji 200 ml. Jika  kamu mengonsumsinya, pastikan asupan gula lainnya hari ini tidak lebih dari 27 gram untuk menjaga konsumsi gula tetap sesuai dengan rekomendasi harian.</string>
     <string name="title_rec">Temukan produk serupa dengan sugar grade yang lebih rendah!</string>
     <string name="message_alert_redgrade">Kadar gula produk ini sangat tinggi dan dapat meningkatkan risiko kesehatan. Pilihlah produk dengan kadar gula yang lebih rendah.</string>
     <string name="title_alert_redgrade">Sugar Grade : Merah</string>

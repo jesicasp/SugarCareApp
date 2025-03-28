@@ -55,6 +55,7 @@ class HomeFragment : Fragment() {
             startGallery()
         }
 
+        setupSearchBar()
 
     }
 
@@ -81,6 +82,19 @@ class HomeFragment : Fragment() {
 
     private fun getProductGrade(): String {
         return "green"
+    }
+
+    private fun setupSearchBar(){
+        with(binding) {
+            searchView.setupWithSearchBar(searchBar)
+            searchView
+                .editText
+                .setOnEditorActionListener { textView, actionId, event ->
+                    searchBar.setText(searchView.text)
+                    searchView.hide()
+                    false
+                }
+        }
     }
 
     override fun onDestroyView() {

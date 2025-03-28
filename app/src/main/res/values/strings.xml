@@ -45,4 +45,6 @@
     <string name="consume_product">Konsumsi Produk Ini</string>
     <string name="dummy_info">Minuman ini mengandung total gula sebanyak 23 gram per takaran saji 200 ml. Jika  kamu mengonsumsinya, pastikan asupan gula lainnya hari ini tidak lebih dari 27 gram untuk menjaga konsumsi gula tetap sesuai dengan rekomendasi harian.</string>
     <string name="title_rec">Temukan produk serupa dengan sugar grade yang lebih rendah!</string>
+    <string name="alert_redgrade">Kadar gula produk ini sangat tinggi dan dapat meningkatkan risiko kesehatan. Pilihlah produk dengan kadar gula yang lebih rendah.</string>
+    <string name="message_alert_redgrade">Sugar Grade : Merah</string>
 </resources>

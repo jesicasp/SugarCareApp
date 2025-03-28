@@ -5,56 +5,56 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.pa.sugarcare.R
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.pa.sugarcare.databinding.FragmentOtherInfoBinding
+import com.pa.sugarcare.presentation.feature.userprofile.producthistory.placeholder.PlaceholderContent
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [OtherInfoFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class OtherInfoFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var columnCount = 1
+    private var _binding: FragmentOtherInfoBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+            columnCount = it.getInt(ARG_COLUMN_COUNT)
         }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_other_info, container, false)
+    ): View {
+        _binding = FragmentOtherInfoBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        with(binding.list) {
+            layoutManager = when {
+                columnCount <= 1 -> LinearLayoutManager(context)
+                else -> GridLayoutManager(context, columnCount)
+            }
+            adapter = ProductRecRecyclerViewAdapter(PlaceholderContent.ITEMS)
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment OtherInfoFragment.
-         */
-        // TODO: Rename and change types and number of parameters
+        const val ARG_COLUMN_COUNT = "column-count"
+
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            OtherInfoFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+        fun newInstance(columnCount: Int) = OtherInfoFragment().apply {
+            arguments = Bundle().apply {
+                putInt(ARG_COLUMN_COUNT, columnCount)
             }
+        }
     }
 }

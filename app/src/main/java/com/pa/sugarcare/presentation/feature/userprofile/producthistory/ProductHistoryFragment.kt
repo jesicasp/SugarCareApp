@@ -1,62 +1,58 @@
 package com.pa.sugarcare.presentation.feature.userprofile.producthistory
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.pa.sugarcare.R
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.pa.sugarcare.databinding.FragmentProductHistoryListBinding
 import com.pa.sugarcare.presentation.feature.userprofile.producthistory.placeholder.PlaceholderContent
 
-/**
- * A fragment representing a list of Items.
- */
 class ProductHistoryFragment : Fragment() {
 
     private var columnCount = 1
+    private var _binding: FragmentProductHistoryListBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         arguments?.let {
             columnCount = it.getInt(ARG_COLUMN_COUNT)
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_product_history_list, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        _binding = FragmentProductHistoryListBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        // Set the adapter
-        if (view is RecyclerView) {
-            with(view) {
-                layoutManager = when {
-                    columnCount <= 1 -> LinearLayoutManager(context)
-                    else -> GridLayoutManager(context, columnCount)
-                }
-                adapter = MyProductHistoryRecyclerViewAdapter(PlaceholderContent.ITEMS)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        with(binding.list) {
+            layoutManager = when {
+                columnCount <= 1 -> LinearLayoutManager(context)
+                else -> GridLayoutManager(context, columnCount)
             }
+            adapter = MyProductHistoryRecyclerViewAdapter(PlaceholderContent.ITEMS)
         }
-        return view
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
     companion object {
-
-        // TODO: Customize parameter argument names
         const val ARG_COLUMN_COUNT = "column-count"
 
-        // TODO: Customize parameter initialization
         @JvmStatic
-        fun newInstance(columnCount: Int) =
-            ProductHistoryFragment().apply {
-                arguments = Bundle().apply {
-                    putInt(ARG_COLUMN_COUNT, columnCount)
-                }
+        fun newInstance(columnCount: Int) = ProductHistoryFragment().apply {
+            arguments = Bundle().apply {
+                putInt(ARG_COLUMN_COUNT, columnCount)
             }
+        }
     }
 }

@@ -51,12 +51,6 @@ class ProductResultActivity : AppCompatActivity() {
         return grade
     }
 
-    private fun showAlert() {
-        if (!isFinishing && !isDestroyed) {
-            GradeAlertFragment().show(supportFragmentManager, "GRADE_ALERT")
-        }
-    }
-
     private fun showAlert(color: String) {
         if (!isFinishing && !isDestroyed) {
             val dialog = GradeAlertFragment.newInstance(color)

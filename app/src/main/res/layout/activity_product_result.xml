@@ -37,5 +37,19 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:contentDescription="@string/gambar_produk_kemasan"
-        android:src="@drawable/dummyproduct" />
+        android:src="@drawable/screen1" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:tabTextColor="@color/black"
+        app:tabSelectedTextColor="@color/teal_green"/>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 </LinearLayout>

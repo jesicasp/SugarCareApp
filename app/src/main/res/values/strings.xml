@@ -39,4 +39,8 @@
     <string name="searchbar_hint">Masukkan nama produk</string>
     <string name="history">Riwayat Produk Yang Dicari</string>
     <string name="appbar">Appbar Title</string>
+    <string name="sugar_grade">Sugar Grade</string>
+    <string name="gula_tinggi">Gula tinggi</string>
+    <string name="desc_gula_tinggi">Produk ini mengandung kadar gula yang TINGGI. Pastikan untuk mengonsumsinya dengan bijak untuk menjaga asupan gula harian sesuai rekomendasi WHO, yaitu kurang dari 50 gram per hari.</string>
+    <string name="consume_product">Konsumsi Produk Ini</string>
 </resources>

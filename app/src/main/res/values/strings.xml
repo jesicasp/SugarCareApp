@@ -43,4 +43,6 @@
     <string name="gula_tinggi">Gula tinggi</string>
     <string name="desc_gula_tinggi">Produk ini mengandung kadar gula yang TINGGI. Pastikan untuk mengonsumsinya dengan bijak untuk menjaga asupan gula harian sesuai rekomendasi WHO, yaitu kurang dari 50 gram per hari.</string>
     <string name="consume_product">Konsumsi Produk Ini</string>
+    <string name="dummy_info">Minuman ini mengandung total gula sebanyak 23 gram per takaran saji 200 ml. Jika  kamu mengonsumsinya, pastikan asupan gula lainnya hari ini tidak lebih dari 27 gram untuk menjaga konsumsi gula tetap sesuai dengan rekomendasi harian.</string>
+    <string name="title_rec">Temukan produk serupa dengan sugar grade yang lebih rendah!</string>
 </resources>

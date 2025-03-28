@@ -8,7 +8,6 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.pa.sugarcare.R
 import com.pa.sugarcare.databinding.ActivityOnBoardingBinding
-import com.pa.sugarcare.presentation.adapter.OnBoardingViewPagerAdapter
 import com.pa.sugarcare.presentation.feature.onboarding.screen.Screen1
 import com.pa.sugarcare.presentation.feature.onboarding.screen.Screen2
 

@@ -1,4 +1,4 @@
-package com.pa.sugarcare.presentation.adapter
+package com.pa.sugarcare.presentation.feature.onboarding
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

@@ -31,6 +31,8 @@
     <string name="greengrade">Rendah Gula</string>
     <string name="tab_myconsumption">Konsumsi Saya</string>
     <string name="tab_producthistory">Riwayat Produk</string>
+    <string name="tab_sugargrade">Sugar Grade</string>
+    <string name="tab_otherinfo">Informasi Lainnya</string>
     <string name="information">Informasi</string>
     <string name="menu1">Unggah gambar minuman kemasan dari galeri &amp; lihat sugar grade-nya!</string>
     <string name="menu2">Cari tahu apa itu sugar grade di sini!</string>
@@ -45,6 +47,12 @@
     <string name="consume_product">Konsumsi Produk Ini</string>
     <string name="dummy_info">Minuman ini mengandung total gula sebanyak 23 gram per takaran saji 200 ml. Jika  kamu mengonsumsinya, pastikan asupan gula lainnya hari ini tidak lebih dari 27 gram untuk menjaga konsumsi gula tetap sesuai dengan rekomendasi harian.</string>
     <string name="title_rec">Temukan produk serupa dengan sugar grade yang lebih rendah!</string>
-    <string name="alert_redgrade">Kadar gula produk ini sangat tinggi dan dapat meningkatkan risiko kesehatan. Pilihlah produk dengan kadar gula yang lebih rendah.</string>
-    <string name="message_alert_redgrade">Sugar Grade : Merah</string>
+    <string name="message_alert_redgrade">Kadar gula produk ini sangat tinggi dan dapat meningkatkan risiko kesehatan. Pilihlah produk dengan kadar gula yang lebih rendah.</string>
+    <string name="title_alert_redgrade">Sugar Grade : Merah</string>
+    <string name="message_alert_yellowgrade">Kadar gula produk ini cukup tinggi. Sebaiknya dikonsumsi dengan bijak untuk menjaga keseimbangan asupan gula harian.</string>
+    <string name="title_alert_yellowgrade">Sugar Grade : Kuning</string>
+    <string name="message_alert_greengrade">Kadar gula produk ini aman untuk dikonsumsi. Anda dapat menikmatinya tanpa khawatir akan asupan gula berlebih.</string>
+    <string name="title_alert_greengrade">Sugar Grade : Hijau</string>
+    <string name="message_alert_unknowngrade">Kadar gula produk ini tidak diketahui.</string>
+    <string name="title_alert_unknowngrade">Sugar Grade : -</string>
 </resources>

@@ -12,7 +12,7 @@
         android:theme="@style/Theme.SugarCare"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.sugargrade.ProductResultActivity"
+            android:name=".presentation.feature.sugargrade.ProductResultActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.feature.MainActivity"

@@ -1,4 +1,4 @@
-package com.pa.sugarcare.presentation.feature.myconsumption.placeholder
+package com.pa.sugarcare.presentation.feature.userprofile.myconsumption.placeholder
 
 import java.util.ArrayList
 import java.util.HashMap

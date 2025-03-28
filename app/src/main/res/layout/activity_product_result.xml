@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:orientation="horizontal"
-    tools:context=".presentation.sugargrade.ProductResultActivity">
+    tools:context=".presentation.feature.sugargrade.ProductResultActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -28,12 +28,13 @@
                 android:layout_gravity="center"
                 android:fontFamily="@font/poppins"
                 android:padding="8dp"
-                tools:text="@string/appbar" />
+                android:text="@string/appbar" />
 
         </com.google.android.material.appbar.MaterialToolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
     <ImageView
+        android:id="@+id/iv_product"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:contentDescription="@string/gambar_produk_kemasan"

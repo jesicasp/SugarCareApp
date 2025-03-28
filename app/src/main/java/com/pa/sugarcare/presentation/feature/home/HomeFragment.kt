@@ -1,5 +1,6 @@
 package com.pa.sugarcare.presentation.feature.home
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -10,10 +11,11 @@ import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import com.pa.sugarcare.databinding.FragmentHomeBinding
-import com.pa.sugarcare.presentation.adapter.OnBoardingViewPagerAdapter
+import com.pa.sugarcare.presentation.feature.onboarding.OnBoardingViewPagerAdapter
 import com.pa.sugarcare.presentation.feature.home.screen.Information1
 import com.pa.sugarcare.presentation.feature.home.screen.Information2
 import com.pa.sugarcare.presentation.feature.home.screen.Information3
+import com.pa.sugarcare.presentation.feature.sugargrade.ProductResultActivity
 
 
 class HomeFragment : Fragment() {
@@ -27,7 +29,6 @@ class HomeFragment : Fragment() {
         Information3()
     )
     private var currentImageUri: Uri? = null
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -54,6 +55,7 @@ class HomeFragment : Fragment() {
             startGallery()
         }
 
+
     }
 
     private fun startGallery() {
@@ -65,11 +67,20 @@ class HomeFragment : Fragment() {
     ) { uri: Uri? ->
         if (uri != null) {
             currentImageUri = uri
+            val productGrade = getProductGrade()
             Log.d("Photo Picker", "Uri + $currentImageUri")
-
+            Log.d("Sugar Grade", "grade : + $productGrade")
+            val intent = Intent(requireContext(), ProductResultActivity::class.java)
+            intent.putExtra(ProductResultActivity.IMAGE_URI, currentImageUri.toString())
+            intent.putExtra(ProductResultActivity.PRODUCT_GRADE, productGrade)
+            startActivity(intent)
         } else {
             Log.d("Photo Picker", "No media selected")
         }
+    }
+
+    private fun getProductGrade(): String {
+        return "green"
     }
 
     override fun onDestroyView() {

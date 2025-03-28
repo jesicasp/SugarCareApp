@@ -1,10 +1,9 @@
-package com.pa.sugarcare.presentation.adapter
+package com.pa.sugarcare.presentation.feature.userprofile
 
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.pa.sugarcare.presentation.feature.myconsumption.MyConsumptionFragment
-import com.pa.sugarcare.presentation.feature.producthistory.ProductHistoryFragment
+import com.pa.sugarcare.presentation.feature.userprofile.myconsumption.MyConsumptionFragment
+import com.pa.sugarcare.presentation.feature.userprofile.producthistory.ProductHistoryFragment
 
 class SectionsPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
     override fun getItemCount(): Int {

@@ -1,4 +1,4 @@
-package com.pa.sugarcare.presentation.feature.producthistory.placeholder
+package com.pa.sugarcare.presentation.feature.userprofile.producthistory.placeholder
 
 import java.util.ArrayList
 import java.util.HashMap

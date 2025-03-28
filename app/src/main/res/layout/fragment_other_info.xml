@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".presentation.sugargrade.tab.OtherInfoFragment">
+    tools:context=".presentation.feature.sugargrade.tab.OtherInfoFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

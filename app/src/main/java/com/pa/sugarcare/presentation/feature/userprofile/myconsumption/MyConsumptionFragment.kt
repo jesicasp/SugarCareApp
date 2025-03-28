@@ -1,4 +1,4 @@
-package com.pa.sugarcare.presentation.feature.myconsumption
+package com.pa.sugarcare.presentation.feature.userprofile.myconsumption
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.pa.sugarcare.databinding.FragmentProductListBinding
-import com.pa.sugarcare.presentation.feature.myconsumption.placeholder.PlaceholderContent
+import com.pa.sugarcare.presentation.feature.userprofile.myconsumption.placeholder.PlaceholderContent
 class MyConsumptionFragment : Fragment() {
 
     private var _binding: FragmentProductListBinding? = null

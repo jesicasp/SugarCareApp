@@ -1,4 +1,4 @@
-package com.pa.sugarcare.presentation.feature.producthistory
+package com.pa.sugarcare.presentation.feature.userprofile.producthistory
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,7 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.pa.sugarcare.R
-import com.pa.sugarcare.presentation.feature.producthistory.placeholder.PlaceholderContent
+import com.pa.sugarcare.presentation.feature.userprofile.producthistory.placeholder.PlaceholderContent
 
 /**
  * A fragment representing a list of Items.

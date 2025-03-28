@@ -9,7 +9,6 @@ import androidx.annotation.StringRes
 import com.google.android.material.tabs.TabLayoutMediator
 import com.pa.sugarcare.R
 import com.pa.sugarcare.databinding.FragmentUserProfileBinding
-import com.pa.sugarcare.presentation.adapter.SectionsPagerAdapter
 
 class UserProfileFragment : Fragment() {
     private var _binding: FragmentUserProfileBinding? = null
@@ -27,7 +26,7 @@ class UserProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val sectionsPagerAdapter = SectionsPagerAdapter(this) //
+        val sectionsPagerAdapter = SectionsPagerAdapter(this)
         binding.viewPager.adapter = sectionsPagerAdapter
 
         TabLayoutMediator(binding.tabs, binding.viewPager) { tab, position ->

@@ -66,7 +66,7 @@ class HomeFragment : Fragment() {
         if (uri != null) {
             currentImageUri = uri
             Log.d("Photo Picker", "Uri + $currentImageUri")
-            
+
         } else {
             Log.d("Photo Picker", "No media selected")
         }

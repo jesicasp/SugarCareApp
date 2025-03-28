@@ -38,4 +38,5 @@
     <string name="clickhere">Klik di sini</string>
     <string name="searchbar_hint">Masukkan nama produk</string>
     <string name="history">Riwayat Produk Yang Dicari</string>
+    <string name="appbar">Appbar Title</string>
 </resources>

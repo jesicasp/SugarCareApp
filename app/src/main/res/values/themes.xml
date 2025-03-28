@@ -68,6 +68,12 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="Theme.SugarCare.Poppins_14_bold_black" parent="Base.Theme.SugarCare">
+        <item name="fontFamily">@font/poppins_bold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
     <style name="Theme.SugarCare.Poppins_12_normal_black" parent="Base.Theme.SugarCare">
         <item name="fontFamily">@font/poppins_regular</item>
         <item name="android:textSize">12sp</item>

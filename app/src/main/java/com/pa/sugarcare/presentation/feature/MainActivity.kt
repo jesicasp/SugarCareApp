@@ -53,15 +53,23 @@ class MainActivity : AppCompatActivity() {
         binding.navView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigation_camera -> {
+                    binding.fabHistory.hide()
                     openCamera()
                     true
                 }
+                R.id.navigation_home -> {
+                    binding.fabHistory.show()
+                    navController.navigate(item.itemId)
+                    true
+                }
                 else -> {
+                    binding.fabHistory.hide() 
                     navController.navigate(item.itemId)
                     true
                 }
             }
         }
+
     }
 
     private fun openCamera() {

@@ -42,8 +42,7 @@
         android:hint="@string/searchbar_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/dots_indicator">
-    </com.google.android.material.search.SearchBar>
+        app:layout_constraintTop_toBottomOf="@id/dots_indicator"></com.google.android.material.search.SearchBar>
 
     <com.google.android.material.search.SearchView
         android:id="@+id/searchView"
@@ -54,7 +53,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/menu1"
@@ -219,19 +218,4 @@
         </com.google.android.material.card.MaterialCardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="16dp"
-        android:contentDescription="@string/history"
-        android:src="@drawable/baseline_history_24"
-        app:backgroundTint="@color/white"
-        app:elevation="10dp"
-        app:fabSize="auto"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_weight="1"
-        app:shapeAppearanceOverlay="@style/ShapeAppearance.FAB"
-        app:tint="@null" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -81,7 +81,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun getProductGrade(): String {
-        return "green"
+        return "red"
     }
 
     private fun setupSearchBar(){

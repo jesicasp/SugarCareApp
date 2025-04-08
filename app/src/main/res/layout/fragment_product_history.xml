@@ -34,7 +34,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="You C1000"
-                style="@style/Theme.SugarCare.Poppins_12_normal_black"/>
+                style="@style/Theme.SugarCare.Poppins_12_bold_black"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"

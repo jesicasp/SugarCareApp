@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/poppins"
-                android:padding="8dp"
+                android:padding="2dp"
                 android:text="@string/appbar" />
 
         </com.google.android.material.appbar.MaterialToolbar>

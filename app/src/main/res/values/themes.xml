@@ -56,9 +56,32 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
+    <style name="Theme.SugarCare.Poppins_20_bold_onPrimary" parent="Base.Theme.SugarCare">
+        <item name="fontFamily">@font/poppins_bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="Theme.SugarCare.Poppins_40_bold_onPrimary" parent="Base.Theme.SugarCare">
+        <item name="fontFamily">@font/poppins_bold</item>
+        <item name="android:textSize">40sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
     <style name="Theme.SugarCare.Poppins_16_bold_onSecondary" parent="Base.Theme.SugarCare">
         <item name="fontFamily">@font/poppins_bold</item>
         <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/teal_green</item>
+    </style>
+
+    <style name="Theme.SugarCare.Poppins_20_bold_onSecondary" parent="Base.Theme.SugarCare">
+        <item name="fontFamily">@font/poppins_bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/teal_green</item>
+    </style>
+
+    <style name="Theme.SugarCare.Poppins_12_onSecondary" parent="Base.Theme.SugarCare">
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/teal_green</item>
     </style>
 

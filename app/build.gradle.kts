@@ -75,5 +75,7 @@ dependencies {
     //datastore
     implementation(libs.androidx.datastore.preferences)
 
+    //barchart
+    implementation(libs.mpandroidchart)
 
 }

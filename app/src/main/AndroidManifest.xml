@@ -12,6 +12,9 @@
         android:theme="@style/Theme.SugarCare"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.feature.report.weekly.WeeklyChartRepActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.feature.report.yearly.YearlyRepActivity"
             android:exported="false" />
         <activity

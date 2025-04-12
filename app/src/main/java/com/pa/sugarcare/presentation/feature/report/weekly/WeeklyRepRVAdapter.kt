@@ -1,5 +1,6 @@
 package com.pa.sugarcare.presentation.feature.report.weekly
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -16,7 +17,13 @@ class WeeklyRepRVAdapter(private val values: List<ReportData>) :
         fun bind(item: ReportData) {
             binding.tvWeek.text = item.week
             binding.tvMonthYear.text = item.month_year
+            binding.root.setOnClickListener {
+                val intent = Intent(itemView.context, WeeklyChartRepActivity::class.java)
+                itemView.context.startActivity(intent)
+            }
         }
+
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

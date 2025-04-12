@@ -15,7 +15,8 @@ object Report {
     private fun createReportItem(position: Int) = ReportData(
         id = position.toString(),
         week = listOf("Minggu 1", "Minggu 2", "Minggu 3", "Minggu 4", "Minggu 5")[position % 5],
-        month_year = listOf("Januari 2025", "Februari 2025", "Maret 2025")[position % 3]
+        month_year = listOf("Januari 2025", "Februari 2025", "Maret 2025")[position % 3],
+        year = listOf(2025, 2024, 2023, 2022, 2021)[position % 3]
     )
 
     private fun addItem(item: ReportData) {
@@ -27,5 +28,6 @@ object Report {
 data class ReportData(
     val id: String,
     val week: String,
-    val month_year: String
+    val month_year: String,
+    val year: Int
 )

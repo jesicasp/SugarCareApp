@@ -15,7 +15,6 @@ class SplashscreenActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        // Pasang Splash Screen API
         val splashScreen = installSplashScreen()
 
         super.onCreate(savedInstanceState)
@@ -24,7 +23,6 @@ class SplashscreenActivity : AppCompatActivity() {
         binding = ActivitySplashscreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Menunggu beberapa saat sebelum pindah ke MainActivity
         splashScreen.setKeepOnScreenCondition { false }
 
         binding.root.postDelayed({

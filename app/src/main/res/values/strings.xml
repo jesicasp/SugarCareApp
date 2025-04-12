@@ -39,6 +39,8 @@
     <string name="menu3">Report Konsumsi Gula </string>
     <string name="clickhere">Klik di sini</string>
     <string name="searchbar_hint">Masukkan nama produk</string>
+    <string name="searchbar_hint_month_week">Masukkan nama bulan dan tahun</string>
+    <string name="searchbar_hint_year">Masukkan tahun</string>
     <string name="history">Riwayat Produk Yang Dicari</string>
     <string name="appbar">Appbar Title</string>
     <string name="sugar_grade">Sugar Grade</string>
@@ -55,6 +57,9 @@
     <string name="title_alert_greengrade">Sugar Grade : Hijau</string>
     <string name="message_alert_unknowngrade">Kadar gula produk ini tidak diketahui.</string>
     <string name="appbar_report">Report Konsumsi Gula</string>
+    <string name="appbar_weekly_report">Weekly Report</string>
+    <string name="appbar_monthly_report">Monthly Report</string>
+    <string name="appbar_yearly_report">Yearly Report</string>
     <string name="title_today_report">Konsumsi Gula Hari Ini</string>
     <string name="dummy_26g">26</string>
     <string name="dummy_50g">50</string>
@@ -62,4 +67,7 @@
     <string name="weekly_report">Weekly Report</string>
     <string name="monthly_report">Monthly\nReport</string>
     <string name="yearly_report">Yearly\nReport</string>
+    <string name="dummy_minggu">Minggu 1</string>
+    <string name="dummy_bulan_tahun">Desember 2024</string>
+    <string name="dummy_tahun">2024</string>
 </resources>

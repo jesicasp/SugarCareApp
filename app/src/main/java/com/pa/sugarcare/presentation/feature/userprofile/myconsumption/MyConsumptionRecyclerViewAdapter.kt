@@ -20,7 +20,7 @@ class MyConsumptionRecyclerViewAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(values[position]) // Langsung bind tanpa variabel tambahan
+        holder.bind(values[position])
     }
 
     override fun getItemCount(): Int = values.size

@@ -15,6 +15,7 @@ import com.pa.sugarcare.presentation.feature.onboarding.OnBoardingViewPagerAdapt
 import com.pa.sugarcare.presentation.feature.home.screen.Information1
 import com.pa.sugarcare.presentation.feature.home.screen.Information2
 import com.pa.sugarcare.presentation.feature.home.screen.Information3
+import com.pa.sugarcare.presentation.feature.report.ReportActivity
 import com.pa.sugarcare.presentation.feature.sugargrade.ProductResultActivity
 
 
@@ -55,12 +56,21 @@ class HomeFragment : Fragment() {
             startGallery()
         }
 
+        binding.cvMenuReport.setOnClickListener {
+            goToReport()
+        }
+
         setupSearchBar()
 
     }
 
     private fun startGallery() {
         launcherGallery.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+    }
+
+    private fun goToReport() {
+        val intent = Intent(requireContext(), ReportActivity::class.java)
+        startActivity(intent)
     }
 
     private val launcherGallery = registerForActivityResult(

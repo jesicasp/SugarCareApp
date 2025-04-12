@@ -7,11 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.pa.sugarcare.R
-import com.pa.sugarcare.databinding.ActivityOnBoardingBinding
 import com.pa.sugarcare.databinding.ActivitySignInBinding
 import com.pa.sugarcare.presentation.feature.MainActivity
 import com.pa.sugarcare.presentation.feature.signup.SignUpActivity
-import com.pa.sugarcare.presentation.feature.userprofile.UserProfileFragment
 
 class SignInActivity : AppCompatActivity() {
     private var _binding: ActivitySignInBinding? = null

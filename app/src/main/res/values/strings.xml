@@ -56,11 +56,12 @@
     <string name="message_alert_greengrade">Kadar gula produk ini aman untuk dikonsumsi. Anda dapat menikmatinya tanpa khawatir akan asupan gula berlebih.</string>
     <string name="title_alert_greengrade">Sugar Grade : Hijau</string>
     <string name="message_alert_unknowngrade">Kadar gula produk ini tidak diketahui.</string>
+    <string name="title_alert_unknowngrade">Sugar Grade : Unknown</string>
     <string name="appbar_report">Report Konsumsi Gula</string>
     <string name="appbar_weekly_report">Weekly Report</string>
     <string name="appbar_monthly_report">Monthly Report</string>
     <string name="appbar_yearly_report">Yearly Report</string>
-    <string name="title_today_report">Konsumsi Gula Hari Ini</string>
+    <string name="title_today_report">Konsumsi Gula  Hari Ini</string>
     <string name="dummy_26g">26</string>
     <string name="dummy_50g">50</string>
     <string name="gram">g</string>

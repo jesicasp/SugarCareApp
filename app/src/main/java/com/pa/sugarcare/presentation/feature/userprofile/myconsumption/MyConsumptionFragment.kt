@@ -26,7 +26,7 @@ class MyConsumptionFragment : Fragment() {
 
         // Setup RecyclerView
         binding.recyclerView.apply {
-            layoutManager = LinearLayoutManager(context) // Pakai LinearLayoutManager
+            layoutManager = LinearLayoutManager(context)
             adapter = MyConsumptionRecyclerViewAdapter(PlaceholderContent.ITEMS)
         }
     }

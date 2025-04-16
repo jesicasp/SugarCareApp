@@ -1,5 +1,6 @@
 package com.pa.sugarcare.presentation.feature.report.monthly
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +16,10 @@ class MonthlyRepRVAdapter(private val values: List<ReportData>) :
 
         fun bind(item: ReportData) {
             binding.tvMonthYear.text = item.month_year
+            binding.root.setOnClickListener {
+                val intent = Intent(itemView.context, MonthlyChartRepActivity::class.java)
+                itemView.context.startActivity(intent)
+            }
         }
     }
 

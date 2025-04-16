@@ -1,4 +1,4 @@
-package com.pa.sugarcare.presentation.feature.report.weekly
+package com.pa.sugarcare.presentation.feature.report.monthly
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -12,28 +12,29 @@ import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.pa.sugarcare.R
-import com.pa.sugarcare.databinding.ActivityWeeklyChartRepBinding
+import com.pa.sugarcare.databinding.ActivityMonthlyChartRepBinding
+
 
 private data class BarChartData(
     val gram: Float,
     val color: Int,
-    val date: String
+    val week: String
 )
 
-private class DateValueFormatter(private val dates: List<String>) : ValueFormatter() {
+private class DateValueFormatter(private val week: List<String>) : ValueFormatter() {
     override fun getFormattedValue(value: Float): String {
-        val index = value.toInt() - 1
-        return if (index in dates.indices) dates[index] else ""
+        return week.getOrNull(value.toInt() - 1) ?: ""
     }
 }
 
-class WeeklyChartRepActivity : AppCompatActivity() {
-    private var _binding: ActivityWeeklyChartRepBinding? = null
+
+class MonthlyChartRepActivity : AppCompatActivity() {
+    private var _binding: ActivityMonthlyChartRepBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _binding = ActivityWeeklyChartRepBinding.inflate(layoutInflater)
+        _binding = ActivityMonthlyChartRepBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -41,7 +42,6 @@ class WeeklyChartRepActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
         setupBarChart()
     }
 
@@ -54,7 +54,8 @@ class WeeklyChartRepActivity : AppCompatActivity() {
         }
 
         val barDataSet = BarDataSet(barEntries, "").apply {
-            colors = dummyData.map { ContextCompat.getColor(this@WeeklyChartRepActivity, it.color) }
+            colors =
+                dummyData.map { ContextCompat.getColor(this@MonthlyChartRepActivity, it.color) }
             valueTextSize = 16f
         }
 
@@ -65,7 +66,7 @@ class WeeklyChartRepActivity : AppCompatActivity() {
         barChart.description.isEnabled = false
         barChart.legend.isEnabled = false
 
-        barChart.xAxis.valueFormatter = DateValueFormatter(dummyData.map { it.date })
+        barChart.xAxis.valueFormatter = DateValueFormatter(dummyData.map { it.week })
         barChart.xAxis.granularity = 1f
         barChart.xAxis.position = XAxis.XAxisPosition.BOTTOM
         barChart.xAxis.axisLineWidth = 3f
@@ -80,13 +81,10 @@ class WeeklyChartRepActivity : AppCompatActivity() {
 
     private fun getDummyData(): List<BarChartData> {
         return listOf(
-            BarChartData(45f, R.color.yellow, "01"),
-            BarChartData(30f, R.color.green, "02"),
-            BarChartData(65f, R.color.red, "03"),
-            BarChartData(25f, R.color.yellow, "04"),
-            BarChartData(38f, R.color.green, "05"),
-            BarChartData(40f, R.color.green, "06"),
-            BarChartData(28f, R.color.yellow, "07"),
+            BarChartData(250f, R.color.yellow, "Minggu 1"),
+            BarChartData(150f, R.color.green, "Minggu 2"),
+            BarChartData(325f, R.color.red, "Minggu 3"),
+            BarChartData(140f, R.color.yellow, "Minggu 4"),
         )
     }
 }

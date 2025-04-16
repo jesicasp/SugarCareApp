@@ -71,4 +71,6 @@
     <string name="dummy_minggu">Minggu 1</string>
     <string name="dummy_bulan_tahun">Desember 2024</string>
     <string name="dummy_tahun">2024</string>
+    <string name="dummy_weeklyrep">01 - 07 Desember 2024</string>
+    <string name="info_bar_report">Warna pada barchart menunjukkan tingkat dominan konsumsi gula pada hari tersebut.</string>
 </resources>

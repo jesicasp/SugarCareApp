@@ -31,7 +31,7 @@
                 android:layout_gravity="center"
                 android:fontFamily="@font/poppins"
                 android:padding="2dp"
-                android:text="@string/appbar_weekly_report" />
+                android:text="@string/appbar_yearly_report" />
         </com.google.android.material.appbar.MaterialToolbar>
     </com.google.android.material.appbar.AppBarLayout>
 

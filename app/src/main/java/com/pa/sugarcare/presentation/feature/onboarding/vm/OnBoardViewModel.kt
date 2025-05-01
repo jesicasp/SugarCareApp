@@ -1,4 +1,4 @@
-package com.pa.sugarcare.presentation.feature.onboarding
+package com.pa.sugarcare.presentation.feature.onboarding.vm
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

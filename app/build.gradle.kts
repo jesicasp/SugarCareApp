@@ -14,6 +14,10 @@ android {
         versionCode = 1
         versionName = "1.0"
 
+        buildConfigField ("String", "BASE_URL", "\"http://127.0.0.1:8000/api/\"")
+        buildConfigField("String", "KEY", "\"Bearer your_token_here\"")
+
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -28,6 +32,8 @@ android {
     }
     buildFeatures{
         viewBinding = true
+        buildConfig = true
+
     }
 
     compileOptions {
@@ -77,5 +83,14 @@ dependencies {
 
     //barchart
     implementation(libs.mpandroidchart)
+
+    //image loading
+    implementation(libs.glide)
+    //HTTP client REST API
+    implementation(libs.retrofit)
+
+    //Converter untuk Retrofit parsing JSON
+    implementation(libs.retrofit2.converter.gson)
+    implementation(libs.logging.interceptor)
 
 }

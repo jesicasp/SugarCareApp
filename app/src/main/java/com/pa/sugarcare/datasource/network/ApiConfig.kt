@@ -8,27 +8,28 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class ApiConfig {
     companion object {
-        fun getApiService(): ApiService {
-            val authInterceptor = Interceptor { chain ->
-                val req = chain.request()
-                val requestHeaders = req.newBuilder()
-                    .addHeader("Authorization", BuildConfig.KEY)
-                    .build()
-                chain.proceed(requestHeaders)
-            }
-            val client = OkHttpClient.Builder()
-                .addInterceptor(authInterceptor)
+
+        private val authInterceptor = Interceptor { chain ->
+            val req = chain.request()
+            val requestHeaders = req.newBuilder()
+                .addHeader("Authorization", BuildConfig.KEY)
                 .build()
-            val retrofit = Retrofit.Builder()
-                .baseUrl(BuildConfig.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(client)
-                .build()
-            return retrofit.create(ApiService::class.java)
+            chain.proceed(requestHeaders)
         }
-        fun getBaseUrl(): String {
-            return BuildConfig.BASE_URL
+
+        private val client = OkHttpClient.Builder()
+            .addInterceptor(authInterceptor)
+            .build()
+
+        private val retrofit = Retrofit.Builder()
+            .baseUrl(BuildConfig.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .client(client)
+            .build()
+
+        // Singleton ApiService
+        val apiService: ApiService by lazy {
+            retrofit.create(ApiService::class.java)
         }
     }
-
 }

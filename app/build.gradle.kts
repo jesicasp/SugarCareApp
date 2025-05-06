@@ -14,7 +14,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        buildConfigField ("String", "BASE_URL", "\"https://c5e8-103-190-46-23.ngrok-free.app/\"")
+        buildConfigField ("String", "BASE_URL", "\"https://safely-frank-dane.ngrok-free.app/\"")
         buildConfigField("String", "KEY", "\"Bearer your_token_here\"")
 
 

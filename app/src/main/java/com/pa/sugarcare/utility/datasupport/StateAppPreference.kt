@@ -29,21 +29,4 @@ class StateAppPreference(private val dataStore: DataStore<Preferences>) {
         }
     }
 
-    fun getAccessToken() : Flow<String?> {
-        return dataStore.data.map {
-            it[ModelState.accessToken]
-        }
-    }
-
-    suspend fun setAccessToken(accessToken: String) {
-        dataStore.edit {
-            it[ModelState.accessToken] = accessToken
-        }
-    }
-
-    suspend fun deleteAccessToken() {
-        dataStore.edit {
-            it[ModelState.accessToken] = ""
-        }
-    }
 }

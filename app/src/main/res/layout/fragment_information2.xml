@@ -7,10 +7,10 @@
     tools:context=".presentation.feature.home.screen.Information2">
 
     <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivInfo2"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/screen1"
         app:shapeAppearanceOverlay="@style/RoundedImageBottom" />
 
 </FrameLayout>

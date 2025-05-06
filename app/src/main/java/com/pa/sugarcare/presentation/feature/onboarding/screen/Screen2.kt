@@ -6,9 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.pa.sugarcare.databinding.FragmentScreen2Binding
 import com.pa.sugarcare.presentation.feature.onboarding.OnBoardingActivity
+import com.pa.sugarcare.presentation.feature.onboarding.vm.OnBoardViewModel
 import com.pa.sugarcare.presentation.feature.signin.SignInActivity
+import com.pa.sugarcare.repository.di.StateInjection
 
 
 /**
@@ -19,9 +22,10 @@ import com.pa.sugarcare.presentation.feature.signin.SignInActivity
 class Screen2 : Fragment() {
     private var _binding: FragmentScreen2Binding? = null
     private val binding get() = _binding!!
-//    private val onBoardViewModel : OnBoardViewModel by viewModels {
-//        StateInjection.onBoardInjection(requireContext())
-//    }
+    private val onBoardViewModel : OnBoardViewModel by viewModels {
+        StateInjection.onBoardInjection(requireContext())
+    }
+
 override fun onCreateView(
     inflater: LayoutInflater, container: ViewGroup?,
     savedInstanceState: Bundle?
@@ -38,7 +42,7 @@ override fun onCreateView(
         val intentToLogin = Intent(requireActivity(), SignInActivity::class.java)
         startActivity(intentToLogin)
         requireActivity().finish()
-//        onBoardViewModel.updateOnBoardState()
+        onBoardViewModel.updateOnBoardState()
     }
 
     return binding.root

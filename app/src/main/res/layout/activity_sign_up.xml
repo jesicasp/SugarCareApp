@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:background="@color/background"
+    android:gravity="center"
     android:orientation="vertical"
     android:paddingHorizontal="20dp"
     tools:context=".presentation.feature.signup.SignUpActivity">
@@ -23,7 +22,7 @@
         style="@style/EditTextCustom_allradius_12"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:hint="@string/email">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -35,13 +34,20 @@
             android:ems="30"
             android:inputType="textEmailAddress"
             android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/txtEmailError"
+            style="@style/Theme.SugarCare.Poppins_12_regular_red"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/EditTextCustom_allradius_12"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:hint="@string/fullname">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -53,13 +59,19 @@
             android:ems="30"
             android:inputType="textPersonName"
             android:textColor="@color/black" />
+        <TextView
+            android:id="@+id/txtNameError"
+            style="@style/Theme.SugarCare.Poppins_12_regular_red"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/EditTextCustom_allradius_12"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="10dp"
         android:hint="@string/password">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -72,12 +84,42 @@
             android:ems="30"
             android:inputType="textPassword"
             android:textColor="@color/black" />
+        <TextView
+            android:id="@+id/txtPassError"
+            style="@style/Theme.SugarCare.Poppins_12_regular_red"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/EditTextCustom_allradius_12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:hint="@string/conf_password">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edConfPassword"
+            style="@style/Theme.SugarCare.Poppins_12_bold_onPrimary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:drawableEnd="@drawable/baseline_remove_red_eye_24"
+            android:ems="30"
+            android:inputType="textPassword"
+            android:textColor="@color/black" />
+        <TextView
+            android:id="@+id/txtPassConfError"
+            style="@style/Theme.SugarCare.Poppins_12_regular_red"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
-
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnSignIn"
+        android:id="@+id/btnSignUp"
         style="@style/Button_Primary_12_regular"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -86,27 +128,36 @@
         android:layout_marginBottom="20dp"
         android:text="@string/sign_up" />
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:indeterminate="true"
+        android:visibility="gone" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
         android:gravity="center_horizontal"
-        android:layout_marginTop="20dp">
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
             android:text="@string/sudah_punya_akun"
-            android:textSize="12sp"
             android:textColor="@color/black"
-            android:layout_marginEnd="5dp"/>
+            android:textSize="12sp" />
 
         <TextView
-            android:id="@+id/txtSignUp"
+            android:id="@+id/txtSignIn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/sign_in"
-            android:textSize="12sp"
-            android:textColor="@color/teal_green"/>
+            android:textColor="@color/teal_green"
+            android:textSize="12sp" />
     </LinearLayout>
 
 </LinearLayout>

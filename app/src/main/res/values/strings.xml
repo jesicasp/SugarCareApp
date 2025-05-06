@@ -76,5 +76,9 @@
     <string name="info_bar_weekreport">Warna pada barchart menunjukkan tingkat dominan konsumsi gula pada hari tersebut.</string>
     <string name="info_bar_monthreport">Warna pada barchart menunjukkan tingkat dominan konsumsi gula pada minggu tersebut.</string>
     <string name="info_bar_yearreport">Warna pada barchart menunjukkan tingkat dominan konsumsi gula pada bulan tersebut.</string>
-    <string name="logout">logout</string>
+    <string name="logout">Logout</string>
+    <string name="conf_password">Password confirmation</string>
+    <string name="fill_this_field">Please fill this field</string>
+    <string name="pass_match">Passwords do not match</string>
+
 </resources>

@@ -1,7 +1,9 @@
 package com.pa.sugarcare.datasource.network
 
-import com.pa.sugarcare.datasource.response.LoginResponse
 import com.pa.sugarcare.models.request.LoginRequest
+import com.pa.sugarcare.models.request.RegisterRequest
+import com.pa.sugarcare.models.response.CommonResponse
+import com.pa.sugarcare.models.response.DataUserToken
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.POST
@@ -11,5 +13,17 @@ interface ApiService {
     @POST("api/login")
     suspend fun login(
         @Body request: LoginRequest
-    ): Response<LoginResponse>
+    ): Response<CommonResponse<DataUserToken>>
+
+    //register
+    @POST("api/register")
+    suspend fun register(
+        @Body request: RegisterRequest
+    ): Response<CommonResponse<DataUserToken>>
+
+    //logout
+    @POST("api/logout")
+    suspend fun logout(): Response<CommonResponse<Nothing>>
+
+
 }

@@ -63,23 +63,18 @@ class UserProfileFragment : Fragment() {
         viewModel.logoutResult.observe(viewLifecycleOwner) { result ->
             when (result) {
                 is Resources.Loading -> {
-                    Log.d("LOGOUTT","loading observeLogout()")
-
+                    binding.progressBar.bringToFront()
                     binding.progressBar.visibility = View.VISIBLE
                 }
 
                 is Resources.Success -> {
-                    Log.d("LOGOUTT","succes observeLogout()")
-
                     binding.progressBar.visibility = View.GONE
                     val intent = Intent(requireContext(), OnBoardingActivity::class.java)
                     startActivity(intent)
                 }
 
                 is Resources.Error -> {
-                    Log.d("LOGOUTT","error observeLogout()")
                     Log.d("LogoutDebug", "Token before logout: ${TokenStorage.getToken()}")
-
                     binding.progressBar.visibility = View.GONE
                     Log.e(TAG, result.error)
                 }

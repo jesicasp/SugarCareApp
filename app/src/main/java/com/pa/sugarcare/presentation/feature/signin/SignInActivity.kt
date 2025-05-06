@@ -65,7 +65,7 @@ class SignInActivity : AppCompatActivity() {
                 is Resources.Error -> {
                     binding.progressBar.visibility = View.GONE
                     Toast.makeText(this, "Login failed: ${result.error}", Toast.LENGTH_SHORT).show()
-                    Log.e("Login", result.error)
+                    Log.e(TAG, result.error)
                 }
             }
         }
@@ -90,5 +90,9 @@ class SignInActivity : AppCompatActivity() {
             val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    companion object {
+        private const val TAG = "SignInActivity"
     }
 }

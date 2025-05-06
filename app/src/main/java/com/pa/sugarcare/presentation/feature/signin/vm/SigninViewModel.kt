@@ -1,5 +1,6 @@
 package com.pa.sugarcare.presentation.feature.signin.vm
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,7 +11,7 @@ import com.pa.sugarcare.repository.network.UserRepository
 import com.pa.sugarcare.utility.Resources
 import kotlinx.coroutines.launch
 
-class SigninViewModel(private val userRepository: UserRepository) : ViewModel(){
+class SigninViewModel(private val userRepository: UserRepository) : ViewModel() {
     private val _loginResult = MutableLiveData<Resources<LoginResponse>>()
     val loginResult: LiveData<Resources<LoginResponse>> = _loginResult
 
@@ -20,14 +21,30 @@ class SigninViewModel(private val userRepository: UserRepository) : ViewModel(){
 
             try {
                 val response = userRepository.login(request)
+                Log.d(TAG, "Email: ${request.email}, Password: ${request.password}")
+
+                Log.e(TAG, "Response code: ${response.code()}")
+                Log.e(TAG, "Response headers: ${response.headers()}")
+
                 if (response.isSuccessful && response.body() != null) {
                     _loginResult.postValue(Resources.Success(response.body()!!))
                 } else {
-                    _loginResult.postValue(Resources.Error("Login failed: ${response.message()}"))
+                    val errorMessage = response.errorBody()?.string() ?: "Unknown error"
+                    Log.e(TAG, "Error body: $errorMessage")
+                    _loginResult.postValue(Resources.Error("Login failed: $errorMessage"))
                 }
             } catch (e: Exception) {
+                Log.e(TAG, "Exception occurred: ${e.message}")
                 _loginResult.postValue(Resources.Error(e.message ?: "Unexpected error occurred"))
             }
+
+
         }
+
     }
+
+    companion object {
+        private const val TAG = "SignInViewModel"
+    }
+
 }

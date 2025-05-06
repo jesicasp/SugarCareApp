@@ -3,6 +3,7 @@ package com.pa.sugarcare.presentation.feature.signin
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.util.Patterns
 import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
@@ -76,13 +77,33 @@ class SignInActivity : AppCompatActivity() {
             val email = binding.edEmail.text.toString()
             val password = binding.edPassword.text.toString()
 
-            if (email.isNotEmpty() && password.isNotEmpty()) {
+            var isValid = true
+
+            binding.txtEmailError.text = ""
+            binding.txtPassError.text = ""
+
+            if (email.isEmpty()) {
+                binding.txtEmailError.text = getString(R.string.fill_this_field)
+                isValid = false
+            } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                binding.txtEmailError.text = getString(R.string.invalid_email_format)
+                isValid = false
+            }
+
+            if (password.isEmpty()) {
+                binding.txtPassError.text = getString(R.string.fill_this_field)
+                isValid = false
+            } else if (password.length < 6) {
+                binding.txtPassError.text = getString(R.string.password_too_short)
+                isValid = false
+            }
+
+            if (isValid) {
                 val loginRequest = LoginRequest(email, password)
                 viewModel.login(loginRequest)
-            } else {
-                Toast.makeText(this, "Please enter email and password", Toast.LENGTH_SHORT).show()
             }
         }
+
     }
 
     private fun setupSignupListener() {

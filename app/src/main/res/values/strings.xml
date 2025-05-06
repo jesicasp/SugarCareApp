@@ -80,5 +80,6 @@
     <string name="conf_password">Password confirmation</string>
     <string name="fill_this_field">Please fill this field</string>
     <string name="pass_match">Passwords do not match</string>
-
+    <string name="invalid_email_format">Invalid email format</string>
+    <string name="password_too_short">Password must be at least 6 characters</string>
 </resources>

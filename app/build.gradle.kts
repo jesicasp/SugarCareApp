@@ -93,4 +93,8 @@ dependencies {
     implementation(libs.retrofit2.converter.gson)
     implementation(libs.logging.interceptor)
 
+    //EncryptedSharedPreferences
+    implementation(libs.security.crypto)
+
+
 }

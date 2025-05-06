@@ -1,5 +1,6 @@
 package com.pa.sugarcare.presentation.feature.signin.vm
 
+import android.app.Application
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -22,11 +23,12 @@ class SigninViewModel(private val userRepository: UserRepository) : ViewModel() 
             try {
                 val response = userRepository.login(request)
                 Log.d(TAG, "Email: ${request.email}, Password: ${request.password}")
-
                 Log.e(TAG, "Response code: ${response.code()}")
                 Log.e(TAG, "Response headers: ${response.headers()}")
 
                 if (response.isSuccessful && response.body() != null) {
+                    val token = response.body()?.data?.token
+
                     _loginResult.postValue(Resources.Success(response.body()!!))
                 } else {
                     val errorMessage = response.errorBody()?.string() ?: "Unknown error"

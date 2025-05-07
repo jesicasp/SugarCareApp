@@ -5,6 +5,7 @@ import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 
 class ApiConfig {
     companion object {
@@ -19,6 +20,8 @@ class ApiConfig {
 
         private val client = OkHttpClient.Builder()
             .addInterceptor(AuthInterceptor())
+            .writeTimeout(5, TimeUnit.MINUTES)
+            .readTimeout(5, TimeUnit.MINUTES)
             .build()
 
         private val retrofit = Retrofit.Builder()

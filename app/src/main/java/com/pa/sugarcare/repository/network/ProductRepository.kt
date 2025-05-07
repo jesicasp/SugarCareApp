@@ -1,13 +1,12 @@
 package com.pa.sugarcare.repository.network
 
 import com.pa.sugarcare.datasource.network.ApiConfig.Companion.apiService
-import com.pa.sugarcare.models.response.CommonResponse
-import com.pa.sugarcare.models.response.SearchProductNameResponse
+import com.pa.sugarcare.models.response.SearchProductResponse
 import retrofit2.Response
 
 class ProductRepository {
 
-    suspend fun searchProductByName(q: String = "a"): Response<CommonResponse<SearchProductNameResponse>> {
+    suspend fun searchProductByName(q: String = "a"): Response<SearchProductResponse> {
         return apiService.searchProduct(q)
     }
 

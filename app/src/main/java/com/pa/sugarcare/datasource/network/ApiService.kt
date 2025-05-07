@@ -4,7 +4,7 @@ import com.pa.sugarcare.models.request.LoginRequest
 import com.pa.sugarcare.models.request.RegisterRequest
 import com.pa.sugarcare.models.response.CommonResponse
 import com.pa.sugarcare.models.response.DataUserToken
-import com.pa.sugarcare.models.response.SearchProductNameResponse
+import com.pa.sugarcare.models.response.SearchProductResponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -32,7 +32,7 @@ interface ApiService {
     @GET("api/products/search")
     suspend fun searchProduct(
         @Query("q") query: String
-    ): Response<CommonResponse<SearchProductNameResponse>>
+    ): Response<SearchProductResponse>
 
 
 }

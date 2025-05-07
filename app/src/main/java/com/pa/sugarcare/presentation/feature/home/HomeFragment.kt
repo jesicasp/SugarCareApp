@@ -11,12 +11,14 @@ import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import com.pa.sugarcare.databinding.FragmentHomeBinding
-import com.pa.sugarcare.presentation.feature.onboarding.OnBoardingViewPagerAdapter
 import com.pa.sugarcare.presentation.feature.home.screen.Information1
 import com.pa.sugarcare.presentation.feature.home.screen.Information2
 import com.pa.sugarcare.presentation.feature.home.screen.Information3
+import com.pa.sugarcare.presentation.feature.onboarding.OnBoardingViewPagerAdapter
 import com.pa.sugarcare.presentation.feature.report.ReportActivity
+import com.pa.sugarcare.presentation.feature.searchproduct.SearchProductActivity
 import com.pa.sugarcare.presentation.feature.sugargrade.ProductResultActivity
+
 
 
 class HomeFragment : Fragment() {
@@ -29,6 +31,7 @@ class HomeFragment : Fragment() {
         Information2(),
         Information3()
     )
+
     private var currentImageUri: Uri? = null
 
     override fun onCreateView(
@@ -45,7 +48,11 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        pagerAdapter = OnBoardingViewPagerAdapter(listOnBoardingScreen, childFragmentManager, viewLifecycleOwner.lifecycle)
+        pagerAdapter = OnBoardingViewPagerAdapter(
+            listOnBoardingScreen,
+            childFragmentManager,
+            viewLifecycleOwner.lifecycle
+        )
 
         binding.apply {
             viewPager.adapter = pagerAdapter
@@ -94,16 +101,12 @@ class HomeFragment : Fragment() {
         return "red"
     }
 
-    private fun setupSearchBar(){
+    private fun setupSearchBar() {
         with(binding) {
-            searchView.setupWithSearchBar(searchBar)
-            searchView
-                .editText
-                .setOnEditorActionListener { textView, actionId, event ->
-                    searchBar.setText(searchView.text)
-                    searchView.hide()
-                    false
-                }
+            searchBar.setOnClickListener{
+                val intent = Intent(requireContext(), SearchProductActivity::class.java)
+                startActivity(intent)
+            }
         }
     }
 

@@ -4,6 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="background">#FAFFFF</color>
     <color name="aqua_green">#5DE3B1</color>
+    <color name="soft_aqua_green">#C5CDF8EF</color>
     <color name="teal_green">#27B48A</color>
     <color name="yellow">#FAFF62</color>
     <color name="red">#FF3C3C</color>

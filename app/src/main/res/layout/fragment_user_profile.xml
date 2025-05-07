@@ -72,6 +72,7 @@
             android:layout_height="80dp"
             android:layout_marginTop="10dp"
             android:indeterminate="true"
+            android:indeterminateTint="@color/teal_green"
             android:visibility="gone" />
 
         <com.google.android.material.tabs.TabLayout

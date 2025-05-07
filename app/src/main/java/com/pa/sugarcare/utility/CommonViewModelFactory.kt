@@ -6,6 +6,7 @@ import com.pa.sugarcare.presentation.feature.home.HomeViewModel
 import com.pa.sugarcare.presentation.feature.searchproduct.vm.SearchProductViewModel
 import com.pa.sugarcare.presentation.feature.signin.vm.SigninViewModel
 import com.pa.sugarcare.presentation.feature.signup.vm.SignUpViewModel
+import com.pa.sugarcare.presentation.feature.sugargrade.vm.ProductResultViewModel
 import com.pa.sugarcare.presentation.feature.userprofile.vm.UserProfileViewModel
 import com.pa.sugarcare.repository.network.ProductRepository
 import com.pa.sugarcare.repository.network.UserRepository
@@ -35,6 +36,9 @@ class CommonViewModelFactory(
                 SearchProductViewModel(productRepo) as T
             }
 
+            ProductResultViewModel::class.java -> {
+                ProductResultViewModel(productRepo) as T
+            }
 
 
             else -> throw IllegalArgumentException("Class does't match")

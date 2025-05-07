@@ -2,6 +2,7 @@ package com.pa.sugarcare.datasource.network
 
 import com.pa.sugarcare.models.request.LoginRequest
 import com.pa.sugarcare.models.request.RegisterRequest
+import com.pa.sugarcare.models.request.SearchProductRequest
 import com.pa.sugarcare.models.response.CommonResponse
 import com.pa.sugarcare.models.response.DataUserToken
 import com.pa.sugarcare.models.response.SearchProductResponse
@@ -32,12 +33,16 @@ interface ApiService {
     @GET("api/products")
     suspend fun getAllProduct(): Response<SearchProductResponse>
 
-
     //search product by name
     @GET("api/products/search")
     suspend fun searchProduct(
         @Query("q") query: String
     ): Response<SearchProductResponse>
+
+    @POST("api/user-search-history-product")
+    suspend fun postSearchProduct(
+        @Body request: SearchProductRequest
+    ): Response<CommonResponse<Nothing>>
 
 
 }

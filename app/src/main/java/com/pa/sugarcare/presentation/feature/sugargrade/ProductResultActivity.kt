@@ -1,19 +1,33 @@
 package com.pa.sugarcare.presentation.feature.sugargrade
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.tabs.TabLayoutMediator
 import com.pa.sugarcare.R
 import com.pa.sugarcare.databinding.ActivityProductResultBinding
+import com.pa.sugarcare.models.request.SearchProductRequest
 import com.pa.sugarcare.presentation.feature.sugargrade.alert.GradeAlertFragment
+import com.pa.sugarcare.presentation.feature.sugargrade.vm.ProductResultViewModel
+import com.pa.sugarcare.repository.di.CommonVmInjector
+import com.pa.sugarcare.utility.Resources
 
 class ProductResultActivity : AppCompatActivity() {
     private var _binding: ActivityProductResultBinding? = null
     private val binding get() = _binding!!
+
+    private val viewModel: ProductResultViewModel by viewModels {
+        CommonVmInjector.common(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +56,20 @@ class ProductResultActivity : AppCompatActivity() {
             grade?.let { showAlert(it) }
         }
 
+        setupInsets()
+
+        val productId = intent.getIntExtra("PRODUCT_ID", -1)
+        postSearchProduct(productId)
+        observePostProduct()
+
+    }
+
+    private fun setupInsets() {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            insets
+        }
     }
 
     private fun getImageUri(): Uri? {
@@ -68,6 +96,31 @@ class ProductResultActivity : AppCompatActivity() {
         _binding = null
     }
 
+    private fun postSearchProduct(productId:Int){
+        val searchProductRequest = SearchProductRequest(productId)
+        viewModel.postProduct(searchProductRequest)
+    }
+
+    private fun observePostProduct(){
+        viewModel.product.observe(this) { result ->
+            when (result) {
+                is Resources.Loading -> {
+                    binding.progressBar.visibility = View.VISIBLE
+                }
+
+                is Resources.Success -> {
+                    binding.progressBar.visibility = View.GONE
+                    Log.d(TAG, "Search product POST success")
+                }
+
+                is Resources.Error -> {
+                    binding.progressBar.visibility = View.GONE
+                    Log.e(TAG, result.error)
+                }
+            }
+        }
+    }
+
     companion object {
         @StringRes
         private val TAB_TITLES = intArrayOf(
@@ -77,5 +130,6 @@ class ProductResultActivity : AppCompatActivity() {
 
         const val IMAGE_URI = "image_uri"
         const val PRODUCT_GRADE = "product_grade"
+        const val TAG = "ProductResultActivity"
     }
 }

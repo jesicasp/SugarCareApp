@@ -18,8 +18,6 @@ class SearchProductViewModel(private val productRepository: ProductRepository) :
     private val _products = MutableLiveData<Resources<SearchProductResponse>>()
     val products: LiveData<Resources<SearchProductResponse>> = _products
 
-
-
     init {
         getAllProduct()
     }
@@ -31,7 +29,6 @@ class SearchProductViewModel(private val productRepository: ProductRepository) :
                 val response = productRepository.searchProductByName(q)
                 Log.e(TAG, "Response code: ${response.code()}")
                 Log.e(TAG, "Response headers: ${response.headers()}")
-                // Log setiap nama produk dalam list
                 response.body()?.data?.forEach { item ->
                     Log.e(TAG, "Product name: ${item.name}, Sugar content: ${item.grSugarContent}")
                 }
@@ -62,7 +59,6 @@ class SearchProductViewModel(private val productRepository: ProductRepository) :
                 response.body()?.data?.forEach { item ->
                     Log.e(TAG, "Product name: ${item.name}, Sugar content: ${item.grSugarContent}")
                 }
-
 
                 if (response.isSuccessful && response.body() != null) {
                     _products.postValue(Resources.Success(response.body()!!))

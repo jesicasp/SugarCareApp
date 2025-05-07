@@ -1,5 +1,6 @@
 package com.pa.sugarcare.presentation.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -9,6 +10,9 @@ import com.bumptech.glide.Glide
 import com.pa.sugarcare.R
 import com.pa.sugarcare.databinding.ItemProductBinding
 import com.pa.sugarcare.models.response.DataItem
+import com.pa.sugarcare.presentation.feature.report.monthly.MonthlyChartRepActivity
+import com.pa.sugarcare.presentation.feature.sugargrade.ProductResultActivity
+import com.pa.sugarcare.presentation.feature.sugargrade.tab.SugarGradeFragment
 
 class ProductAdapter(
     private val items: List<DataItem>
@@ -26,6 +30,12 @@ class ProductAdapter(
             Glide.with(binding.ivProductImage.context)
                 .load(item.image)
                 .into(binding.ivProductImage)
+
+            binding.root.setOnClickListener {
+                val intent = Intent(itemView.context, ProductResultActivity::class.java)
+                intent.putExtra("PRODUCT_ID", item.id)
+                itemView.context.startActivity(intent)
+            }
         }
     }
 

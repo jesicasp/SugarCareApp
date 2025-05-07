@@ -81,14 +81,13 @@ class SearchProductActivity : AppCompatActivity() {
     }
 
     private fun listProduct() {
-        viewModel.productsResult.observe(this) { result ->
+        viewModel.products.observe(this) { result ->
             when (result) {
                 is Resources.Success -> {
                     binding.progressBar.visibility = View.GONE
 
                     val dataList = result.data.data
                     if (dataList.isNotEmpty()) {
-//                        Log.d("PRODUCTNYA", "$dataList")
                         showRec(dataList)
                     } else {
                         Toast.makeText(

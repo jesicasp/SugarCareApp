@@ -15,10 +15,13 @@ class SearchProductViewModel(private val productRepository: ProductRepository) :
     private val _productsResult = MutableLiveData<Resources<SearchProductResponse>>()
     val productsResult: LiveData<Resources<SearchProductResponse>> = _productsResult
 
-    private val defaultProduct = "a"
+    private val _products = MutableLiveData<Resources<SearchProductResponse>>()
+    val products: LiveData<Resources<SearchProductResponse>> = _products
+
+
 
     init {
-        findProducts(defaultProduct)
+        getAllProduct()
     }
 
     fun findProducts(q: String) {
@@ -44,6 +47,33 @@ class SearchProductViewModel(private val productRepository: ProductRepository) :
             } catch (e: Exception) {
                 Log.e(TAG, "Exception occurred: ${e.message}")
                 _productsResult.postValue(Resources.Error(e.message ?: "Unexpected error occurred"))
+            }
+        }
+
+    }
+
+    private fun getAllProduct() {
+        viewModelScope.launch {
+            _products.postValue(Resources.Loading)
+            try {
+                val response = productRepository.getAllProduct()
+                Log.e(TAG, "Response code: ${response.code()}")
+                Log.e(TAG, "Response headers: ${response.headers()}")
+                response.body()?.data?.forEach { item ->
+                    Log.e(TAG, "Product name: ${item.name}, Sugar content: ${item.grSugarContent}")
+                }
+
+
+                if (response.isSuccessful && response.body() != null) {
+                    _products.postValue(Resources.Success(response.body()!!))
+                } else {
+                    val errorMessage = response.errorBody()?.string() ?: "Unknown error"
+                    Log.e(TAG, "Error body: $errorMessage")
+                    _products.postValue(Resources.Error("Login failed: $errorMessage"))
+                }
+            } catch (e: Exception) {
+                Log.e(TAG, "Exception occurred: ${e.message}")
+                _products.postValue(Resources.Error(e.message ?: "Unexpected error occurred"))
             }
         }
 

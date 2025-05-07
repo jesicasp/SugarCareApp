@@ -5,6 +5,9 @@ import com.pa.sugarcare.models.response.SearchProductResponse
 import retrofit2.Response
 
 class ProductRepository {
+    suspend fun getAllProduct(): Response<SearchProductResponse> {
+        return apiService.getAllProduct()
+    }
 
     suspend fun searchProductByName(q: String = "a"): Response<SearchProductResponse> {
         return apiService.searchProduct(q)

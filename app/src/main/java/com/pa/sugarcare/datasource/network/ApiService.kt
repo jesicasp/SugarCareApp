@@ -28,6 +28,11 @@ interface ApiService {
     @POST("api/logout")
     suspend fun logout(): Response<CommonResponse<Nothing>>
 
+    //get all product
+    @GET("api/products")
+    suspend fun getAllProduct(): Response<SearchProductResponse>
+
+
     //search product by name
     @GET("api/products/search")
     suspend fun searchProduct(

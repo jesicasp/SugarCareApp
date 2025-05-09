@@ -4,12 +4,12 @@ import android.app.Application
 import com.pa.sugarcare.utility.TokenStorage
 
 
-class SugarCareApp : Application() {
+//class SugarCareApp : Application() {
+//
+//    override fun onCreate() {
+//        super.onCreate()
+//        TokenStorage.init(this)
+//    }
+//
 
-    override fun onCreate() {
-        super.onCreate()
-        TokenStorage.init(this)
-    }
-
-
-}
+//}

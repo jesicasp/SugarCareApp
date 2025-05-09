@@ -38,6 +38,7 @@ class SignInActivity : AppCompatActivity() {
         observeLoginResult()
         setupSigninListeners()
         setupSignupListener()
+
     }
 
     private fun setupInsets() {

@@ -48,6 +48,7 @@ class UserProfileFragment : Fragment() {
         observeUserData()
         logout()
         observeLogout()
+        editProfile()
     }
 
     private fun logout() {
@@ -109,6 +110,13 @@ class UserProfileFragment : Fragment() {
                     Log.e(TAG, result.error)
                 }
             }
+        }
+    }
+
+    private fun editProfile(){
+        binding.btnEditProfile.setOnClickListener {
+            val intent = Intent(requireContext(), EditProfilActivity::class.java)
+            startActivity(intent)
         }
     }
 

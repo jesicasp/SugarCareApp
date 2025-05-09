@@ -82,4 +82,6 @@
     <string name="pass_match">Passwords do not match</string>
     <string name="invalid_email_format">Invalid email format</string>
     <string name="password_too_short">Password must be at least 6 characters</string>
+    <string name="name">Nama</string>
+    <string name="edit_profil">Edit Profil</string>
 </resources>

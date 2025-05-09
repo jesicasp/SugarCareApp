@@ -74,6 +74,8 @@
         android:layout_marginTop="10dp"
         android:indeterminate="true"
         android:indeterminateTint="@color/teal_green"
-        android:visibility="gone" />
+        android:visibility="gone"
+        android:layout_gravity="center"
+        />
 
 </LinearLayout>

@@ -6,6 +6,7 @@ import com.pa.sugarcare.models.request.LoginRequest
 import com.pa.sugarcare.models.request.RegisterRequest
 import com.pa.sugarcare.models.response.CommonResponse
 import com.pa.sugarcare.models.response.DataUserToken
+import com.pa.sugarcare.models.response.UserResponse
 import com.pa.sugarcare.utility.TokenStorage
 import retrofit2.Response
 
@@ -31,13 +32,17 @@ class UserRepository() {
     }
 
     suspend fun logout(): Response<CommonResponse<Nothing>> {
-        Log.d("LOGOUTT","userrepo logout()")
+        Log.d("LOGOUTT", "userrepo logout()")
         val response = ApiConfig.apiService.logout()
 
         if (response.isSuccessful && response.body() != null) {
             TokenStorage.clearToken()
         }
         return response
+    }
+
+    suspend fun getDetail(): Response<UserResponse> {
+        return ApiConfig.apiService.getDetailUser()
     }
 
     companion object {

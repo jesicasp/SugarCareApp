@@ -3,11 +3,11 @@ package com.pa.sugarcare.presentation.feature.userprofile
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.StringRes
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.google.android.material.tabs.TabLayoutMediator
 import com.pa.sugarcare.R
@@ -44,21 +44,26 @@ class UserProfileFragment : Fragment() {
             tab.text = resources.getString(TAB_TITLES[position])
         }.attach()
 
+        getUserData()
+        observeUserData()
         logout()
         observeLogout()
-
     }
 
-    private fun logout(){
+    private fun logout() {
         binding.btnLogout.setOnClickListener {
-            Log.d("LOGOUTT","klik logout()")
+            Log.d("LOGOUTT", "klik logout()")
 
             viewModel.logout()
         }
     }
 
-    private fun observeLogout(){
-        Log.d("LOGOUTT","masuk observeLogout()")
+    private fun getUserData() {
+        viewModel.getDetailUser()
+    }
+
+    private fun observeLogout() {
+        Log.d("LOGOUTT", "masuk observeLogout()")
 
         viewModel.logoutResult.observe(viewLifecycleOwner) { result ->
             when (result) {
@@ -75,6 +80,31 @@ class UserProfileFragment : Fragment() {
 
                 is Resources.Error -> {
                     Log.d("LogoutDebug", "Token before logout: ${TokenStorage.getToken()}")
+                    binding.progressBar.visibility = View.GONE
+                    Log.e(TAG, result.error)
+                }
+            }
+        }
+    }
+
+    private fun observeUserData() {
+        Log.d("USERDATA", "masuk observeUserData()")
+
+        viewModel.dataUser.observe(viewLifecycleOwner) { result ->
+            when (result) {
+                is Resources.Loading -> {
+                    binding.progressBar.bringToFront()
+                    binding.progressBar.visibility = View.VISIBLE
+                }
+
+                is Resources.Success -> {
+                    binding.progressBar.visibility = View.GONE
+                    binding.tvName.text = result.data.data.name
+                    binding.tvEmail.text = result.data.data.email
+                }
+
+                is Resources.Error -> {
+                    Log.d("USERDATA", "Token: ${TokenStorage.getToken()}")
                     binding.progressBar.visibility = View.GONE
                     Log.e(TAG, result.error)
                 }

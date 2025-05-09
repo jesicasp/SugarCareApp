@@ -27,18 +27,18 @@
             app:civ_border_width="1dp" />
 
         <TextView
+            android:id="@+id/tvName"
             style="@style/Theme.SugarCare.Poppins_12_bold_black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:text="@string/jesica_sanditia" />
+            android:layout_marginBottom="5dp" />
 
         <TextView
+            android:id="@+id/tvEmail"
             style="@style/Theme.SugarCare.Poppins_12_normal_black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:text="@string/underline" />
+            android:layout_marginBottom="5dp" />
 
         <LinearLayout
             android:layout_width="wrap_content"

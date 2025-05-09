@@ -6,6 +6,7 @@ import com.pa.sugarcare.models.request.SearchProductRequest
 import com.pa.sugarcare.models.response.CommonResponse
 import com.pa.sugarcare.models.response.DataUserToken
 import com.pa.sugarcare.models.response.SearchProductResponse
+import com.pa.sugarcare.models.response.UserResponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -39,10 +40,14 @@ interface ApiService {
         @Query("q") query: String
     ): Response<SearchProductResponse>
 
+    //save user search history
     @POST("api/user-search-history-product")
     suspend fun postSearchProduct(
         @Body request: SearchProductRequest
     ): Response<CommonResponse<Nothing>>
 
-
+    //get detail
+    @GET("api/user")
+    suspend fun getDetailUser(
+    ): Response<UserResponse>
 }

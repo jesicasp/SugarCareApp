@@ -10,28 +10,36 @@ import com.pa.sugarcare.repository.network.UserRepository
 import com.pa.sugarcare.utility.Resources
 import kotlinx.coroutines.launch
 
-class EditProfileViewModel (private val userRepository: UserRepository) : ViewModel(){
+class EditProfileViewModel(private val userRepository: UserRepository) : ViewModel() {
 
     private val _dataUser = MutableLiveData<Resources<UserResponse>>()
     val dataUser: LiveData<Resources<UserResponse>> = _dataUser
 
+    private val _name = MutableLiveData<String>()
+    val name: LiveData<String> get() = _name
+
+    private val _email = MutableLiveData<String>()
+    val email: LiveData<String> get() = _email
+
     fun getDetailUser() {
-        Log.d("DETAIL USER","viewmodel getDetailUser()")
+        Log.d("DETAIL USER", "viewmodel getDetailUser()")
 
         viewModelScope.launch {
             _dataUser.postValue(Resources.Loading)
             try {
                 val response = userRepository.getDetail()
-                Log.e(TAG, "Response code: ${response.code()}")
-                Log.e(TAG, "Response headers: ${response.headers()}")
-
-                if (response.isSuccessful && response.body() != null) {
-                    _dataUser.postValue(Resources.Success(response.body()!!))
+                if (response.isSuccessful) {
+                    response.body()?.let { user ->
+                        _dataUser.postValue(Resources.Success(user))
+                        _name.postValue(user.data.name)
+                        _email.postValue(user.data.email)
+                    } ?: run {
+                        _dataUser.postValue(Resources.Error("Response body null"))
+                    }
                 } else {
-                    val errorMessage = response.errorBody()?.string() ?: "Unknown error"
-                    Log.e(TAG, "Error body: $errorMessage")
-                    _dataUser.postValue(Resources.Error("Get detail user failed: $errorMessage"))
+                    _dataUser.postValue(Resources.Error("Gagal mengambil data user: ${response.message()}"))
                 }
+
             } catch (e: Exception) {
                 Log.e(TAG, "Exception occurred: ${e.message}")
                 _dataUser.postValue(Resources.Error(e.message ?: "Unexpected error occurred"))
@@ -40,6 +48,14 @@ class EditProfileViewModel (private val userRepository: UserRepository) : ViewMo
 
         }
 
+    }
+
+    fun setName(newName: String) {
+        _name.value = newName
+    }
+
+    fun setEmail(newEmail: String) {
+        _email.value = newEmail
     }
 
     companion object {

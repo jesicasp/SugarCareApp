@@ -3,6 +3,7 @@ package com.pa.sugarcare.datasource.network
 import com.pa.sugarcare.models.request.LoginRequest
 import com.pa.sugarcare.models.request.RegisterRequest
 import com.pa.sugarcare.models.request.SearchProductRequest
+import com.pa.sugarcare.models.request.UpdateUserRequest
 import com.pa.sugarcare.models.response.CommonResponse
 import com.pa.sugarcare.models.response.DataUserToken
 import com.pa.sugarcare.models.response.SearchProductResponse
@@ -10,6 +11,7 @@ import com.pa.sugarcare.models.response.UserResponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.PATCH
 import retrofit2.http.POST
 import retrofit2.http.Query
 
@@ -49,5 +51,11 @@ interface ApiService {
     //get detail
     @GET("api/user")
     suspend fun getDetailUser(
+    ): Response<UserResponse>
+
+    //edit user data
+    @PATCH("api/user")
+    suspend fun updateUser(
+        @Body request: UpdateUserRequest
     ): Response<UserResponse>
 }

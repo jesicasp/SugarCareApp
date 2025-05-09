@@ -4,6 +4,7 @@ import android.util.Log
 import com.pa.sugarcare.datasource.network.ApiConfig
 import com.pa.sugarcare.models.request.LoginRequest
 import com.pa.sugarcare.models.request.RegisterRequest
+import com.pa.sugarcare.models.request.UpdateUserRequest
 import com.pa.sugarcare.models.response.CommonResponse
 import com.pa.sugarcare.models.response.DataUserToken
 import com.pa.sugarcare.models.response.UserResponse
@@ -43,6 +44,10 @@ class UserRepository() {
 
     suspend fun getDetail(): Response<UserResponse> {
         return ApiConfig.apiService.getDetailUser()
+    }
+
+    suspend fun updateUser(request: UpdateUserRequest): Response<UserResponse> {
+        return ApiConfig.apiService.updateUser(request)
     }
 
     companion object {

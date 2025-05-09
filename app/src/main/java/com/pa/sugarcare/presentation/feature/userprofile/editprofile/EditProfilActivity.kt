@@ -1,8 +1,10 @@
-package com.pa.sugarcare.presentation.feature.userprofile
+package com.pa.sugarcare.presentation.feature.userprofile.editprofile
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.activity.addCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +12,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.pa.sugarcare.R
 import com.pa.sugarcare.databinding.ActivityEditProfilBinding
+import com.pa.sugarcare.presentation.feature.MainActivity
 import com.pa.sugarcare.presentation.feature.userprofile.vm.EditProfileViewModel
 import com.pa.sugarcare.repository.di.CommonVmInjector
 import com.pa.sugarcare.utility.Resources
@@ -30,8 +33,23 @@ class EditProfilActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(binding.root)
         setupInsets()
+        setDefaultEmail()
         getUserData()
         observeUserData()
+
+        onBackPressedDispatcher.addCallback(this) {
+            val intent = Intent(this@EditProfilActivity, MainActivity::class.java)
+            intent.putExtra("navigate_to", "user_profile")
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            startActivity(intent)
+            finish()
+        }
+
+    }
+
+    private fun setDefaultEmail() {
+        val email = intent.getStringExtra("user_email")
+        binding.edEmail.setText(email ?: "")
     }
 
     private fun setupInsets() {
@@ -52,7 +70,6 @@ class EditProfilActivity : AppCompatActivity() {
         viewModel.dataUser.observe(this) { result ->
             when (result) {
                 is Resources.Loading -> {
-                    binding.progressBar.bringToFront()
                     binding.progressBar.visibility = View.VISIBLE
                 }
 
@@ -60,6 +77,8 @@ class EditProfilActivity : AppCompatActivity() {
                     binding.progressBar.visibility = View.GONE
                     binding.edName.setText(result.data.data.name)
                     binding.edEmail.setText(result.data.data.email)
+
+                    setupEditListeners()
                 }
 
                 is Resources.Error -> {
@@ -70,6 +89,21 @@ class EditProfilActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun setupEditListeners() {
+        binding.edName.setOnClickListener {
+            val intent = Intent(this, EditNameActivity::class.java)
+            intent.putExtra("user_name", binding.edName.text.toString())
+            startActivity(intent)
+        }
+
+        binding.edEmail.setOnClickListener {
+            val intent = Intent(this, EditEmailActivity::class.java)
+            intent.putExtra("user_email", binding.edEmail.text.toString())
+            startActivity(intent)
+        }
+    }
+
 
     companion object {
         private const val TAG = "EditProfileFragment"

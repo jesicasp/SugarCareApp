@@ -84,4 +84,5 @@
     <string name="password_too_short">Password must be at least 6 characters</string>
     <string name="name">Nama</string>
     <string name="edit_profil">Edit Profil</string>
+    <string name="done">Done</string>
 </resources>

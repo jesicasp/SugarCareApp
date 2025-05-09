@@ -13,6 +13,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.pa.sugarcare.R
 import com.pa.sugarcare.databinding.FragmentUserProfileBinding
 import com.pa.sugarcare.presentation.feature.onboarding.OnBoardingActivity
+import com.pa.sugarcare.presentation.feature.userprofile.editprofile.EditProfilActivity
 import com.pa.sugarcare.presentation.feature.userprofile.vm.UserProfileViewModel
 import com.pa.sugarcare.repository.di.CommonVmInjector
 import com.pa.sugarcare.utility.Resources
@@ -49,6 +50,11 @@ class UserProfileFragment : Fragment() {
         logout()
         observeLogout()
         editProfile()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getUserData()
     }
 
     private fun logout() {

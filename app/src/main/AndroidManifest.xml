@@ -14,7 +14,13 @@
         android:theme="@style/Theme.SugarCare"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.feature.userprofile.EditProfilActivity"
+            android:name=".presentation.feature.userprofile.editprofile.EditEmailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.feature.userprofile.editprofile.EditNameActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.feature.userprofile.editprofile.EditProfilActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.feature.searchproduct.SearchProductActivity"

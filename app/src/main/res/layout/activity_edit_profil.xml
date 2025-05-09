@@ -7,7 +7,7 @@
     android:background="@color/background"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".presentation.feature.userprofile.EditProfilActivity">
+    tools:context=".presentation.feature.userprofile.editprofile.EditProfilActivity">
 
     <ImageView
         android:id="@+id/logo"

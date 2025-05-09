@@ -5,10 +5,10 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var cameraLauncher: ActivityResultLauncher<Intent>
 
+    private lateinit var navController: NavController
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +32,12 @@ class MainActivity : AppCompatActivity() {
         setupCameraLauncher()
         setupNavItemSelection()
 
+        val navigateTo = intent.getStringExtra("navigate_to")
+        if (navigateTo == "user_profile") {
+            binding.navView.selectedItemId = R.id.navigation_profile
+        }
+
+
     }
 
     private fun setupBinding() {
@@ -39,7 +46,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupNavigation() {
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
+        navController = findNavController(R.id.nav_host_fragment_activity_main)
 
         val appBarConfiguration = AppBarConfiguration(
             setOf(R.id.navigation_home, R.id.navigation_camera, R.id.navigation_profile)
@@ -47,6 +54,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.navView.setupWithNavController(navController)
     }
+
 
     private fun setupCameraLauncher() {
         cameraLauncher =
@@ -90,7 +98,6 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         cameraLauncher.launch(intent)
     }
-
 
 
     companion object {

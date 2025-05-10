@@ -10,9 +10,7 @@ import com.bumptech.glide.Glide
 import com.pa.sugarcare.R
 import com.pa.sugarcare.databinding.ItemProductBinding
 import com.pa.sugarcare.models.response.DataItem
-import com.pa.sugarcare.presentation.feature.report.monthly.MonthlyChartRepActivity
 import com.pa.sugarcare.presentation.feature.sugargrade.ProductResultActivity
-import com.pa.sugarcare.presentation.feature.sugargrade.tab.SugarGradeFragment
 
 class ProductAdapter(
     private val items: List<DataItem>

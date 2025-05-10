@@ -7,6 +7,7 @@ import com.pa.sugarcare.presentation.feature.signin.vm.SigninViewModel
 import com.pa.sugarcare.presentation.feature.signup.vm.SignUpViewModel
 import com.pa.sugarcare.presentation.feature.sugargrade.vm.ProductResultViewModel
 import com.pa.sugarcare.presentation.feature.userprofile.vm.EditProfileViewModel
+import com.pa.sugarcare.presentation.feature.userprofile.vm.MyConsumptionViewModel
 import com.pa.sugarcare.presentation.feature.userprofile.vm.ProductHistoryViewModel
 import com.pa.sugarcare.presentation.feature.userprofile.vm.UserProfileViewModel
 import com.pa.sugarcare.repository.network.ProductRepository
@@ -47,6 +48,10 @@ class CommonViewModelFactory(
 
             ProductHistoryViewModel::class.java -> {
                 ProductHistoryViewModel(productRepo) as T
+            }
+
+            MyConsumptionViewModel::class.java -> {
+                MyConsumptionViewModel(productRepo) as T
             }
 
 

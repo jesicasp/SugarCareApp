@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginVertical="10dp"
+    android:fitsSystemWindows="true"
+    tools:context=".presentation.feature.userprofile.producthistory.ProductHistoryFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvProduct"
+        android:name="com.pa.sugarcare.presentation.feature.myconsumption.MyConsumptionFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginVertical="5dp"
+        android:clipToPadding="false"
+        android:paddingBottom="56dp"
+        app:layoutManager="LinearLayoutManager"
+        tools:context=".presentation.feature.userprofile.myconsumption.MyConsumptionFragment"
+        tools:listitem="@layout/consumed_product" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/teal_green"
+        android:visibility="gone" />
+
+</FrameLayout>

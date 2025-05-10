@@ -8,25 +8,28 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.pa.sugarcare.R
-import com.pa.sugarcare.databinding.ItemProductBinding
-import com.pa.sugarcare.models.response.ProductDataSearchHistory
+import com.pa.sugarcare.databinding.ConsumedProductBinding
+import com.pa.sugarcare.models.response.ConsumedProductResponse
 import com.pa.sugarcare.presentation.feature.sugargrade.ProductResultActivity
+import java.text.SimpleDateFormat
+import java.util.Locale
 
-class SearchedProductAdapter(
-    private val items: List<ProductDataSearchHistory>
-) : RecyclerView.Adapter<SearchedProductAdapter.ProductViewHolder>() {
+class ConsumptionProductAdapter(
+    private val items: List<ConsumedProductResponse>
+) : RecyclerView.Adapter<ConsumptionProductAdapter.ProductViewHolder>() {
 
-    inner class ProductViewHolder(internal val binding: ItemProductBinding) :
+    inner class ProductViewHolder(internal val binding: ConsumedProductBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: ProductDataSearchHistory) {
-            binding.txtProductName.text = item.name
-            binding.txtSugar.text = "Gula ${item.grSugarContent}g"
-            binding.txtMl.text = item.netWeight
+        fun bind(item: ConsumedProductResponse) {
+            binding.txtDate.text = formatDate(item.date)
+            binding.txtProductName.text = item.productName
+            binding.txtSugar.text = "Gula ${item.grSugarConsumed.toInt()}g"
+            binding.txtMl.text = item.amountConsumed
             binding.txtSugarGrade.text = item.sugarGrade
 
             Glide.with(binding.ivProductImage.context)
-                .load(item.image)
+                .load(item.productImage)
                 .into(binding.ivProductImage)
 
             binding.root.setOnClickListener {
@@ -38,7 +41,7 @@ class SearchedProductAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
-        val binding = ItemProductBinding.inflate(
+        val binding = ConsumedProductBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
@@ -84,5 +87,15 @@ class SearchedProductAdapter(
 
     override fun getItemCount(): Int = items.size
 
+    private fun formatDate(dateString: String): String {
+        return try {
+            val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+            val outputFormat = SimpleDateFormat("d MMMM yyyy", Locale("id"))
+            val date = inputFormat.parse(dateString)
+            outputFormat.format(date!!)
+        } catch (e: Exception) {
+            dateString
+        }
+    }
 
 }

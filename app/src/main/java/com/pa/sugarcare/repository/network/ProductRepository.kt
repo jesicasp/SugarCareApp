@@ -3,6 +3,7 @@ package com.pa.sugarcare.repository.network
 import com.pa.sugarcare.datasource.network.ApiConfig.Companion.apiService
 import com.pa.sugarcare.models.request.SearchProductRequest
 import com.pa.sugarcare.models.response.CommonResponse
+import com.pa.sugarcare.models.response.ConsumedProductResponse
 import com.pa.sugarcare.models.response.ProductDataSearchHistory
 import com.pa.sugarcare.models.response.SearchProductResponse
 import retrofit2.Response
@@ -22,6 +23,10 @@ class ProductRepository {
 
     suspend fun getSearchProduct(): Response<CommonResponse<List<ProductDataSearchHistory>>> {
         return apiService.getUserSearchedProduct()
+    }
+
+    suspend fun getConsumedProduct(): Response<CommonResponse<List<ConsumedProductResponse>>> {
+        return apiService.getUserConsumedProduct()
     }
 
     companion object {

@@ -5,6 +5,7 @@ import com.pa.sugarcare.models.request.RegisterRequest
 import com.pa.sugarcare.models.request.SearchProductRequest
 import com.pa.sugarcare.models.request.UpdateUserRequest
 import com.pa.sugarcare.models.response.CommonResponse
+import com.pa.sugarcare.models.response.ConsumedProductResponse
 import com.pa.sugarcare.models.response.DataUserToken
 import com.pa.sugarcare.models.response.ProductDataSearchHistory
 import com.pa.sugarcare.models.response.SearchProductResponse
@@ -62,6 +63,9 @@ interface ApiService {
 
     //get list product that searched by user
     @GET("api/user-search-history-product")
-    suspend fun getUserSearchedProduct(
-    ): Response<CommonResponse<List<ProductDataSearchHistory>>>
+    suspend fun getUserSearchedProduct(): Response<CommonResponse<List<ProductDataSearchHistory>>>
+
+    //get list product that consumed by user
+    @GET("api/user-consumption")
+    suspend fun getUserConsumedProduct(): Response<CommonResponse<List<ConsumedProductResponse>>>
 }

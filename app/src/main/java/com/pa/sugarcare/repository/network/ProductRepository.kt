@@ -1,6 +1,7 @@
 package com.pa.sugarcare.repository.network
 
 import com.pa.sugarcare.datasource.network.ApiConfig.Companion.apiService
+import com.pa.sugarcare.models.request.ConsumeProductRequest
 import com.pa.sugarcare.models.request.SearchProductRequest
 import com.pa.sugarcare.models.response.CommonResponse
 import com.pa.sugarcare.models.response.ConsumedProductResponse
@@ -32,6 +33,10 @@ class ProductRepository {
 
     suspend fun getConsumedProduct(): Response<CommonResponse<List<ConsumedProductResponse>>> {
         return apiService.getUserConsumedProduct()
+    }
+
+    suspend fun postConsumeProduct(request: ConsumeProductRequest): Response<CommonResponse<Nothing>> {
+        return apiService.postUserConsumption(request)
     }
 
     companion object {

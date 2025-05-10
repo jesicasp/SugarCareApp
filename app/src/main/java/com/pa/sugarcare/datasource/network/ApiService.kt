@@ -1,5 +1,6 @@
 package com.pa.sugarcare.datasource.network
 
+import com.pa.sugarcare.models.request.ConsumeProductRequest
 import com.pa.sugarcare.models.request.LoginRequest
 import com.pa.sugarcare.models.request.RegisterRequest
 import com.pa.sugarcare.models.request.SearchProductRequest
@@ -55,6 +56,12 @@ interface ApiService {
     @POST("api/user-search-history-product")
     suspend fun postSearchProduct(
         @Body request: SearchProductRequest
+    ): Response<CommonResponse<Nothing>>
+
+    //post consume product
+    @POST("api/user-consumption")
+    suspend fun postUserConsumption(
+        @Body request: ConsumeProductRequest
     ): Response<CommonResponse<Nothing>>
 
     //get detail

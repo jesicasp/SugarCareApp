@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    android:id="@+id/fragment_sugar_grade"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_sugar_grade"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.feature.sugargrade.tab.SugarGradeFragment">
@@ -16,11 +14,11 @@
 
         <TextView
             android:id="@+id/tvSugarGrade"
+            style="@style/Theme.SugarCare.Poppins_14_bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawablePadding="10dp"
-            style="@style/Theme.SugarCare.Poppins_14_bold"
-            android:gravity="center_vertical"/>
+            android:gravity="center_vertical" />
 
         <TextView
             android:id="@+id/tvGradeDetail"
@@ -28,9 +26,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="@string/desc_greengrade"
             android:justificationMode="inter_word"
-             />
+            android:text="@string/desc_greengrade" />
 
     </LinearLayout>
 
@@ -38,14 +35,13 @@
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:indeterminate="true"
-        android:indeterminateTint="@color/teal_green"
-        android:layout_gravity="center"
-        />
+        android:indeterminateTint="@color/teal_green" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnNext"
+        android:id="@+id/btnConsume"
         style="@style/Button_Primary_12_regular"
         android:layout_width="match_parent"
         android:layout_height="50dp"

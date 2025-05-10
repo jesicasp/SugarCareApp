@@ -40,7 +40,7 @@
         android:indeterminateTint="@color/teal_green" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnNext"
+        android:id="@+id/btnConsume"
         style="@style/Button_Primary_12_regular"
         android:layout_width="match_parent"
         android:layout_height="50dp"

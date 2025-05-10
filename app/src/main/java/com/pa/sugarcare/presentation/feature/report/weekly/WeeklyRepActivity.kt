@@ -9,8 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.pa.sugarcare.R
 import com.pa.sugarcare.databinding.ActivityWeeklyRepBinding
 import com.pa.sugarcare.presentation.feature.report.Report
-import com.pa.sugarcare.presentation.feature.report.ReportData
-import com.pa.sugarcare.presentation.feature.userprofile.myconsumption.placeholder.PlaceholderContent
 
 class WeeklyRepActivity : AppCompatActivity() {
     private var _binding: ActivityWeeklyRepBinding? = null

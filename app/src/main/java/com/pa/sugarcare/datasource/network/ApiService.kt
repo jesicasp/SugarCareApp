@@ -10,6 +10,7 @@ import com.pa.sugarcare.models.response.ConsumedProductResponse
 import com.pa.sugarcare.models.response.DataUserToken
 import com.pa.sugarcare.models.response.DetailProductResponse
 import com.pa.sugarcare.models.response.ProductDataSearchHistory
+import com.pa.sugarcare.models.response.RecProductResponse
 import com.pa.sugarcare.models.response.SearchProductResponse
 import com.pa.sugarcare.models.response.UserResponse
 import retrofit2.Response
@@ -51,6 +52,12 @@ interface ApiService {
     suspend fun searchProduct(
         @Query("q") query: String
     ): Response<SearchProductResponse>
+
+    //get rec product
+    @GET("api/recommendation/{id}")
+    suspend fun getReProduct(
+        @Path("id") id: Int
+    ): Response<CommonResponse<List<RecProductResponse>>>
 
     //save user search history
     @POST("api/user-search-history-product")

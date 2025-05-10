@@ -32,17 +32,17 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:padding="2dp"
-                        android:text="@string/appbar" />
+                         />
             </com.google.android.material.appbar.MaterialToolbar>
         </com.google.android.material.appbar.AppBarLayout>
 
         <ImageView
             android:id="@+id/iv_product"
             android:layout_width="match_parent"
-            android:layout_height="180dp"
-            android:scaleType="centerCrop"
+            android:layout_height="200dp"
             android:contentDescription="@string/gambar_produk_kemasan"
-            android:src="@drawable/screen1" />
+            android:scaleType="centerCrop"
+           />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
@@ -59,13 +59,4 @@
             android:layout_weight="1" />
 
     </LinearLayout>
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_gravity="center"
-        android:indeterminate="true"
-        android:indeterminateTint="@color/teal_green" />
-
 </FrameLayout>

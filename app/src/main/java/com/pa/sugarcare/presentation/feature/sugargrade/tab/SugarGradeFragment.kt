@@ -1,60 +1,148 @@
 package com.pa.sugarcare.presentation.feature.sugargrade.tab
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.pa.sugarcare.R
+import com.pa.sugarcare.databinding.FragmentSugarGradeBinding
+import com.pa.sugarcare.presentation.feature.sugargrade.vm.SugarGradeViewModel
+import com.pa.sugarcare.repository.di.CommonVmInjector
+import com.pa.sugarcare.utility.Resources
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [SugarGradeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class SugarGradeFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private var _binding: FragmentSugarGradeBinding? = null
+    private val binding get() = _binding!!
+
+    private val viewModel: SugarGradeViewModel by viewModels {
+        CommonVmInjector.common(requireContext())
+    }
+
+    private var productId: Int = -1
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+        productId = arguments?.getInt("product_id") ?: -1
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_sugar_grade, container, false)
+    ): View {
+        _binding = FragmentSugarGradeBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        if (viewModel.detailProduct.value == null) {
+            getDetailProduct(productId)
+        }
+        observeDetailProduct()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (viewModel.detailProduct.value == null) {
+            getDetailProduct(productId)
+        }
+    }
+
+    private fun getDetailProduct(productId: Int) {
+        viewModel.getDetailProduct(productId)
+    }
+
+    private fun observeDetailProduct() {
+        viewModel.detailProduct.observe(viewLifecycleOwner) { result ->
+            when (result) {
+                is Resources.Loading -> {
+                    binding.progressBar.visibility = View.VISIBLE
+                }
+
+                is Resources.Success -> {
+                    binding.progressBar.visibility = View.GONE
+                    val dataProduct = result.data.data
+
+                    val grade = dataProduct?.sugarGrade?.lowercase()
+                    grade?.let { setupSugarGrade(it) }
+                    Log.d("CEKSUGARGRADE", "$grade")
+
+
+                    Log.d(TAG, "Successfully get Detail product")
+                }
+
+                is Resources.Error -> {
+                    binding.progressBar.visibility = View.GONE
+                    Log.e(TAG, result.error)
+                }
+            }
+        }
+    }
+
+    private fun setupSugarGrade(grade: String) {
+        when (grade) {
+            "merah" -> {
+                binding.tvSugarGrade.text = getString(R.string.redgrade)
+                binding.tvSugarGrade.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.red
+                    )
+                )
+                binding.tvSugarGrade.setCompoundDrawablesWithIntrinsicBounds(
+                    R.drawable.circle_redgrade,
+                    0,
+                    0,
+                    0
+                )
+                binding.tvGradeDetail.text = getString(R.string.desc_redgrade)
+            }
+
+            "kuning" -> {
+                binding.tvSugarGrade.text = getString(R.string.yellowgrade)
+                binding.tvSugarGrade.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.dark_yellow
+                    )
+                )
+                binding.tvSugarGrade.setCompoundDrawablesWithIntrinsicBounds(
+                    R.drawable.circle_yellowgrade,
+                    0,
+                    0,
+                    0
+                )
+                binding.tvGradeDetail.text = getString(R.string.desc_yellowgrade)
+            }
+
+            "hijau" -> {
+                binding.tvSugarGrade.text = getString(R.string.greengrade)
+                binding.tvSugarGrade.setTextColor(
+                    ContextCompat.getColor(
+                        requireContext(),
+                        R.color.green
+                    )
+                )
+                binding.tvSugarGrade.setCompoundDrawablesWithIntrinsicBounds(
+                    R.drawable.circle_greengrade,
+                    0,
+                    0,
+                    0
+                )
+                binding.tvGradeDetail.text = getString(R.string.desc_greengrade)
+            }
+        }
+
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SugarGradeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SugarGradeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        private const val TAG = "SugarGradeFragment"
     }
 }

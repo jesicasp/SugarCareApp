@@ -3,7 +3,6 @@ package com.pa.sugarcare.presentation.feature.sugargrade
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.annotation.StringRes
@@ -33,8 +32,10 @@ class ProductResultActivity : AppCompatActivity() {
         _binding = ActivityProductResultBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
+        val productId = intent.getIntExtra("PRODUCT_ID", -1)
 
-        val sectionsPagerAdapter = SugarGradePagerAdapter(this)
+
+        val sectionsPagerAdapter = SugarGradePagerAdapter(this, productId)
         binding.viewPager.adapter = sectionsPagerAdapter
 
         TabLayoutMediator(binding.tabs, binding.viewPager) { tab, position ->
@@ -47,7 +48,6 @@ class ProductResultActivity : AppCompatActivity() {
 
         setupInsets()
 
-        val productId = intent.getIntExtra("PRODUCT_ID", -1)
         postSearchProduct(productId)
         observePostProduct()
         getDetailProduct(productId)
@@ -71,11 +71,9 @@ class ProductResultActivity : AppCompatActivity() {
         viewModel.detailProduct.observe(this) { result ->
             when (result) {
                 is Resources.Loading -> {
-                    binding.progressBar.visibility = View.VISIBLE
                 }
 
                 is Resources.Success -> {
-                    binding.progressBar.visibility = View.GONE
                     val dataProduct = result.data.data
 
                     val imageUri = getImageUri()
@@ -84,9 +82,14 @@ class ProductResultActivity : AppCompatActivity() {
                         binding.ivProduct.setImageURI(imageUri)
                     } else {
                         val image = dataProduct?.image
-                        Glide.with(this)
-                            .load(image)
-                            .into(binding.ivProduct)
+
+                        if (image != null) {
+                            Glide.with(this)
+                                .load(image)
+                                .into(binding.ivProduct)
+                        } else {
+                            binding.ivProduct.setImageResource(R.drawable.screen1)
+                        }
                     }
 
                     val grade = dataProduct?.sugarGrade?.lowercase()
@@ -100,7 +103,6 @@ class ProductResultActivity : AppCompatActivity() {
                 }
 
                 is Resources.Error -> {
-                    binding.progressBar.visibility = View.GONE
                     Log.e(TAG, result.error)
                 }
             }
@@ -134,16 +136,13 @@ class ProductResultActivity : AppCompatActivity() {
         viewModel.product.observe(this) { result ->
             when (result) {
                 is Resources.Loading -> {
-                    binding.progressBar.visibility = View.VISIBLE
                 }
 
                 is Resources.Success -> {
-                    binding.progressBar.visibility = View.GONE
                     Log.d(TAG, "Search product POST success")
                 }
 
                 is Resources.Error -> {
-                    binding.progressBar.visibility = View.GONE
                     Log.e(TAG, result.error)
                 }
             }

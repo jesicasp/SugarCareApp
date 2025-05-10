@@ -6,6 +6,7 @@ import com.pa.sugarcare.presentation.feature.searchproduct.vm.SearchProductViewM
 import com.pa.sugarcare.presentation.feature.signin.vm.SigninViewModel
 import com.pa.sugarcare.presentation.feature.signup.vm.SignUpViewModel
 import com.pa.sugarcare.presentation.feature.sugargrade.vm.ProductResultViewModel
+import com.pa.sugarcare.presentation.feature.sugargrade.vm.SugarGradeViewModel
 import com.pa.sugarcare.presentation.feature.userprofile.vm.EditProfileViewModel
 import com.pa.sugarcare.presentation.feature.userprofile.vm.MyConsumptionViewModel
 import com.pa.sugarcare.presentation.feature.userprofile.vm.ProductHistoryViewModel
@@ -17,7 +18,7 @@ import com.pa.sugarcare.utility.datasupport.StateAppPreference
 class CommonViewModelFactory(
     private val userRepo: UserRepository,
     private val state: StateAppPreference,
-    private val productRepo : ProductRepository
+    private val productRepo: ProductRepository
 ) : ViewModelProvider.NewInstanceFactory() {
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -52,6 +53,10 @@ class CommonViewModelFactory(
 
             MyConsumptionViewModel::class.java -> {
                 MyConsumptionViewModel(productRepo) as T
+            }
+
+            SugarGradeViewModel::class.java -> {
+                SugarGradeViewModel(productRepo) as T
             }
 
 

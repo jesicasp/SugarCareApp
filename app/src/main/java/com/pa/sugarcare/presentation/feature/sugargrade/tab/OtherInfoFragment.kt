@@ -5,9 +5,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.pa.sugarcare.databinding.FragmentOtherInfoBinding
+import com.pa.sugarcare.models.response.RecProductResponse
+import com.pa.sugarcare.presentation.adapter.RecProductAdapter
 import com.pa.sugarcare.presentation.feature.sugargrade.vm.SugarGradeViewModel
 import com.pa.sugarcare.repository.di.CommonVmInjector
 import com.pa.sugarcare.utility.Resources
@@ -19,6 +23,8 @@ class OtherInfoFragment : Fragment() {
     private val viewModel: SugarGradeViewModel by viewModels {
         CommonVmInjector.common(requireContext())
     }
+
+    private lateinit var adapter: RecProductAdapter
 
     private var productId: Int = -1
 
@@ -44,6 +50,31 @@ class OtherInfoFragment : Fragment() {
             getDetailProduct(productId)
         }
         observeDetailProduct()
+
+        getProduct()
+
+        viewModel.listRecProduct.observe(viewLifecycleOwner) { resource ->
+            when (resource) {
+                is Resources.Success -> {
+                    val products = resource.data.data
+                    products?.let {
+                        setListProduct(it)
+                        binding.progressBar.visibility = View.GONE
+                    }
+                }
+
+                is Resources.Error -> {
+                    binding.progressBar.visibility = View.GONE
+                    Toast.makeText(requireContext(), "Gagal memuat produk", Toast.LENGTH_SHORT)
+                        .show()
+                }
+
+                is Resources.Loading -> {
+                    binding.progressBar.visibility = View.VISIBLE
+
+                }
+            }
+        }
     }
 
     override fun onResume() {
@@ -55,6 +86,10 @@ class OtherInfoFragment : Fragment() {
 
     private fun getDetailProduct(productId: Int) {
         viewModel.getDetailProduct(productId)
+    }
+
+    private fun getProduct() {
+        viewModel.getRecProduct(productId)
     }
 
     private fun observeDetailProduct() {
@@ -69,9 +104,7 @@ class OtherInfoFragment : Fragment() {
                     val dataProduct = result.data.data
 
                     binding.tvInfo.text = dataProduct?.information
-
-
-                    Log.d(TAG, "Successfully get Detail product")
+                    Log.d(TAG, "Successfully get rec product")
                 }
 
                 is Resources.Error -> {
@@ -80,6 +113,12 @@ class OtherInfoFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun setListProduct(data: List<RecProductResponse>) {
+        adapter = RecProductAdapter(data)
+        binding.rvProduct.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvProduct.adapter = adapter
     }
 
     override fun onDestroyView() {

@@ -52,18 +52,18 @@ class GradeAlertFragment : DialogFragment() {
 
         private fun getColorFromString(context: Context, color: String): Int {
             return when (color.lowercase()) {
-                "red" -> ContextCompat.getColor(context, R.color.red)
-                "green" -> ContextCompat.getColor(context, R.color.green)
-                "yellow" -> ContextCompat.getColor(context, R.color.yellow)
+                "merah" -> ContextCompat.getColor(context, R.color.red)
+                "hijau" -> ContextCompat.getColor(context, R.color.green)
+                "kuning" -> ContextCompat.getColor(context, R.color.dark_yellow)
                 else -> Color.BLACK
             }
         }
 
         private fun getTitleAndMessage(context: Context, color: String): Pair<String, String> {
             return when (color.lowercase()) {
-                "red" -> context.getString(R.string.title_alert_redgrade) to context.getString(R.string.message_alert_redgrade)
-                "green" -> context.getString(R.string.title_alert_greengrade) to context.getString(R.string.message_alert_greengrade)
-                "yellow" -> context.getString(R.string.title_alert_yellowgrade) to context.getString(
+                "merah" -> context.getString(R.string.title_alert_redgrade) to context.getString(R.string.message_alert_redgrade)
+                "hijau" -> context.getString(R.string.title_alert_greengrade) to context.getString(R.string.message_alert_greengrade)
+                "kuning" -> context.getString(R.string.title_alert_yellowgrade) to context.getString(
                     R.string.message_alert_yellowgrade
                 )
 

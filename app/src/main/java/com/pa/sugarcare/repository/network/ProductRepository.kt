@@ -4,6 +4,7 @@ import com.pa.sugarcare.datasource.network.ApiConfig.Companion.apiService
 import com.pa.sugarcare.models.request.SearchProductRequest
 import com.pa.sugarcare.models.response.CommonResponse
 import com.pa.sugarcare.models.response.ConsumedProductResponse
+import com.pa.sugarcare.models.response.DetailProductResponse
 import com.pa.sugarcare.models.response.ProductDataSearchHistory
 import com.pa.sugarcare.models.response.SearchProductResponse
 import retrofit2.Response
@@ -13,11 +14,15 @@ class ProductRepository {
         return apiService.getAllProduct()
     }
 
+    suspend fun getProductById(id: Int): Response<CommonResponse<DetailProductResponse>> {
+        return apiService.getProductById(id)
+    }
+
     suspend fun searchProductByName(q: String = "a"): Response<SearchProductResponse> {
         return apiService.searchProduct(q)
     }
 
-    suspend fun postSearchProduct(request : SearchProductRequest): Response<CommonResponse<Nothing>> {
+    suspend fun postSearchProduct(request: SearchProductRequest): Response<CommonResponse<Nothing>> {
         return apiService.postSearchProduct(request)
     }
 

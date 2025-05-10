@@ -1,6 +1,5 @@
 package com.pa.sugarcare.presentation.feature.sugargrade
 
-import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -11,6 +10,7 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayoutMediator
 import com.pa.sugarcare.R
 import com.pa.sugarcare.databinding.ActivityProductResultBinding
@@ -45,21 +45,13 @@ class ProductResultActivity : AppCompatActivity() {
             onBackPressedDispatcher.onBackPressed()
         }
 
-
-        val imageUri = getImageUri()
-        if (imageUri != null) {
-            Log.d("IMAGE", "$imageUri")
-            binding.ivProduct.setImageURI(imageUri)
-
-            val grade = getProductGrade()
-            grade?.let { showAlert(it) }
-        }
-
         setupInsets()
 
         val productId = intent.getIntExtra("PRODUCT_ID", -1)
         postSearchProduct(productId)
         observePostProduct()
+        getDetailProduct(productId)
+        observeDetailProduct()
 
     }
 
@@ -71,16 +63,54 @@ class ProductResultActivity : AppCompatActivity() {
         }
     }
 
+    private fun getDetailProduct(productId: Int) {
+        viewModel.getDetailProduct(productId)
+    }
+
+    private fun observeDetailProduct() {
+        viewModel.detailProduct.observe(this) { result ->
+            when (result) {
+                is Resources.Loading -> {
+                    binding.progressBar.visibility = View.VISIBLE
+                }
+
+                is Resources.Success -> {
+                    binding.progressBar.visibility = View.GONE
+                    val dataProduct = result.data.data
+
+                    val imageUri = getImageUri()
+                    if (imageUri != null) {
+                        Log.d("IMAGE", "$imageUri")
+                        binding.ivProduct.setImageURI(imageUri)
+                    } else {
+                        val image = dataProduct?.image
+                        Glide.with(this)
+                            .load(image)
+                            .into(binding.ivProduct)
+                    }
+
+                    val grade = dataProduct?.sugarGrade?.lowercase()
+                    Log.d("CEKSUGARGRADE", "$grade")
+
+                    grade?.let { showAlert(it) }
+
+                    binding.toolbarTitle.text = dataProduct?.name
+
+                    Log.d(TAG, "Successfully get Detail product")
+                }
+
+                is Resources.Error -> {
+                    binding.progressBar.visibility = View.GONE
+                    Log.e(TAG, result.error)
+                }
+            }
+        }
+    }
+
     private fun getImageUri(): Uri? {
         val uriString = intent.getStringExtra(IMAGE_URI)
         Log.d("getImageUri()", uriString.toString())
         return uriString?.let { Uri.parse(it) }
-    }
-
-    private fun getProductGrade(): String? {
-        val grade = intent.getStringExtra(PRODUCT_GRADE)
-        Log.d("getProductGrade()", grade.toString())
-        return grade
     }
 
     private fun showAlert(color: String) {
@@ -95,12 +125,12 @@ class ProductResultActivity : AppCompatActivity() {
         _binding = null
     }
 
-    private fun postSearchProduct(productId:Int){
+    private fun postSearchProduct(productId: Int) {
         val searchProductRequest = SearchProductRequest(productId)
         viewModel.postProduct(searchProductRequest)
     }
 
-    private fun observePostProduct(){
+    private fun observePostProduct() {
         viewModel.product.observe(this) { result ->
             when (result) {
                 is Resources.Loading -> {

@@ -7,6 +7,7 @@ import com.pa.sugarcare.models.request.UpdateUserRequest
 import com.pa.sugarcare.models.response.CommonResponse
 import com.pa.sugarcare.models.response.ConsumedProductResponse
 import com.pa.sugarcare.models.response.DataUserToken
+import com.pa.sugarcare.models.response.DetailProductResponse
 import com.pa.sugarcare.models.response.ProductDataSearchHistory
 import com.pa.sugarcare.models.response.SearchProductResponse
 import com.pa.sugarcare.models.response.UserResponse
@@ -15,6 +16,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.PATCH
 import retrofit2.http.POST
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
@@ -37,6 +39,11 @@ interface ApiService {
     //get all product
     @GET("api/products")
     suspend fun getAllProduct(): Response<SearchProductResponse>
+
+    @GET("api/products/{id}")
+    suspend fun getProductById(
+        @Path("id") id: Int
+    ): Response<CommonResponse<DetailProductResponse>>
 
     //search product by name
     @GET("api/products/search")

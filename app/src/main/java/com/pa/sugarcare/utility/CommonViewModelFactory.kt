@@ -2,12 +2,12 @@ package com.pa.sugarcare.utility
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.pa.sugarcare.presentation.feature.home.HomeViewModel
 import com.pa.sugarcare.presentation.feature.searchproduct.vm.SearchProductViewModel
 import com.pa.sugarcare.presentation.feature.signin.vm.SigninViewModel
 import com.pa.sugarcare.presentation.feature.signup.vm.SignUpViewModel
 import com.pa.sugarcare.presentation.feature.sugargrade.vm.ProductResultViewModel
 import com.pa.sugarcare.presentation.feature.userprofile.vm.EditProfileViewModel
+import com.pa.sugarcare.presentation.feature.userprofile.vm.ProductHistoryViewModel
 import com.pa.sugarcare.presentation.feature.userprofile.vm.UserProfileViewModel
 import com.pa.sugarcare.repository.network.ProductRepository
 import com.pa.sugarcare.repository.network.UserRepository
@@ -43,6 +43,10 @@ class CommonViewModelFactory(
 
             EditProfileViewModel::class.java -> {
                 EditProfileViewModel(userRepo) as T
+            }
+
+            ProductHistoryViewModel::class.java -> {
+                ProductHistoryViewModel(productRepo) as T
             }
 
 

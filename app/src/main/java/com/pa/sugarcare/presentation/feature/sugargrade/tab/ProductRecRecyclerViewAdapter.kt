@@ -28,9 +28,9 @@ class ProductRecRecyclerViewAdapter(private val values: List<PlaceholderContent.
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: PlaceholderContent.PlaceholderItem2) {
-            binding.txtProductName.text = item.productName
-            binding.txtSugar.text = "Gula ${item.sugarAmount}g"
-            binding.txtMl.text = "${item.volume} ml"
+//            binding.txtProductName.text = item.productName
+//            binding.txtSugar.text = "Gula ${item.sugarAmount}g"
+//            binding.txtMl.text = "${item.volume} ml"
         }
     }
 }

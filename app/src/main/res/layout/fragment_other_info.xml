@@ -35,7 +35,7 @@
             android:layout_marginVertical="5dp"
             android:layout_weight="1"
             app:layoutManager="LinearLayoutManager"
-            tools:listitem="@layout/fragment_product_history" />
+            tools:listitem="@layout/item_product" />
 
     </LinearLayout>
 

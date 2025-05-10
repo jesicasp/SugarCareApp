@@ -7,7 +7,7 @@ data class CommonResponse<T>(
     val code: Int,
 
     @field:SerializedName("data")
-    val data: T?, // T adalah tipe data yang bisa bervariasi
+    val data: T?,
 
     @field:SerializedName("success")
     val success: Boolean,

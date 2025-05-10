@@ -6,6 +6,7 @@ import com.pa.sugarcare.models.request.SearchProductRequest
 import com.pa.sugarcare.models.request.UpdateUserRequest
 import com.pa.sugarcare.models.response.CommonResponse
 import com.pa.sugarcare.models.response.DataUserToken
+import com.pa.sugarcare.models.response.ProductDataSearchHistory
 import com.pa.sugarcare.models.response.SearchProductResponse
 import com.pa.sugarcare.models.response.UserResponse
 import retrofit2.Response
@@ -58,4 +59,9 @@ interface ApiService {
     suspend fun updateUser(
         @Body request: UpdateUserRequest
     ): Response<UserResponse>
+
+    //get list product that searched by user
+    @GET("api/user-search-history-product")
+    suspend fun getUserSearchedProduct(
+    ): Response<CommonResponse<List<ProductDataSearchHistory>>>
 }

@@ -9,6 +9,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.appbar.MaterialToolbar
 import com.pa.sugarcare.R
 import com.pa.sugarcare.databinding.ActivityEditEmailBinding
 import com.pa.sugarcare.models.request.UpdateUserRequest
@@ -31,8 +32,15 @@ class EditEmailActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(binding.root)
         setupInsets()
+        defaultEmail()
         observeEmail()
         setupListeners()
+
+        val toolbar = findViewById<MaterialToolbar>(R.id.topAppBar)
+        toolbar.setNavigationOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
+
     }
 
     private fun setupInsets() {
@@ -41,6 +49,11 @@ class EditEmailActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+    }
+
+    private fun defaultEmail() {
+        val userName = intent.getStringExtra("user_email")
+        binding.edEmail.setText(userName)
     }
 
     private fun editEmail() {

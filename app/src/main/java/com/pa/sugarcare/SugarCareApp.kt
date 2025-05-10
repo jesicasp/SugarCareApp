@@ -1,9 +1,9 @@
 package com.pa.sugarcare
 
-import android.app.Application
-import com.pa.sugarcare.utility.TokenStorage
-
-
+//import android.app.Application
+//import com.pa.sugarcare.utility.TokenStorage
+//
+//
 //class SugarCareApp : Application() {
 //
 //    override fun onCreate() {
@@ -11,5 +11,5 @@ import com.pa.sugarcare.utility.TokenStorage
 //        TokenStorage.init(this)
 //    }
 //
-
+//
 //}

@@ -89,4 +89,8 @@ interface ApiService {
     //get list product that consumed by user
     @GET("api/user-consumption")
     suspend fun getUserConsumedProduct(): Response<CommonResponse<List<ConsumedProductResponse>>>
+
+    //get gr sugar that consumed by user
+    @GET("api/report/user/sugar/today")
+    suspend fun getTodaySugarConsumed(): Response<CommonResponse<Double?>>
 }

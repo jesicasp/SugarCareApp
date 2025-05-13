@@ -2,6 +2,7 @@ package com.pa.sugarcare.repository.network
 
 import android.util.Log
 import com.pa.sugarcare.datasource.network.ApiConfig
+import com.pa.sugarcare.datasource.network.ApiConfig.Companion.apiService
 import com.pa.sugarcare.models.request.LoginRequest
 import com.pa.sugarcare.models.request.RegisterRequest
 import com.pa.sugarcare.models.request.UpdateUserRequest
@@ -48,6 +49,10 @@ class UserRepository() {
 
     suspend fun updateUser(request: UpdateUserRequest): Response<UserResponse> {
         return ApiConfig.apiService.updateUser(request)
+    }
+
+    suspend fun getTodaySugarConsumed(): Response<CommonResponse<Double?>> {
+        return apiService.getTodaySugarConsumed()
     }
 
     companion object {

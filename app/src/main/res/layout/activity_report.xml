@@ -1,264 +1,265 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    android:orientation="vertical"
     tools:context=".presentation.feature.report.ReportActivity">
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/topAppBar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
-            app:contentInsetStartWithNavigation="0dp"
-            app:navigationIcon="@drawable/baseline_arrow_back_ios_24">
-
-            <TextView
-                android:id="@+id/toolbar_title"
-                style="@style/Theme.SugarCare.Poppins_14_bold_black"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="@font/poppins"
-                android:padding="2dp"
-                android:text="@string/appbar_report" />
-
-        </com.google.android.material.appbar.MaterialToolbar>
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <TextView
-        android:id="@+id/tvTitle"
-        style="@style/Theme.SugarCare.Poppins_14_bold_black"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:fontFamily="@font/poppins"
-        android:padding="2dp"
-        android:text="@string/title_today_report" />
-
-    <TextView
-        android:id="@+id/tvDate"
-        style="@style/Theme.SugarCare.Poppins_12_onSecondary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/poppins"
-        android:padding="2dp"
-        android:text="@string/title_today_report" />
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="70dp"
-        android:backgroundTint="@color/aqua_green"
-        android:elevation="15dp"
-        app:cardCornerRadius="25dp">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/tvUserConsumption"
-                style="@style/Theme.SugarCare.Poppins_40_bold_onPrimary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dummy_26g"
-                app:layout_constraintBaseline_toBaselineOf="@id/tvGram"
-                app:layout_constraintEnd_toStartOf="@id/tvGram"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tvGram"
-                style="@style/Theme.SugarCare.Poppins_16_bold_onPrimary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/gram"
-                app:layout_constraintBaseline_toBaselineOf="@id/tvUserConsumption"
-                app:layout_constraintEnd_toStartOf="@id/diagonalLine"
-                app:layout_constraintStart_toEndOf="@id/tvUserConsumption" />
-
-            <View
-                android:id="@+id/diagonalLine"
-                android:layout_width="2dp"
-                android:layout_height="120dp"
-                android:layout_marginTop="20dp"
-                android:background="@android:color/white"
-                android:rotation="45"
-                android:scaleX="1.5"
-                app:layout_constraintEnd_toStartOf="@id/tv50g"
-                app:layout_constraintStart_toEndOf="@id/tvGram"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tv50g"
-                style="@style/Theme.SugarCare.Poppins_20_bold_onPrimary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/dummy_50g"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/tvGram2"
-                app:layout_constraintStart_toEndOf="@id/diagonalLine" />
-
-            <TextView
-                android:id="@+id/tvGram2"
-                style="@style/Theme.SugarCare.Poppins_16_bold_onPrimary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/gram"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tv50g"
-                app:layout_constraintTop_toTopOf="@id/tv50g" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="140dp"
-        android:layout_marginHorizontal="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cvWeeklyRep"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:backgroundTint="@color/white"
-            app:cardCornerRadius="15dp"
-            app:cardElevation="10dp"
-            app:cardPreventCornerOverlap="false"
-            app:cardUseCompatPadding="true"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:strokeColor="@android:color/transparent"
-            app:strokeWidth="0dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:paddingVertical="15dp">
-
-                <TextView
-                    android:id="@+id/tvWeeklyRep"
-                    style="@style/Theme.SugarCare.Poppins_20_bold_onSecondary"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_margin="8dp"
-                    android:drawableEnd="@drawable/icon_week_rep"
-                    android:drawablePadding="100dp"
-                    android:gravity="center"
-                    android:text="@string/weekly_report" />
-            </RelativeLayout>
-        </com.google.android.material.card.MaterialCardView>
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="0dp"
-            android:layout_height="140dp"
-            android:layout_marginHorizontal="5dp"
-            android:layout_weight="1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+        <!-- AppBar -->
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cvMonthlyRep"
-                android:layout_width="wrap_content"
-                android:layout_height="150dp"
-                android:backgroundTint="@color/white"
-                app:cardCornerRadius="15dp"
-                app:cardElevation="10dp"
-                app:cardPreventCornerOverlap="false"
-                app:cardUseCompatPadding="true"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:strokeColor="@android:color/transparent"
-                app:strokeWidth="0dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="10dp"
-                    android:gravity="center">
-
-                    <TextView
-                        android:id="@+id/tvMonthRep"
-                        style="@style/Theme.SugarCare.Poppins_16_bold_onSecondary"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_margin="8dp"
-                        android:drawableEnd="@drawable/icon_month_rep"
-                        android:drawablePadding="20dp"
-                        android:gravity="center"
-                        android:text="@string/monthly_report" />
-                </RelativeLayout>
-            </com.google.android.material.card.MaterialCardView>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="0dp"
-            android:layout_height="140dp"
-            android:layout_marginHorizontal="5dp"
-            android:layout_weight="1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cvYearRep"
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/topAppBar"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:backgroundTint="@color/white"
-                app:cardCornerRadius="15dp"
-                app:cardElevation="10dp"
-                app:cardPreventCornerOverlap="false"
-                app:cardUseCompatPadding="true"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:strokeColor="@android:color/transparent"
-                app:strokeWidth="0dp">
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/white"
+                app:contentInsetStartWithNavigation="0dp"
+                app:navigationIcon="@drawable/baseline_arrow_back_ios_24">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                <TextView
+                    android:id="@+id/toolbar_title"
+                    style="@style/Theme.SugarCare.Poppins_14_bold_black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="2dp"
+                    android:text="@string/appbar_report" />
+            </com.google.android.material.appbar.MaterialToolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <!-- Scrollable content -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:id="@+id/main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="16dp">
+
+                <TextView
+                    android:id="@+id/tvTitle"
+                    style="@style/Theme.SugarCare.Poppins_14_bold_black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="2dp"
+                    android:text="@string/title_today_report" />
+
+                <TextView
+                    android:id="@+id/tvDate"
+                    style="@style/Theme.SugarCare.Poppins_12_onSecondary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginTop="10dp"
-                    android:gravity="center"
-                    android:paddingVertical="15dp">
+                    android:padding="2dp" />
 
-                    <TextView
-                        android:id="@+id/tvYearRep"
-                        style="@style/Theme.SugarCare.Poppins_16_bold_onSecondary"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_margin="8dp"
-                        android:drawableEnd="@drawable/icon_year_rep"
-                        android:drawablePadding="20dp"
+                <!-- Today Report Card -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="70dp"
+                    android:backgroundTint="@color/aqua_green"
+                    android:elevation="15dp"
+                    app:cardCornerRadius="25dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cvToday"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10dp">
+
+                        <TextView
+                            android:id="@+id/tvUserConsumption"
+                            style="@style/Theme.SugarCare.Poppins_40_bold_onPrimary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBaseline_toBaselineOf="@id/tvGram"
+                            app:layout_constraintEnd_toStartOf="@id/tvGram"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tvGram"
+                            style="@style/Theme.SugarCare.Poppins_16_bold_onPrimary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/gram"
+                            app:layout_constraintBaseline_toBaselineOf="@id/tvUserConsumption"
+                            app:layout_constraintEnd_toStartOf="@id/diagonalLine"
+                            app:layout_constraintStart_toEndOf="@id/tvUserConsumption" />
+
+                        <View
+                            android:id="@+id/diagonalLine"
+                            android:layout_width="2dp"
+                            android:layout_height="120dp"
+                            android:layout_marginTop="20dp"
+                            android:background="@android:color/white"
+                            android:rotation="45"
+                            android:scaleX="1.5"
+                            app:layout_constraintEnd_toStartOf="@id/tv50g"
+                            app:layout_constraintStart_toEndOf="@id/tvGram"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/tv50g"
+                            style="@style/Theme.SugarCare.Poppins_20_bold_onPrimary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/dummy_50g"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toStartOf="@id/tvGram2"
+                            app:layout_constraintStart_toEndOf="@id/diagonalLine" />
+
+                        <TextView
+                            android:id="@+id/tvGram2"
+                            style="@style/Theme.SugarCare.Poppins_16_bold_onPrimary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/gram"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/tv50g"
+                            app:layout_constraintTop_toTopOf="@id/tv50g" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cvWeeklyRep"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:backgroundTint="@color/white"
+                    app:cardCornerRadius="15dp"
+                    app:cardElevation="10dp"
+                    android:layout_marginTop="10dp"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="true"
+                    app:strokeColor="@android:color/transparent"
+                    app:strokeWidth="0dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
                         android:gravity="center"
-                        android:text="@string/yearly_report" />
-                </RelativeLayout>
-            </com.google.android.material.card.MaterialCardView>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </LinearLayout>
-</LinearLayout>
+                        android:paddingVertical="15dp">
 
+                        <TextView
+                            android:id="@+id/tvWeeklyRep"
+                            style="@style/Theme.SugarCare.Poppins_20_bold_onSecondary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_margin="8dp"
+                            android:drawablePadding="100dp"
+                            android:gravity="center"
+                            android:text="@string/weekly_report"
+                            app:drawableEndCompat="@drawable/icon_week_rep" />
+                    </RelativeLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Monthly and Yearly Report -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cvMonthlyRep"
+                        android:layout_width="0dp"
+                        android:layout_height="150dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/white"
+                        app:cardCornerRadius="15dp"
+                        app:cardElevation="10dp"
+                        app:cardPreventCornerOverlap="false"
+                        app:cardUseCompatPadding="true"
+                        app:strokeColor="@android:color/transparent"
+                        app:strokeWidth="0dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center">
+
+                            <TextView
+                                android:id="@+id/tvMonthRep"
+                                style="@style/Theme.SugarCare.Poppins_16_bold_onSecondary"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_margin="8dp"
+                                android:drawablePadding="20dp"
+                                android:gravity="center"
+                                android:text="@string/monthly_report"
+                                app:drawableEndCompat="@drawable/icon_month_rep" />
+                        </RelativeLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cvYearRep"
+                        android:layout_width="0dp"
+                        android:layout_height="150dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="1"
+                        android:backgroundTint="@color/white"
+                        app:cardCornerRadius="15dp"
+                        app:cardElevation="10dp"
+                        app:cardPreventCornerOverlap="false"
+                        app:cardUseCompatPadding="true"
+                        app:strokeColor="@android:color/transparent"
+                        app:strokeWidth="0dp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="10dp"
+                            android:gravity="center"
+                            android:paddingVertical="15dp">
+
+                            <TextView
+                                android:id="@+id/tvYearRep"
+                                style="@style/Theme.SugarCare.Poppins_16_bold_onSecondary"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
+                                android:layout_margin="8dp"
+                                android:drawablePadding="20dp"
+                                android:gravity="center"
+                                android:text="@string/yearly_report"
+                                app:drawableEndCompat="@drawable/icon_year_rep" />
+                        </RelativeLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <!-- ProgressBar -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/teal_green" />
+
+</FrameLayout>

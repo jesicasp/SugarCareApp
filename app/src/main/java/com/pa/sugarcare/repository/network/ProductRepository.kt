@@ -44,6 +44,8 @@ class ProductRepository {
         return apiService.postUserConsumption(request)
     }
 
+
+
     companion object {
         @Volatile
         private var instance: ProductRepository? = null

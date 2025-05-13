@@ -109,6 +109,7 @@ class MonthlyChartRepActivity : AppCompatActivity() {
             )
         }
 
+
         val barDataSet = BarDataSet(barEntries, "").apply {
             colors =
                 monthlyData.map {
@@ -119,6 +120,15 @@ class MonthlyChartRepActivity : AppCompatActivity() {
                 }
             valueTextSize = 16f
         }
+
+        barDataSet.valueFormatter = object : ValueFormatter() {
+            override fun getBarLabel(barEntry: BarEntry?): String {
+                return "${barEntry?.y?.toDouble()}gr"
+            }
+        }
+
+
+
 
         val barData = BarData(barDataSet)
         barChart.data = barData

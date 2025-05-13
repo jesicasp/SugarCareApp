@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/background"
+    android:fitsSystemWindows="true"
     tools:context=".presentation.feature.report.weekly.WeeklyChartRepActivity">
 
     <com.google.android.material.appbar.AppBarLayout

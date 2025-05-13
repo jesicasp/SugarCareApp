@@ -1,4 +1,4 @@
-package com.pa.sugarcare.presentation.feature.report
+package com.pa.sugarcare.presentation.feature.report.vm
 
 import android.os.Build
 import android.util.Log

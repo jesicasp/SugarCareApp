@@ -9,6 +9,7 @@ import com.pa.sugarcare.models.request.UpdateUserRequest
 import com.pa.sugarcare.models.response.CommonResponse
 import com.pa.sugarcare.models.response.DataUserToken
 import com.pa.sugarcare.models.response.UserResponse
+import com.pa.sugarcare.models.response.WeeklyListResponse
 import com.pa.sugarcare.utility.TokenStorage
 import retrofit2.Response
 
@@ -53,6 +54,10 @@ class UserRepository() {
 
     suspend fun getTodaySugarConsumed(): Response<CommonResponse<Double?>> {
         return apiService.getTodaySugarConsumed()
+    }
+
+    suspend fun getWeeklyList(): Response<CommonResponse<List<WeeklyListResponse>>> {
+        return apiService.getWeeklyList()
     }
 
     companion object {

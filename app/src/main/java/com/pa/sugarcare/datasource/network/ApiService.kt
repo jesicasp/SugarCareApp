@@ -13,6 +13,7 @@ import com.pa.sugarcare.models.response.ProductDataSearchHistory
 import com.pa.sugarcare.models.response.RecProductResponse
 import com.pa.sugarcare.models.response.SearchProductResponse
 import com.pa.sugarcare.models.response.UserResponse
+import com.pa.sugarcare.models.response.WeeklyListResponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -93,4 +94,8 @@ interface ApiService {
     //get gr sugar that consumed by user
     @GET("api/report/user/sugar/today")
     suspend fun getTodaySugarConsumed(): Response<CommonResponse<Double?>>
+
+    //get list weekly report
+    @GET("api/report/user/sugar/weekly-list")
+    suspend fun getWeeklyList(): Response<CommonResponse<List<WeeklyListResponse>>>
 }

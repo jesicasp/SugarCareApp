@@ -15,6 +15,7 @@ import androidx.core.view.WindowInsetsCompat
 import com.pa.sugarcare.R
 import com.pa.sugarcare.databinding.ActivityReportBinding
 import com.pa.sugarcare.presentation.feature.report.monthly.MonthlyRepActivity
+import com.pa.sugarcare.presentation.feature.report.vm.ReportViewModel
 import com.pa.sugarcare.presentation.feature.report.weekly.WeeklyRepActivity
 import com.pa.sugarcare.presentation.feature.report.yearly.YearlyRepActivity
 import com.pa.sugarcare.repository.di.CommonVmInjector

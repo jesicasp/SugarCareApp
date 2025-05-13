@@ -2,7 +2,8 @@ package com.pa.sugarcare.utility
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.pa.sugarcare.presentation.feature.report.ReportViewModel
+import com.pa.sugarcare.presentation.feature.report.vm.ReportViewModel
+import com.pa.sugarcare.presentation.feature.report.vm.WeeklyRepVm
 import com.pa.sugarcare.presentation.feature.searchproduct.vm.SearchProductViewModel
 import com.pa.sugarcare.presentation.feature.signin.vm.SigninViewModel
 import com.pa.sugarcare.presentation.feature.signup.vm.SignUpViewModel
@@ -62,6 +63,10 @@ class CommonViewModelFactory(
 
             ReportViewModel::class.java -> {
                 ReportViewModel(userRepo) as T
+            }
+
+            WeeklyRepVm::class.java -> {
+                WeeklyRepVm(userRepo) as T
             }
 
 

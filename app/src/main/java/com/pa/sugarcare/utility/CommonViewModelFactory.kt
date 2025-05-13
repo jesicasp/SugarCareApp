@@ -79,7 +79,6 @@ class CommonViewModelFactory(
                 YearlyRepVm(userRepo) as T
             }
 
-
             else -> throw IllegalArgumentException("Class does't match")
         }
     }

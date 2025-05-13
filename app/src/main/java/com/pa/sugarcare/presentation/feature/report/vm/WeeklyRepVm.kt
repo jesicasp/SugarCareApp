@@ -17,6 +17,11 @@ class WeeklyRepVm(private val userRepository: UserRepository) : ViewModel() {
     val weeklyList: LiveData<Resources<CommonResponse<List<WeeklyListResponse>>>> =
         _weeklyList
 
+    private val _searchReport =
+        MutableLiveData<Resources<CommonResponse<List<WeeklyListResponse>>>>()
+    val searchReport: LiveData<Resources<CommonResponse<List<WeeklyListResponse>>>> =
+        _searchReport
+
 
     fun getWeeklyList() {
         viewModelScope.launch {
@@ -41,6 +46,32 @@ class WeeklyRepVm(private val userRepository: UserRepository) : ViewModel() {
                 _weeklyList.postValue(Resources.Error(e.message ?: "Unexpected error occurred"))
             }
         }
+    }
+
+    fun findReport(query: String) {
+        viewModelScope.launch {
+            _searchReport.postValue(Resources.Loading)
+            try {
+                val response = userRepository.searchReport(query)
+                Log.e(TAG, "Response code: ${response.code()}")
+                Log.e(TAG, "Response headers: ${response.headers()}")
+                response.body()?.data?.forEach { item ->
+                    Log.e(TAG, "Report name: ${item.report}")
+                }
+
+                if (response.isSuccessful && response.body() != null) {
+                    _searchReport.postValue(Resources.Success(response.body()!!))
+                } else {
+                    val errorMessage = response.errorBody()?.string() ?: "Unknown error"
+                    Log.e(TAG, "Error body: $errorMessage")
+                    _searchReport.postValue(Resources.Error("Login failed: $errorMessage"))
+                }
+            } catch (e: Exception) {
+                Log.e(TAG, "Exception occurred: ${e.message}")
+                _searchReport.postValue(Resources.Error(e.message ?: "Unexpected error occurred"))
+            }
+        }
+
     }
 
 

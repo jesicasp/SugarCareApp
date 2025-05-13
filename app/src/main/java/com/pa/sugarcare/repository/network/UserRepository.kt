@@ -69,6 +69,10 @@ class UserRepository {
         return apiService.getYearlyList()
     }
 
+    suspend fun searchReport(query: String): Response<CommonResponse<List<WeeklyListResponse>>> {
+        return apiService.searchReport(query)
+    }
+
     companion object {
         @Volatile
         private var instance: UserRepository? = null

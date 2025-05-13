@@ -65,7 +65,7 @@ class ReportActivity : AppCompatActivity() {
         binding.tvWeeklyRep.setCompoundDrawables(null, null, drawableWeek, null)
 
         val drawableMonth = ContextCompat.getDrawable(this, R.drawable.icon_month_rep)
-        drawableMonth?.setBounds(0, 0, 40.dpToPx(), 40.dpToPx())
+        drawableMonth?.setBounds(0, 0, 45.dpToPx(), 40.dpToPx())
         binding.tvMonthRep.setCompoundDrawables(null, null, drawableMonth, null)
 
         val drawableYear = ContextCompat.getDrawable(this, R.drawable.icon_year_rep)

@@ -1,13 +1,16 @@
 package com.pa.sugarcare.presentation.feature.report.weekly
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pa.sugarcare.R
 import com.pa.sugarcare.databinding.ActivityWeeklyRepBinding
@@ -42,6 +45,8 @@ class WeeklyRepActivity : AppCompatActivity() {
 
         getWeeklyList()
         getListReport()
+        setupSearch()
+        observeSearchResults()
     }
 
     private fun setupInsets() {
@@ -98,5 +103,85 @@ class WeeklyRepActivity : AppCompatActivity() {
         binding.rv.adapter = adapter
 
     }
+
+    private fun setupSearch() {
+        with(binding) {
+            searchView.setupWithSearchBar(searchBar)
+            searchBar.setOnClickListener {
+                searchView.show()
+            }
+            searchView
+                .editText
+                .setOnEditorActionListener { _, actionId, _ ->
+                    if (actionId == EditorInfo.IME_ACTION_SEARCH || actionId == EditorInfo.IME_ACTION_DONE) {
+                        val query = searchView.text.toString()
+                        if (query.isEmpty()) {
+                            Log.d("SEARCHREPORTEMPTY", query)
+                            getWeeklyList()
+                            searchView.hide()
+                        } else {
+                            Log.d("SEARCHREPORT", query)
+                            viewModel.findReport(query)
+                            searchBar.setText(query)
+                            searchView.hide()
+                            return@setOnEditorActionListener true
+                        }
+
+                    }
+                    false
+                }
+
+            searchView.editText.addTextChangedListener {
+                val text = it.toString()
+                if (text.isEmpty()) {
+                    getWeeklyList()
+                }
+            }
+
+        }
+
+    }
+
+    private fun observeSearchResults() {
+        viewModel.searchReport.observe(this) { result ->
+            when (result) {
+                is Resources.Success -> {
+                    binding.progressBar.visibility = View.GONE
+
+                    val dataList = result.data.data
+                    if (dataList != null) {
+                        if (dataList.isNotEmpty()) {
+                            showRec(dataList)
+                        } else {
+                            Toast.makeText(
+                                this,
+                                "Tidak ada report yang ditemukan",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            binding.searchBar.setText(null)
+                            getWeeklyList()
+
+                        }
+                    }
+                }
+
+                is Resources.Error -> {
+                    binding.progressBar.visibility = View.GONE
+                    Toast.makeText(this, "Gagal memuat data: ${result.error}", Toast.LENGTH_SHORT)
+                        .show()
+                }
+
+                is Resources.Loading -> {
+                    binding.progressBar.visibility = View.VISIBLE
+                }
+            }
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
+
 
 }

@@ -108,4 +108,10 @@ interface ApiService {
     //get list yearly report
     @GET("api/report/user/sugar/yearly-list")
     suspend fun getYearlyList(): Response<CommonResponse<List<YearlyListResponse>>>
+
+    //search report
+    @GET("api/report/user/sugar/search")
+    suspend fun searchReport(
+        @Query("query") query: String
+    ): Response<CommonResponse<List<WeeklyListResponse>>>
 }

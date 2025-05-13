@@ -10,6 +10,7 @@ import com.pa.sugarcare.models.response.DataUserToken
 import com.pa.sugarcare.models.response.MonthlyChartResponse
 import com.pa.sugarcare.models.response.UserResponse
 import com.pa.sugarcare.models.response.WeeklyListResponse
+import com.pa.sugarcare.models.response.YearlyChartResponse
 import com.pa.sugarcare.utility.TokenStorage
 import retrofit2.Response
 
@@ -74,6 +75,10 @@ class UserRepository {
 
     suspend fun getMonthlyConsumption(month: String, year: Int): Response<CommonResponse<List<MonthlyChartResponse>>> {
         return apiService.getMonthlyConsumption(month, year)
+    }
+
+    suspend fun getYearlyConsumption(year: Int): Response<CommonResponse<List<YearlyChartResponse>>> {
+        return apiService.getYearlyConsumption(year)
     }
 
 

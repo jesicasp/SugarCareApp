@@ -15,6 +15,7 @@ import com.pa.sugarcare.models.response.RecProductResponse
 import com.pa.sugarcare.models.response.SearchProductResponse
 import com.pa.sugarcare.models.response.UserResponse
 import com.pa.sugarcare.models.response.WeeklyListResponse
+import com.pa.sugarcare.models.response.YearlyChartResponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -119,4 +120,9 @@ interface ApiService {
         @Query("month") month: String,
         @Query("year") year: Int
     ): Response<CommonResponse<List<MonthlyChartResponse>>>
+
+    @GET("api/report/user/yearly-consumption")
+    suspend fun getYearlyConsumption(
+        @Query("year") year: Int
+    ): Response<CommonResponse<List<YearlyChartResponse>>>
 }

@@ -7,27 +7,29 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pa.sugarcare.R
 import com.pa.sugarcare.models.response.CommonResponse
-import com.pa.sugarcare.models.response.MonthlyChartResponse
+import com.pa.sugarcare.models.response.YearlyChartResponse
 import com.pa.sugarcare.repository.network.UserRepository
 import com.pa.sugarcare.utility.Resources
 import kotlinx.coroutines.launch
 
-class MonthlyChartRepVm(private val userRepository: UserRepository) : ViewModel() {
-    private val _monthlyData =
-        MutableLiveData<Resources<CommonResponse<List<MonthlyChartResponse>>>>()
-    val monthlyData: LiveData<Resources<CommonResponse<List<MonthlyChartResponse>>>> =
-        _monthlyData
+class YearlyChartVm(private val userRepository: UserRepository) : ViewModel() {
+    private val _yearlyData =
+        MutableLiveData<Resources<CommonResponse<List<YearlyChartResponse>>>>()
+    val yearlyData: LiveData<Resources<CommonResponse<List<YearlyChartResponse>>>> =
+        _yearlyData
 
-    fun getMonthlyData(month: String, year: Int) {
+
+
+    fun getYearlyData(year: Int) {
         viewModelScope.launch {
-            _monthlyData.postValue(Resources.Loading)
+           _yearlyData.postValue(Resources.Loading)
             try {
-                val response = userRepository.getMonthlyConsumption(month, year)
+                val response = userRepository.getYearlyConsumption(year)
                 Log.e(TAG, "Response code: ${response.code()}")
                 val dataList = response.body()?.data
 
                 dataList?.forEachIndexed { index, item ->
-                    Log.e(TAG, "Item $index: ${item.weekNumber} ${item.totalSugar} ")
+                    Log.e(TAG, "Item $index: ${item.month} ${item.totalSugar} ")
                 }
                 if (response.isSuccessful && response.body() != null) {
                     val data = response.body()!!
@@ -37,15 +39,15 @@ class MonthlyChartRepVm(private val userRepository: UserRepository) : ViewModel(
                     }
 
                     val updatedResponse = data.copy(data = mappedData)
-                    _monthlyData.postValue(Resources.Success(updatedResponse))
+                    _yearlyData.postValue(Resources.Success(updatedResponse))
                 } else {
                     val errorMessage = response.errorBody()?.string() ?: "Unknown error"
                     Log.e(TAG, "Error body: $errorMessage")
-                    _monthlyData.postValue(Resources.Error("Get failed: $errorMessage"))
+                    _yearlyData.postValue(Resources.Error("Get failed: $errorMessage"))
                 }
             } catch (e: Exception) {
                 Log.e(TAG, "Exception occurred: ${e.message}")
-                _monthlyData.postValue(Resources.Error(e.message ?: "Unexpected error occurred"))
+                _yearlyData.postValue(Resources.Error(e.message ?: "Unexpected error occurred"))
             }
         }
     }
@@ -61,6 +63,6 @@ class MonthlyChartRepVm(private val userRepository: UserRepository) : ViewModel(
 
 
     companion object {
-        private const val TAG = "MonthlyChartVM"
+        private const val TAG = "YearlyChartVM"
     }
 }

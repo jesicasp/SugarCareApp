@@ -10,6 +10,14 @@
     android:fitsSystemWindows="true"
     tools:context=".presentation.feature.report.yearly.YearlyChartRepActivity">
 
+    <!-- ProgressBar -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:visibility="gone" />
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
@@ -36,7 +44,6 @@
         </com.google.android.material.appbar.MaterialToolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <!-- Bungkus dalam ScrollView -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -53,13 +60,14 @@
                 android:layout_height="500dp" />
 
             <TextView
+                android:id="@+id/tvYear"
                 style="@style/Theme.SugarCare.Poppins_16_bold_onSecondary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="25dp"
                 android:paddingHorizontal="10dp"
-                android:text="@string/dummy_yearlyrep" />
+                 />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"

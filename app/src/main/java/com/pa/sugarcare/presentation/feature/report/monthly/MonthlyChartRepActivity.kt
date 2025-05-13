@@ -27,7 +27,6 @@ private class DateValueFormatter(private val week: List<String>) : ValueFormatte
     }
 }
 
-
 class MonthlyChartRepActivity : AppCompatActivity() {
     private var _binding: ActivityMonthlyChartRepBinding? = null
     private val binding get() = _binding!!
@@ -42,9 +41,13 @@ class MonthlyChartRepActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(binding.root)
         setupInsets()
+        binding.topAppBar.setNavigationOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
 
         val month: String? = intent.getStringExtra("MONTH")
         val year: Int = intent.getIntExtra("YEAR", 0)
+        "$month $year".also { binding.tvMonthYear.text = it }
 
         month?.let { getMonthlyData(it, year) }
         observeResults()

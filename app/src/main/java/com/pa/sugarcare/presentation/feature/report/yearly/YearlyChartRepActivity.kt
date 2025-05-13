@@ -1,7 +1,10 @@
 package com.pa.sugarcare.presentation.feature.report.yearly
 
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
@@ -13,13 +16,10 @@ import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.pa.sugarcare.R
 import com.pa.sugarcare.databinding.ActivityYearlyChartRepBinding
-
-
-private data class BarChartData(
-    val gram: Float,
-    val color: Int,
-    val month: String
-)
+import com.pa.sugarcare.models.response.YearlyChartResponse
+import com.pa.sugarcare.presentation.feature.report.vm.YearlyChartVm
+import com.pa.sugarcare.repository.di.CommonVmInjector
+import com.pa.sugarcare.utility.Resources
 
 private class DateValueFormatter(private val monthName: List<String>) : ValueFormatter() {
     override fun getFormattedValue(value: Float): String {
@@ -31,30 +31,89 @@ class YearlyChartRepActivity : AppCompatActivity() {
     private var _binding: ActivityYearlyChartRepBinding? = null
     private val binding get() = _binding!!
 
+    private val viewModel: YearlyChartVm by viewModels {
+        CommonVmInjector.common(this)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = ActivityYearlyChartRepBinding.inflate(layoutInflater)
         enableEdgeToEdge()
         setContentView(binding.root)
+        setupInsets()
+        binding.topAppBar.setNavigationOnClickListener {
+            onBackPressedDispatcher.onBackPressed()
+        }
+
+        val year: Int = intent.getIntExtra("YEAR", 0)
+
+        binding.tvYear.text = "Tahun $year"
+
+        getYearlyData(year)
+        observeResults()
+    }
+
+    private fun setupInsets() {
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        setupBarChart()
     }
 
-    private fun setupBarChart() {
-        val barChart = binding.barChart
-        val dummyData = getDummyData()
+    private fun getYearlyData(year: Int) {
+        viewModel.getYearlyData(year)
+    }
 
-        val barEntries = dummyData.mapIndexed { index, data ->
-            BarEntry(index.toFloat() + 1, data.gram)
+    private fun observeResults() {
+        viewModel.yearlyData.observe(this) { result ->
+            when (result) {
+                is Resources.Success -> {
+                    binding.progressBar.visibility = View.GONE
+
+                    val dataList = result.data.data
+                    if (dataList != null) {
+                        if (dataList.isNotEmpty()) {
+                            setupBarChart(dataList)
+                        } else {
+                            Toast.makeText(
+                                this,
+                                "Tidak ada report yang ditemukan",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+                }
+
+                is Resources.Error -> {
+                    binding.progressBar.visibility = View.GONE
+                    Toast.makeText(this, "Gagal memuat data: ${result.error}", Toast.LENGTH_SHORT)
+                        .show()
+                }
+
+                is Resources.Loading -> {
+                    binding.progressBar.visibility = View.VISIBLE
+                }
+            }
+        }
+    }
+
+
+    private fun setupBarChart(yearlyData: List<YearlyChartResponse>) {
+        val barChart = binding.barChart
+
+        val barEntries = yearlyData.mapIndexed { index, data ->
+            BarEntry(index.toFloat() + 1, data.totalSugar.toFloat())
         }
 
         val barDataSet = BarDataSet(barEntries, "").apply {
             colors =
-                dummyData.map { ContextCompat.getColor(this@YearlyChartRepActivity, it.color) }
+                yearlyData.map {
+                    ContextCompat.getColor(
+                        this@YearlyChartRepActivity,
+                        it.colorResId
+                    )
+                }
             valueTextSize = 16f
         }
 
@@ -65,7 +124,9 @@ class YearlyChartRepActivity : AppCompatActivity() {
         barChart.description.isEnabled = false
         barChart.legend.isEnabled = false
 
-        barChart.xAxis.valueFormatter = DateValueFormatter(dummyData.map { it.month })
+        barChart.xAxis.valueFormatter = DateValueFormatter(
+            yearlyData.map { it.month }
+        )
         barChart.xAxis.granularity = 1f
         barChart.xAxis.position = XAxis.XAxisPosition.BOTTOM
         barChart.xAxis.axisLineWidth = 3f
@@ -78,68 +139,4 @@ class YearlyChartRepActivity : AppCompatActivity() {
 
     }
 
-    private fun getDummyData(): List<BarChartData> {
-        return listOf(
-            BarChartData(
-                1200f,
-                R.color.green,
-                "Jan"
-            ),
-            BarChartData(
-                1500f,
-                R.color.yellow,
-                "Feb"
-            ),
-            BarChartData(
-                1050f,
-                R.color.green,
-                "Mar"
-            ),
-            BarChartData(
-                1100f,
-                R.color.green,
-                "Apr"
-            ),
-            BarChartData(
-                2100f,
-                R.color.red,
-                "Mei"
-            ),
-            BarChartData(
-                2000f,
-                R.color.red,
-                "Jun"
-            ),
-            BarChartData(
-                1400f,
-                R.color.yellow,
-                "Jul"
-            ),
-            BarChartData(
-                900f,
-                R.color.green,
-                "Agu"
-            ),
-            BarChartData(
-                1400f,
-                R.color.green,
-                "Sept"
-            ),
-            BarChartData(
-                1500f,
-                R.color.yellow,
-                "Okt"
-            ),
-            BarChartData(
-                1300f,
-                R.color.yellow,
-                "Nov"
-            ),
-            BarChartData(
-                1400f,
-                R.color.green,
-                "Des"
-            ),
-        )
-    }
 }

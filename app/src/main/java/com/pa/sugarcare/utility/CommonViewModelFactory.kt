@@ -6,6 +6,7 @@ import com.pa.sugarcare.presentation.feature.report.vm.MonthlyChartRepVm
 import com.pa.sugarcare.presentation.feature.report.vm.MonthlyRepVm
 import com.pa.sugarcare.presentation.feature.report.vm.ReportViewModel
 import com.pa.sugarcare.presentation.feature.report.vm.WeeklyRepVm
+import com.pa.sugarcare.presentation.feature.report.vm.YearlyChartVm
 import com.pa.sugarcare.presentation.feature.report.vm.YearlyRepVm
 import com.pa.sugarcare.presentation.feature.searchproduct.vm.SearchProductViewModel
 import com.pa.sugarcare.presentation.feature.signin.vm.SigninViewModel
@@ -82,6 +83,10 @@ class CommonViewModelFactory(
 
             MonthlyChartRepVm::class.java -> {
                 MonthlyChartRepVm(userRepo) as T
+            }
+
+            YearlyChartVm::class.java -> {
+                YearlyChartVm(userRepo) as T
             }
 
             else -> throw IllegalArgumentException("Class does't match")

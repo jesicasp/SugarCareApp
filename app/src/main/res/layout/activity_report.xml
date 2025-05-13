@@ -13,7 +13,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!-- AppBar -->
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -37,7 +36,6 @@
             </com.google.android.material.appbar.MaterialToolbar>
         </com.google.android.material.appbar.AppBarLayout>
 
-        <!-- Scrollable content -->
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -69,11 +67,11 @@
                     android:layout_marginTop="10dp"
                     android:padding="2dp" />
 
-                <!-- Today Report Card -->
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="70dp"
+                    android:layout_marginHorizontal="75dp"
+                    android:layout_marginVertical="5dp"
                     android:backgroundTint="@color/aqua_green"
                     android:elevation="15dp"
                     app:cardCornerRadius="25dp">
@@ -142,7 +140,7 @@
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/cvWeeklyRep"
                     android:layout_width="match_parent"
-                    android:layout_height="150dp"
+                    android:layout_height="140dp"
                     android:layout_marginHorizontal="10dp"
                     android:backgroundTint="@color/white"
                     app:cardCornerRadius="15dp"
@@ -162,19 +160,18 @@
 
                         <TextView
                             android:id="@+id/tvWeeklyRep"
-                            style="@style/Theme.SugarCare.Poppins_20_bold_onSecondary"
-                            android:layout_width="wrap_content"
+                            style="@style/Theme.SugarCare.Poppins_16_bold_onSecondary"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
-                            android:layout_margin="8dp"
-                            android:drawablePadding="100dp"
-                            android:gravity="center"
+                            android:layout_marginVertical="8dp"
+                            android:layout_marginHorizontal="25dp"
+                            android:gravity="center_vertical"
                             android:text="@string/weekly_report"
                             app:drawableEndCompat="@drawable/icon_week_rep" />
                     </RelativeLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- Monthly and Yearly Report -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -184,7 +181,7 @@
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/cvMonthlyRep"
                         android:layout_width="0dp"
-                        android:layout_height="150dp"
+                        android:layout_height="140dp"
                         android:layout_marginStart="10dp"
                         android:layout_weight="1"
                         android:backgroundTint="@color/white"
@@ -203,13 +200,14 @@
 
                             <TextView
                                 android:id="@+id/tvMonthRep"
-                                style="@style/Theme.SugarCare.Poppins_16_bold_onSecondary"
-                                android:layout_width="wrap_content"
+                                style="@style/Theme.SugarCare.Poppins_14_bold_onSecondary"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentStart="true"
-                                android:layout_margin="8dp"
+                                android:layout_marginVertical="8dp"
+                                android:layout_marginHorizontal="15dp"
                                 android:drawablePadding="20dp"
-                                android:gravity="center"
+                                android:gravity="center_vertical"
                                 android:text="@string/monthly_report"
                                 app:drawableEndCompat="@drawable/icon_month_rep" />
                         </RelativeLayout>
@@ -218,7 +216,7 @@
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/cvYearRep"
                         android:layout_width="0dp"
-                        android:layout_height="150dp"
+                        android:layout_height="140dp"
                         android:layout_marginEnd="10dp"
                         android:layout_weight="1"
                         android:backgroundTint="@color/white"
@@ -238,13 +236,13 @@
 
                             <TextView
                                 android:id="@+id/tvYearRep"
-                                style="@style/Theme.SugarCare.Poppins_16_bold_onSecondary"
+                                style="@style/Theme.SugarCare.Poppins_14_bold_onSecondary"
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
+                                android:layout_height="match_parent"
                                 android:layout_alignParentStart="true"
-                                android:layout_margin="8dp"
-                                android:drawablePadding="20dp"
-                                android:gravity="center"
+                                android:layout_marginVertical="8dp"
+                                android:layout_marginHorizontal="15dp"
+                                android:gravity="center_vertical"
                                 android:text="@string/yearly_report"
                                 app:drawableEndCompat="@drawable/icon_year_rep" />
                         </RelativeLayout>
@@ -254,7 +252,6 @@
         </ScrollView>
     </LinearLayout>
 
-    <!-- ProgressBar -->
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"

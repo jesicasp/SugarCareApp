@@ -10,6 +10,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.pa.sugarcare.R
@@ -20,6 +21,7 @@ import com.pa.sugarcare.presentation.feature.report.weekly.WeeklyRepActivity
 import com.pa.sugarcare.presentation.feature.report.yearly.YearlyRepActivity
 import com.pa.sugarcare.repository.di.CommonVmInjector
 import com.pa.sugarcare.utility.Resources
+
 
 class ReportActivity : AppCompatActivity() {
     private var _binding: ActivityReportBinding? = null
@@ -51,10 +53,25 @@ class ReportActivity : AppCompatActivity() {
         binding.topAppBar.setNavigationOnClickListener {
             onBackPressedDispatcher.onBackPressed()
         }
-
+        setDrawableSize()
         getTodaySugarConsumption()
         observeSugarTodayResult()
         today()
+    }
+
+    private fun setDrawableSize() {
+        val drawableWeek = ContextCompat.getDrawable(this, R.drawable.icon_week_rep)
+        drawableWeek?.setBounds(0, 0, 40.dpToPx(), 40.dpToPx())
+        binding.tvWeeklyRep.setCompoundDrawables(null, null, drawableWeek, null)
+
+        val drawableMonth = ContextCompat.getDrawable(this, R.drawable.icon_month_rep)
+        drawableMonth?.setBounds(0, 0, 40.dpToPx(), 40.dpToPx())
+        binding.tvMonthRep.setCompoundDrawables(null, null, drawableMonth, null)
+
+        val drawableYear = ContextCompat.getDrawable(this, R.drawable.icon_year_rep)
+        drawableYear?.setBounds(0, 0, 40.dpToPx(), 40.dpToPx())
+        binding.tvYearRep.setCompoundDrawables(null, null, drawableYear, null)
+
     }
 
     private fun today() {
@@ -113,6 +130,10 @@ class ReportActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun Int.dpToPx(): Int =
+        (this * android.content.res.Resources.getSystem().displayMetrics.density).toInt()
+
 
     companion object {
         private const val TAG = "ReportActivity"

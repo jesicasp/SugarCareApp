@@ -1,23 +1,26 @@
-package com.pa.sugarcare.presentation.feature.report.monthly
+package com.pa.sugarcare.presentation.adapter
 
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.pa.sugarcare.databinding.MonthlyRepItemBinding
-import com.pa.sugarcare.presentation.feature.report.ReportData
+import com.pa.sugarcare.models.response.MonthlyListResponse
+import com.pa.sugarcare.presentation.feature.report.monthly.MonthlyChartRepActivity
 
-class MonthlyRepRVAdapter(private val values: List<ReportData>) :
+class MonthlyRepRVAdapter(private val values: List<MonthlyListResponse>) :
     RecyclerView.Adapter<MonthlyRepRVAdapter.ViewHolder>() {
 
     class ViewHolder
         (private val binding: MonthlyRepItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: ReportData) {
-            binding.tvMonthYear.text = item.month_year
+        fun bind(item: MonthlyListResponse) {
+            binding.tvMonthYear.text = "${item.month} ${item.year}"
             binding.root.setOnClickListener {
                 val intent = Intent(itemView.context, MonthlyChartRepActivity::class.java)
+                intent.putExtra("MONTH", item.month)
+                intent.putExtra("YEAR", item.year)
                 itemView.context.startActivity(intent)
             }
         }

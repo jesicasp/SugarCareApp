@@ -26,7 +26,7 @@ class WeeklyRepRVAdapter(
             drawable?.setBounds(0, 0, sizeInPx, sizeInPx)
             binding.tvReportName.setCompoundDrawables(null, null, drawable, null)
 
-            val formattedText = item.report.replace("\\n", "\n")
+            val formattedText = item.report?.replace("\\n", "\n")
             binding.tvReportName.text = formattedText
 
             binding.root.setOnClickListener {

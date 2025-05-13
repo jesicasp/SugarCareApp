@@ -7,10 +7,8 @@ import com.pa.sugarcare.models.request.RegisterRequest
 import com.pa.sugarcare.models.request.UpdateUserRequest
 import com.pa.sugarcare.models.response.CommonResponse
 import com.pa.sugarcare.models.response.DataUserToken
-import com.pa.sugarcare.models.response.MonthlyListResponse
 import com.pa.sugarcare.models.response.UserResponse
 import com.pa.sugarcare.models.response.WeeklyListResponse
-import com.pa.sugarcare.models.response.YearlyListResponse
 import com.pa.sugarcare.utility.TokenStorage
 import retrofit2.Response
 
@@ -61,17 +59,18 @@ class UserRepository {
         return apiService.getWeeklyList()
     }
 
-    suspend fun getMonthlyList(): Response<CommonResponse<List<MonthlyListResponse>>> {
+    suspend fun getMonthlyList(): Response<CommonResponse<List<WeeklyListResponse>>> {
         return apiService.getMonthlyList()
     }
 
-    suspend fun getYearlyList(): Response<CommonResponse<List<YearlyListResponse>>> {
+    suspend fun getYearlyList(): Response<CommonResponse<List<WeeklyListResponse>>> {
         return apiService.getYearlyList()
     }
 
     suspend fun searchReport(query: String): Response<CommonResponse<List<WeeklyListResponse>>> {
         return apiService.searchReport(query)
     }
+
 
     companion object {
         @Volatile

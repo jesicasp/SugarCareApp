@@ -5,17 +5,17 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.pa.sugarcare.databinding.YearlyRepItemBinding
-import com.pa.sugarcare.models.response.YearlyListResponse
+import com.pa.sugarcare.models.response.WeeklyListResponse
 import com.pa.sugarcare.presentation.feature.report.yearly.YearlyChartRepActivity
 
-class YearlyRepRVAdapter(private val values: List<YearlyListResponse>) :
+class YearlyRepRVAdapter(private val values: List<WeeklyListResponse>) :
     RecyclerView.Adapter<YearlyRepRVAdapter.ViewHolder>() {
 
     class ViewHolder
         (private val binding: YearlyRepItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: YearlyListResponse) {
+        fun bind(item: WeeklyListResponse) {
             binding.tvYear.text = item.year.toString()
             binding.root.setOnClickListener {
                 val intent = Intent(itemView.context, YearlyChartRepActivity::class.java)

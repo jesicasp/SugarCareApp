@@ -6,16 +6,21 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pa.sugarcare.models.response.CommonResponse
-import com.pa.sugarcare.models.response.YearlyListResponse
+import com.pa.sugarcare.models.response.WeeklyListResponse
 import com.pa.sugarcare.repository.network.UserRepository
 import com.pa.sugarcare.utility.Resources
 import kotlinx.coroutines.launch
 
 class YearlyRepVm(private val userRepository: UserRepository) : ViewModel() {
     private val _yearlyList =
-        MutableLiveData<Resources<CommonResponse<List<YearlyListResponse>>>>()
-    val yearlyList: LiveData<Resources<CommonResponse<List<YearlyListResponse>>>> =
+        MutableLiveData<Resources<CommonResponse<List<WeeklyListResponse>>>>()
+    val yearlyList: LiveData<Resources<CommonResponse<List<WeeklyListResponse>>>> =
         _yearlyList
+
+    private val _searchReport =
+        MutableLiveData<Resources<CommonResponse<List<WeeklyListResponse>>>>()
+    val searchReport: LiveData<Resources<CommonResponse<List<WeeklyListResponse>>>> =
+        _searchReport
 
 
     fun getYearlyList() {
@@ -39,6 +44,42 @@ class YearlyRepVm(private val userRepository: UserRepository) : ViewModel() {
             } catch (e: Exception) {
                 Log.e(TAG, "Exception occurred: ${e.message}")
                 _yearlyList.postValue(Resources.Error(e.message ?: "Unexpected error occurred"))
+            }
+        }
+    }
+
+    fun findReport(query: String) {
+        viewModelScope.launch {
+            _searchReport.postValue(Resources.Loading)
+            try {
+                val response = userRepository.searchReport(query)
+                Log.e(TAG, "Response code: ${response.code()}")
+                val originalList = response.body()?.data ?: emptyList()
+
+                val filteredList = originalList
+                    .filter { it.year.toString() == query }
+                    .distinctBy { it.year }
+
+
+                filteredList.forEachIndexed { index, item ->
+                    Log.e(TAG, "Filtered item $index: ${item.report}")
+                }
+
+                if (response.isSuccessful) {
+                    val result = response.body()?.copy(data = filteredList)
+                    if (result != null) {
+                        _searchReport.postValue(Resources.Success(result))
+                    } else {
+                        _searchReport.postValue(Resources.Error("Filtered data is null"))
+                    }
+                } else {
+                    val errorMessage = response.errorBody()?.string() ?: "Unknown error"
+                    Log.e(TAG, "Error body: $errorMessage")
+                    _searchReport.postValue(Resources.Error("Find report failed: $errorMessage"))
+                }
+            } catch (e: Exception) {
+                Log.e(TAG, "Exception occurred: ${e.message}")
+                _searchReport.postValue(Resources.Error(e.message ?: "Unexpected error occurred"))
             }
         }
     }

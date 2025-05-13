@@ -64,7 +64,7 @@ class WeeklyRepVm(private val userRepository: UserRepository) : ViewModel() {
                 } else {
                     val errorMessage = response.errorBody()?.string() ?: "Unknown error"
                     Log.e(TAG, "Error body: $errorMessage")
-                    _searchReport.postValue(Resources.Error("Login failed: $errorMessage"))
+                    _searchReport.postValue(Resources.Error("Find report failed: $errorMessage"))
                 }
             } catch (e: Exception) {
                 Log.e(TAG, "Exception occurred: ${e.message}")

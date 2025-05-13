@@ -9,13 +9,11 @@ import com.pa.sugarcare.models.response.CommonResponse
 import com.pa.sugarcare.models.response.ConsumedProductResponse
 import com.pa.sugarcare.models.response.DataUserToken
 import com.pa.sugarcare.models.response.DetailProductResponse
-import com.pa.sugarcare.models.response.MonthlyListResponse
 import com.pa.sugarcare.models.response.ProductDataSearchHistory
 import com.pa.sugarcare.models.response.RecProductResponse
 import com.pa.sugarcare.models.response.SearchProductResponse
 import com.pa.sugarcare.models.response.UserResponse
 import com.pa.sugarcare.models.response.WeeklyListResponse
-import com.pa.sugarcare.models.response.YearlyListResponse
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -103,11 +101,11 @@ interface ApiService {
 
     //get list monthly report
     @GET("api/report/user/sugar/monthly-list")
-    suspend fun getMonthlyList(): Response<CommonResponse<List<MonthlyListResponse>>>
+    suspend fun getMonthlyList(): Response<CommonResponse<List<WeeklyListResponse>>>
 
     //get list yearly report
     @GET("api/report/user/sugar/yearly-list")
-    suspend fun getYearlyList(): Response<CommonResponse<List<YearlyListResponse>>>
+    suspend fun getYearlyList(): Response<CommonResponse<List<WeeklyListResponse>>>
 
     //search report
     @GET("api/report/user/sugar/search")

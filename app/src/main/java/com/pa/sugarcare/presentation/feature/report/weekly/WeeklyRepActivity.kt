@@ -116,6 +116,7 @@ class WeeklyRepActivity : AppCompatActivity() {
                     if (actionId == EditorInfo.IME_ACTION_SEARCH || actionId == EditorInfo.IME_ACTION_DONE) {
                         val query = searchView.text.toString()
                         if (query.isEmpty()) {
+                            binding.searchBar.setText(null)
                             Log.d("SEARCHREPORTEMPTY", query)
                             getWeeklyList()
                             searchView.hide()

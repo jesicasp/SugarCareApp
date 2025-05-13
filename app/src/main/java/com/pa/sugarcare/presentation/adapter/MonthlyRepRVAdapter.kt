@@ -5,17 +5,17 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.pa.sugarcare.databinding.MonthlyRepItemBinding
-import com.pa.sugarcare.models.response.MonthlyListResponse
+import com.pa.sugarcare.models.response.WeeklyListResponse
 import com.pa.sugarcare.presentation.feature.report.monthly.MonthlyChartRepActivity
 
-class MonthlyRepRVAdapter(private val values: List<MonthlyListResponse>) :
+class MonthlyRepRVAdapter(private val values: List<WeeklyListResponse>) :
     RecyclerView.Adapter<MonthlyRepRVAdapter.ViewHolder>() {
 
     class ViewHolder
         (private val binding: MonthlyRepItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: MonthlyListResponse) {
+        fun bind(item: WeeklyListResponse) {
             binding.tvMonthYear.text = "${item.month} ${item.year}"
             binding.root.setOnClickListener {
                 val intent = Intent(itemView.context, MonthlyChartRepActivity::class.java)

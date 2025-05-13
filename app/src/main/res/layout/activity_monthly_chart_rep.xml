@@ -1,85 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    android:orientation="vertical"
-    android:fitsSystemWindows="true"
     tools:context=".presentation.feature.report.monthly.MonthlyChartRepActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/topAppBar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
-            app:contentInsetStartWithNavigation="0dp"
-            app:navigationIcon="@drawable/baseline_arrow_back_ios_24">
-
-            <TextView
-                android:id="@+id/toolbar_title"
-                style="@style/Theme.SugarCare.Poppins_14_bold_black"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="@font/poppins"
-                android:padding="2dp"
-                android:text="@string/appbar_monthly_report" />
-        </com.google.android.material.appbar.MaterialToolbar>
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <!-- Bungkus dalam ScrollView -->
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:orientation="vertical"
+        android:fitsSystemWindows="true">
 
-        <LinearLayout
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <com.github.mikephil.charting.charts.BarChart
-                android:id="@+id/barChart"
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/topAppBar"
                 android:layout_width="match_parent"
-                android:layout_height="300dp" />
-
-            <TextView
-                style="@style/Theme.SugarCare.Poppins_16_bold_onSecondary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="25dp"
-                android:paddingHorizontal="10dp"
-                android:text="@string/dummy_bulan_tahun" />
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="30dp"
-                android:layout_marginTop="25dp"
-                android:backgroundTint="@color/teal_green"
-                app:cardCornerRadius="30dp"
-                app:cardElevation="10dp">
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/white"
+                app:contentInsetStartWithNavigation="0dp"
+                app:navigationIcon="@drawable/baseline_arrow_back_ios_24">
 
                 <TextView
-                    style="@style/Theme.SugarCare.Poppins_16_bold_onPrimary"
+                    android:id="@+id/toolbar_title"
+                    style="@style/Theme.SugarCare.Poppins_14_bold_black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:paddingHorizontal="15dp"
-                    android:paddingVertical="15dp"
-                    android:text="@string/info_bar_monthreport"
-                    android:textAlignment="center" />
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
-    </ScrollView>
+                    android:fontFamily="@font/poppins"
+                    android:padding="2dp"
+                    android:text="@string/appbar_monthly_report" />
+            </com.google.android.material.appbar.MaterialToolbar>
+        </com.google.android.material.appbar.AppBarLayout>
 
-</LinearLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/barChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp" />
+
+                <TextView
+                    style="@style/Theme.SugarCare.Poppins_16_bold_onSecondary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="25dp"
+                    android:paddingHorizontal="10dp"
+                    android:text="@string/dummy_bulan_tahun" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="30dp"
+                    android:layout_marginTop="25dp"
+                    android:backgroundTint="@color/teal_green"
+                    app:cardCornerRadius="30dp"
+                    app:cardElevation="10dp">
+
+                    <TextView
+                        style="@style/Theme.SugarCare.Poppins_16_bold_onPrimary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingHorizontal="15dp"
+                        android:paddingVertical="15dp"
+                        android:text="@string/info_bar_monthreport"
+                        android:textAlignment="center" />
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+</FrameLayout>

@@ -9,6 +9,7 @@ import com.pa.sugarcare.models.response.CommonResponse
 import com.pa.sugarcare.models.response.ConsumedProductResponse
 import com.pa.sugarcare.models.response.DataUserToken
 import com.pa.sugarcare.models.response.DetailProductResponse
+import com.pa.sugarcare.models.response.MonthlyChartResponse
 import com.pa.sugarcare.models.response.ProductDataSearchHistory
 import com.pa.sugarcare.models.response.RecProductResponse
 import com.pa.sugarcare.models.response.SearchProductResponse
@@ -112,4 +113,10 @@ interface ApiService {
     suspend fun searchReport(
         @Query("query") query: String
     ): Response<CommonResponse<List<WeeklyListResponse>>>
+
+    @GET("api/report/user/monthly-consumption")
+    suspend fun getMonthlyConsumption(
+        @Query("month") month: String,
+        @Query("year") year: Int
+    ): Response<CommonResponse<List<MonthlyChartResponse>>>
 }

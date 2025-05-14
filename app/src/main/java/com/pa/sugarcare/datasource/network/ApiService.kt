@@ -14,6 +14,7 @@ import com.pa.sugarcare.models.response.ProductDataSearchHistory
 import com.pa.sugarcare.models.response.RecProductResponse
 import com.pa.sugarcare.models.response.SearchProductResponse
 import com.pa.sugarcare.models.response.UserResponse
+import com.pa.sugarcare.models.response.WeeklyChartResponse
 import com.pa.sugarcare.models.response.WeeklyListResponse
 import com.pa.sugarcare.models.response.YearlyChartResponse
 import retrofit2.Response
@@ -115,12 +116,20 @@ interface ApiService {
         @Query("query") query: String
     ): Response<CommonResponse<List<WeeklyListResponse>>>
 
+    //data barchart weekly
+    @GET("api/report/user/consumption/{sugarReportId}")
+    suspend fun getWeeklyConsumption(
+        @Path("sugarReportId") sugarReportId: Int
+    ): Response<CommonResponse<List<WeeklyChartResponse>>>
+
+    //data barchart monthly
     @GET("api/report/user/monthly-consumption")
     suspend fun getMonthlyConsumption(
         @Query("month") month: String,
         @Query("year") year: Int
     ): Response<CommonResponse<List<MonthlyChartResponse>>>
 
+    //data barchart yearly
     @GET("api/report/user/yearly-consumption")
     suspend fun getYearlyConsumption(
         @Query("year") year: Int

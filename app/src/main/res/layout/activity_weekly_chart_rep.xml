@@ -4,9 +4,9 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/background"
     android:fitsSystemWindows="true"
+    android:orientation="vertical"
     tools:context=".presentation.feature.report.weekly.WeeklyChartRepActivity">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -45,12 +45,22 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/teal_green"
+                android:visibility="gone" />
+
             <com.github.mikephil.charting.charts.BarChart
                 android:id="@+id/barChart"
                 android:layout_width="match_parent"
                 android:layout_height="300dp" />
 
             <TextView
+                android:id="@+id/tvMonthYear"
                 style="@style/Theme.SugarCare.Poppins_16_bold_onSecondary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

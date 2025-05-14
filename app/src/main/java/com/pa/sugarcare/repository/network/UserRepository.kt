@@ -9,6 +9,7 @@ import com.pa.sugarcare.models.response.CommonResponse
 import com.pa.sugarcare.models.response.DataUserToken
 import com.pa.sugarcare.models.response.MonthlyChartResponse
 import com.pa.sugarcare.models.response.UserResponse
+import com.pa.sugarcare.models.response.WeeklyChartResponse
 import com.pa.sugarcare.models.response.WeeklyListResponse
 import com.pa.sugarcare.models.response.YearlyChartResponse
 import com.pa.sugarcare.utility.TokenStorage
@@ -71,6 +72,10 @@ class UserRepository {
 
     suspend fun searchReport(query: String): Response<CommonResponse<List<WeeklyListResponse>>> {
         return apiService.searchReport(query)
+    }
+
+    suspend fun getWeeklyConsumption(sugarReportId: Int): Response<CommonResponse<List<WeeklyChartResponse>>> {
+        return apiService.getWeeklyConsumption(sugarReportId)
     }
 
     suspend fun getMonthlyConsumption(month: String, year: Int): Response<CommonResponse<List<MonthlyChartResponse>>> {

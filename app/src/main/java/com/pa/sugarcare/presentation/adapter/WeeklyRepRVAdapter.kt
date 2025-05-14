@@ -32,6 +32,8 @@ class WeeklyRepRVAdapter(
             binding.root.setOnClickListener {
                 val intent = Intent(itemView.context, WeeklyChartRepActivity::class.java)
                 intent.putExtra("REPORT_ID", item.id)
+                intent.putExtra("MONTH", item.month)
+                intent.putExtra("YEAR", item.year)
                 itemView.context.startActivity(intent)
             }
         }

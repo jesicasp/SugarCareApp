@@ -75,9 +75,9 @@
     <string name="dummy_tahun">2024</string>
     <string name="dummy_weeklyrep">01 - 07 Desember 2024</string>
     <string name="dummy_yearlyrep">Tahun 2024</string>
-    <string name="info_bar_weekreport">Warna pada barchart menunjukkan tingkat dominan konsumsi gula pada hari tersebut.</string>
-    <string name="info_bar_monthreport">Warna pada barchart menunjukkan tingkat dominan konsumsi gula pada minggu tersebut.</string>
-    <string name="info_bar_yearreport">Warna pada barchart menunjukkan tingkat dominan konsumsi gula pada bulan tersebut.</string>
+    <string name="info_bar_weekreport">Warna pada barchart menunjukkan tingkat konsumsi gula harian. Hijau berarti aman (≤ 50g), sedangkan merah menunjukkan konsumsi melebihi batas aman (> 50g).</string>
+    <string name="info_bar_monthreport">Warna pada barchart menunjukkan tingkat konsumsi gula harian. Hijau berarti aman, sedangkan merah menunjukkan konsumsi melebihi batas aman pada minggu tersebut.</string>
+    <string name="info_bar_yearreport">Warna pada barchart menunjukkan tingkat konsumsi gula harian. Hijau berarti aman, sedangkan merah menunjukkan konsumsi melebihi batas aman pada bulan tersebut.</string>
     <string name="logout">Logout</string>
     <string name="conf_password">Password confirmation</string>
     <string name="fill_this_field">Please fill this field</string>

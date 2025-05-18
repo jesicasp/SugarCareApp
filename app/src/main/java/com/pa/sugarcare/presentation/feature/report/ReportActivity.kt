@@ -120,6 +120,16 @@ class ReportActivity : AppCompatActivity() {
                 is Resources.Success -> {
                     binding.progressBar.visibility = View.GONE
                     binding.tvUserConsumption.text = result.data.data.toString()
+                    val dailySugar = result.data.data!!.toInt()
+
+                    var colorRes = R.color.teal_green
+                    if (dailySugar >= 50) {
+                        colorRes = R.color.red
+                    } else if (dailySugar >= 25) {
+                        colorRes = R.color.yellow
+                    }
+
+                    binding.cardTodayConsume.setCardBackgroundColor(ContextCompat.getColor(this, colorRes))
                 }
 
                 is Resources.Error -> {

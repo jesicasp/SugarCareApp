@@ -68,11 +68,11 @@
                     android:padding="2dp" />
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cardTodayConsume"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="75dp"
                     android:layout_marginVertical="5dp"
-                    android:backgroundTint="@color/aqua_green"
                     android:elevation="15dp"
                     app:cardCornerRadius="25dp">
 

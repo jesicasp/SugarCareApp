@@ -59,6 +59,8 @@
     <string name="title_alert_greengrade">Sugar Grade : Hijau</string>
     <string name="message_alert_unknowngrade">Kadar gula produk ini tidak diketahui.</string>
     <string name="title_alert_unknowngrade">Sugar Grade : Unknown</string>
+    <string name="message_alert_warngrade">Jika kamu mengonsumsi produk ini, total konsumsi gulamu hari ini akan melebihi batas harian yang disarankan (50 gram). Pertimbangkan kembali sebelum melanjutkan.</string>
+    <string name="title_alert_warngrade">Peringatan Konsumsi Gula Berlebih</string>
     <string name="appbar_report">Report Konsumsi Gula</string>
     <string name="appbar_weekly_report">Weekly Report</string>
     <string name="appbar_monthly_report">Monthly Report</string>

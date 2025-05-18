@@ -14,6 +14,7 @@ import com.pa.sugarcare.R
 import com.pa.sugarcare.databinding.FragmentSugarGradeBinding
 import com.pa.sugarcare.models.request.ConsumeProductRequest
 import com.pa.sugarcare.presentation.feature.MainActivity
+import com.pa.sugarcare.presentation.feature.sugargrade.alert.WarningAlertFragment
 import com.pa.sugarcare.presentation.feature.sugargrade.vm.SugarGradeViewModel
 import com.pa.sugarcare.repository.di.CommonVmInjector
 import com.pa.sugarcare.utility.Resources
@@ -51,6 +52,7 @@ class SugarGradeFragment : Fragment() {
         observeDetailProduct()
         setupConsumeButton()
         observePostConsume()
+        observeSugarTodayResult()
 
     }
 
@@ -63,11 +65,64 @@ class SugarGradeFragment : Fragment() {
 
     private fun setupConsumeButton() {
         binding.btnConsume.setOnClickListener {
-            Toast.makeText(requireContext(), "Produk berhasil dikonsumsi!", Toast.LENGTH_SHORT)
-                .show()
-            postConsumeProduct(productId)
+            getTodaySugarConsumption()
         }
     }
+
+    private fun getTodaySugarConsumption() {
+        viewModel.getTodaySugarCons()
+    }
+
+    private fun observeSugarTodayResult() {
+        viewModel.todaySugarCons.observe(viewLifecycleOwner) { result ->
+            when (result) {
+                is Resources.Loading -> {
+                    binding.progressBar.visibility = View.VISIBLE
+                }
+
+                is Resources.Success -> {
+                    binding.progressBar.visibility = View.GONE
+                    val currentDailyConsumption = result.data.data
+                    val upcomingProductConsumption =
+                        when (val gramProductRes = viewModel.gramProduct.value) {
+                            is Resources.Success -> gramProductRes.data.toDouble()
+                            else -> 0.0
+                        }
+                    val totalConsumptionIfAdded =
+                        currentDailyConsumption!! + upcomingProductConsumption
+
+                    if (totalConsumptionIfAdded > 50) {
+                        showAlert("warning", currentDailyConsumption, upcomingProductConsumption)
+                    } else {
+                        Toast.makeText(
+                            requireContext(),
+                            "Produk berhasil dikonsumsi!",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        postConsumeProduct(productId)
+                    }
+                }
+
+                is Resources.Error -> {
+                    binding.progressBar.visibility = View.GONE
+                    Log.e(TAG, result.error)
+                }
+            }
+        }
+    }
+
+    private fun showAlert(color: String, todayConsumption: Double, productGram: Double) {
+        val dialog = WarningAlertFragment.newInstance(color, todayConsumption, productGram)
+        dialog.setOnAlertConfirmedListener(object : WarningAlertFragment.OnAlertConfirmedListener {
+            override fun onAlertConfirmed() {
+                Toast.makeText(requireContext(), "Produk berhasil dikonsumsi!", Toast.LENGTH_SHORT)
+                    .show()
+                postConsumeProduct(productId)
+            }
+        })
+        dialog.show(parentFragmentManager, "GRADE_ALERT")
+    }
+
 
     private fun getDetailProduct(productId: Int) {
         viewModel.getDetailProduct(productId)

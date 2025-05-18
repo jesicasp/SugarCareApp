@@ -10,10 +10,11 @@ import com.pa.sugarcare.models.response.CommonResponse
 import com.pa.sugarcare.models.response.DetailProductResponse
 import com.pa.sugarcare.models.response.RecProductResponse
 import com.pa.sugarcare.repository.network.ProductRepository
+import com.pa.sugarcare.repository.network.UserRepository
 import com.pa.sugarcare.utility.Resources
 import kotlinx.coroutines.launch
 
-class SugarGradeViewModel(private val productRepository: ProductRepository) : ViewModel() {
+class SugarGradeViewModel(private val productRepository: ProductRepository, private val userRepository: UserRepository) : ViewModel() {
     private val _detailProduct = MutableLiveData<Resources<CommonResponse<DetailProductResponse>>>()
     val detailProduct: LiveData<Resources<CommonResponse<DetailProductResponse>>> = _detailProduct
 
@@ -25,6 +26,16 @@ class SugarGradeViewModel(private val productRepository: ProductRepository) : Vi
     val listRecProduct: LiveData<Resources<CommonResponse<List<RecProductResponse>>>> =
         _listRecProduct
 
+    private val _todaySugarCons =
+        MutableLiveData<Resources<CommonResponse<Double?>>>()
+    val todaySugarCons: LiveData<Resources<CommonResponse<Double?>>> =
+        _todaySugarCons
+
+    private val _gramProduct = MutableLiveData<Resources<Int>>()
+    val gramProduct: LiveData<Resources<Int>> =_gramProduct
+
+
+
     fun getDetailProduct(id: Int) {
         viewModelScope.launch {
             _detailProduct.postValue(Resources.Loading)
@@ -35,6 +46,8 @@ class SugarGradeViewModel(private val productRepository: ProductRepository) : Vi
 
                 if (response.isSuccessful && response.body() != null) {
                     _detailProduct.postValue(Resources.Success(response.body()!!))
+                    _gramProduct.postValue(Resources.Success(response.body()!!.data!!.grSugarContent))
+
                 } else {
                     val errorMessage = response.errorBody()?.string() ?: "Unknown error"
                     Log.e(TAG, "Error body: $errorMessage")
@@ -86,6 +99,28 @@ class SugarGradeViewModel(private val productRepository: ProductRepository) : Vi
             } catch (e: Exception) {
                 Log.e(TAG, "Exception occurred: ${e.message}")
                 _listRecProduct.postValue(Resources.Error(e.message ?: "Unexpected error occurred"))
+            }
+        }
+    }
+
+    fun getTodaySugarCons() {
+        viewModelScope.launch {
+            _todaySugarCons.postValue(Resources.Loading)
+            try {
+                val response = userRepository.getTodaySugarConsumed()
+                Log.d(TAG, "Product ID: ${response.body()?.data}")
+                Log.e(TAG, "Response code: ${response.code()}")
+
+                if (response.isSuccessful && response.body() != null) {
+                    _todaySugarCons.postValue(Resources.Success(response.body()!!))
+                } else {
+                    val errorMessage = response.errorBody()?.string() ?: "Unknown error"
+                    Log.e(TAG, "Error body: $errorMessage")
+                    _todaySugarCons.postValue(Resources.Error("Get failed: $errorMessage"))
+                }
+            } catch (e: Exception) {
+                Log.e(TAG, "Exception occurred: ${e.message}")
+                _todaySugarCons.postValue(Resources.Error(e.message ?: "Unexpected error occurred"))
             }
         }
     }

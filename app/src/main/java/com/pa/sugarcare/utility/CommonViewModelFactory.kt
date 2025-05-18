@@ -63,7 +63,7 @@ class CommonViewModelFactory(
             }
 
             SugarGradeViewModel::class.java -> {
-                SugarGradeViewModel(productRepo) as T
+                SugarGradeViewModel(productRepo, userRepo) as T
             }
 
             ReportViewModel::class.java -> {

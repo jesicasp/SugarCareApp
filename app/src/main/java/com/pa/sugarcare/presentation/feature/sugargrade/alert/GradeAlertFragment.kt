@@ -2,17 +2,29 @@ package com.pa.sugarcare.presentation.feature.sugargrade.alert
 
 import android.app.AlertDialog
 import android.app.Dialog
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import com.pa.sugarcare.R
-import android.content.Context
-import androidx.core.content.ContextCompat
 
 class GradeAlertFragment : DialogFragment() {
+
+
+    interface OnAlertConfirmedListener {
+        fun onAlertConfirmed()
+    }
+
+    private var listener: OnAlertConfirmedListener? = null
+
+    fun setOnAlertConfirmedListener(listener: OnAlertConfirmedListener) {
+        this.listener = listener
+    }
+
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
@@ -20,7 +32,7 @@ class GradeAlertFragment : DialogFragment() {
 
             val colorString = arguments?.getString(ARG_COLOR) ?: "red"
 
-            val titleColor = getColorFromString(requireContext(),colorString)
+            val titleColor = getColorFromString(requireContext(), colorString)
             val (titleText, messageText) = getTitleAndMessage(requireContext(), colorString)
 
             val title = SpannableString(titleText)
@@ -33,11 +45,15 @@ class GradeAlertFragment : DialogFragment() {
 
             builder.setTitle(title)
                 .setMessage(messageText)
-                .setPositiveButton("Ok") { dialog, _ -> dialog.dismiss() }
+                .setPositiveButton("Ok") { dialog, _ ->
+                    listener?.onAlertConfirmed()
+                    dialog.dismiss()
+                }
 
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
     }
+
 
     companion object {
         private const val ARG_COLOR = "color"

@@ -60,6 +60,8 @@ dependencies {
     implementation(libs.androidx.recyclerview)
     implementation(libs.tensorflow.lite.support)
     implementation(libs.tensorflow.lite.metadata)
+//    implementation(libs.litert.support.api)
+//    implementation(libs.androidx.camera.core)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -99,5 +101,6 @@ dependencies {
     //EncryptedSharedPreferences
     implementation(libs.security.crypto)
 
+    implementation(libs.tensorflow.lite.task.vision)
 
 }

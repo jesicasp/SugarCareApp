@@ -1,0 +1,92 @@
+10_Buavita-orange-juice
+11_Cimory-Fresh-Milk-Almond
+12_Cimory-Yogurt-Drink-Strawberry
+13_Ichitan Thai Milk Green Tea
+14_Frisian-Flag-Ketan-Hitam
+15_Golda-Coffee-Dolce-Latte
+16_Good-Day-Originale-Cappucino
+17_YOU-C1000-Lemon
+18_Good-Day-Funtastic-Mocacinno
+19_Coca-Cola-Zero-Sugar
+1_teh-botol-less-sugar
+20_Greenfields-Caffe-Latte
+21_Teh-Kotak-Melati-Less-Sugar
+22_Coca-Cola
+23_Fanta
+24_Sprite
+25_Inaco-Im-Coco-Lychee
+26_Teh-pucuk
+27_Hydro-Coco-Original
+28_Susu-Frisian-Flag-NUTRIBRAIN-CHOCOLATE
+29_CLEVO-UHT-MILK-COKLAT
+2_golda-coffee-cappucino
+30_Buavita-Jambu
+31_ABC-Mangga
+32_ABC-Jambu
+33_ABC-Jeruk
+34_Nipis-Madu
+35_Ultra Milk Strawberry
+36_Frisian Flag Full Cream
+37_Floridina Orange
+38_Yupi Choco Glee
+39_Dilan Bon Bon Milk Chocolate
+3_you-c1000-orange
+40_Nabati Wafer Richeese
+41_SIMBA CHOCO Chips CUP Chocolate Flavor
+42_SIMBA CHOCO Chips CUP Strawberry Flavor
+43_Pocky Chocolate Flavour
+44_Lemonilo Brownies Crispy Strawberry Cheese
+45_Nyam nyam fantasy stick
+46_Malkist Cokelat Kelapa
+47_Choco Strawberry Flavor
+48_Marry Queen Chocolate Cashew Nut
+49_Choco Chocolate Flavor
+4_oatside-chocolate
+50_Pota Bee Grilled Seaweed
+51_Sponge Strawberry Flavor
+52_Apollo Checker Wafer Chocolate - Strawberry
+53_Kraft Keju Cake
+54_Chocolatos Vanilla Flavour
+55_Aice Chocolate crispy
+56_Sandwich Biscuit Coka Peanut Cream
+57_Momogi Mini Stick Roasted Corn
+58_YALE Snack Stick Bulat Coklat
+59_Momogi Malkist Crackers
+5_abc-choco-malt-coffee
+60_Yale Yale Rice Crispy
+61_MOMOGI Cokelat Stick
+62_Migi Migi Wafer krim vanilla cokelat 
+63_Migi Migi Wafer krim vanilla strawberry
+64_Momogi TWIST Roasted Corn
+65_Momogi Nugget Snack Jagung Bakar Pedas
+66_Momogi Corn Stick Roasted Corn Flavor
+67_Kalpa Wafer Cokelat Kelapa
+68_Chocolatos chocolate flavor
+69_AOKA Roti Bun Isian Vanilla panggang
+6_abc-kopi-susu
+70_AOKA Roti Bun Isian cokelat panggang
+71_Tango Wafer Vanilla Delight
+72_Migi migi wafer krim keju
+73_Padimas cream cake pandan
+74_Padimas cream cake strawberry
+75_INACO I'm Coco Strawberry
+76_Kopiko lucky day thai coffee drink
+77_Delizio Caffino Milky Espresso
+78_Delizio Caffino Spanish Latte
+79_Delizio Caffino Oat Marie Latte
+7_ABC-Sari-Kacang-Ijo
+80_Milku Made With Belgian Cow Susu Uht Cokelat
+81_Amo Spark Cola
+82_Better Sandwich Biscuit Vanilla Cream
+83_Selamat Chocolate Sandwich Wafer
+84_Superstar Full Chocolate
+85_ABC Minuman Soya
+86_Lemonia Lemon Flavored Biscuit
+87_AMO Lemon C Minuman Soda
+88_Chi Forest Sparkling Water White Peach
+89_Collagena Susu Steril
+8_Bear-brand
+90_Cool Time Air Kelapa
+91_Frestea Madu
+92_Fruit tea apple
+9_Buavita-mango-juice

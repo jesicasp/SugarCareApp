@@ -24,7 +24,7 @@ class ConsumptionProductAdapter(
         fun bind(item: ConsumedProductResponse) {
             binding.txtDate.text = formatDate(item.date)
             binding.txtProductName.text = item.productName
-            binding.txtSugar.text = "Gula ${item.grSugarConsumed.toInt()}g"
+            binding.txtSugar.text = "Gula ${item.grSugarConsumed}g"
             binding.txtMl.text = item.amountConsumed
             binding.txtSugarGrade.text = item.sugarGrade
 

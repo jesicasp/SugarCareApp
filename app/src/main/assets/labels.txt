@@ -1,28 +1,49 @@
-10_Buavita-orange-juice
-11_Cimory-Fresh-Milk-Almond
-12_Cimory-Yogurt-Drink-Strawberry
+100_Delfi Chocolate Wafer Top Triple Choc
+101_Delfi TOP Chocolate Extra Large
+102_Nextar Nastar Pineapple 
+103_Oreo Softcake
+104_Biskuat Biskuit Chocolate Regular
+105_Biskuat Biskuit Original Regular
+106_Kellogg's Corn Flakes Honey Crunch
+107_Nestle Sereal Cup Honey Stars
+108_Nestle Sereal Cup Milo
+109_SIMBA CHOCO Chips CUP Chocolate Flavor dengan Susu
+10_Buavita Orange Juice
+110_Nestle Sereal Cup Koko Crunch
+111_Richoco Nabati Wafer White
+112_Yupi Bolicious Strawberry
+113_Yupi Strawberry Kiss
+114_Yupi Bolicious Wild Blackberry
+115_Ultra Milk Cokelat
+116_Frisian Flag Energo+ Mixed Berries
+117_Ultra Milk Strawberry
+118_Sajuak Air Mineral
+119_Nano Nano Rasa Rujak Nanas
+11_Cimory Fresh Milk Almond
+120_Fiesta Sosis Ready To Go Saus Pedas Korea
+12_Cimory Yogurt Drink Strawberry
 13_Ichitan Thai Milk Green Tea
-14_Frisian-Flag-Ketan-Hitam
+14_Chocolatos Drink Botol
 15_Golda-Coffee-Dolce-Latte
 16_Good-Day-Originale-Cappucino
 17_YOU-C1000-Lemon
 18_Good-Day-Funtastic-Mocacinno
 19_Coca-Cola-Zero-Sugar
 1_teh-botol-less-sugar
-20_Greenfields-Caffe-Latte
+20_Nutriboost Strawberry
 21_Teh-Kotak-Melati-Less-Sugar
-22_Coca-Cola
+22_Coca Cola
 23_Fanta
 24_Sprite
 25_Inaco-Im-Coco-Lychee
-26_Teh-pucuk
+26_Teh Pucuk
 27_Hydro-Coco-Original
-28_Susu-Frisian-Flag-NUTRIBRAIN-CHOCOLATE
+28_Susu Frisian Flag Nutribrain Chocolate
 29_CLEVO-UHT-MILK-COKLAT
 2_golda-coffee-cappucino
-30_Buavita-Jambu
+30_Buavita Jambu
 31_ABC-Mangga
-32_ABC-Jambu
+32_ABC Jambu
 33_ABC-Jeruk
 34_Nipis-Madu
 35_Ultra Milk Strawberry
@@ -30,15 +51,15 @@
 37_Floridina Orange
 38_Yupi Choco Glee
 39_Dilan Bon Bon Milk Chocolate
-3_you-c1000-orange
+3_You C1000 Orange
 40_Nabati Wafer Richeese
 41_SIMBA CHOCO Chips CUP Chocolate Flavor
 42_SIMBA CHOCO Chips CUP Strawberry Flavor
 43_Pocky Chocolate Flavour
 44_Lemonilo Brownies Crispy Strawberry Cheese
-45_Nyam nyam fantasy stick
+45_Nyam nyam fantasy stick strawberry
 46_Malkist Cokelat Kelapa
-47_Choco Strawberry Flavor
+47_Cho cho Strawberry Flavor
 48_Marry Queen Chocolate Cashew Nut
 49_Choco Chocolate Flavor
 4_oatside-chocolate
@@ -52,7 +73,7 @@
 57_Momogi Mini Stick Roasted Corn
 58_YALE Snack Stick Bulat Coklat
 59_Momogi Malkist Crackers
-5_abc-choco-malt-coffee
+5_Tujuh Kurma Susu Steril Kurma
 60_Yale Yale Rice Crispy
 61_MOMOGI Cokelat Stick
 62_Migi Migi Wafer krim vanilla cokelat 
@@ -63,7 +84,7 @@
 67_Kalpa Wafer Cokelat Kelapa
 68_Chocolatos chocolate flavor
 69_AOKA Roti Bun Isian Vanilla panggang
-6_abc-kopi-susu
+6_ABC Kopi Susu
 70_AOKA Roti Bun Isian cokelat panggang
 71_Tango Wafer Vanilla Delight
 72_Migi migi wafer krim keju
@@ -88,5 +109,12 @@
 8_Bear-brand
 90_Cool Time Air Kelapa
 91_Frestea Madu
-92_Fruit tea apple
-9_Buavita-mango-juice
+92_Fruit Tea Apple
+93_Soy Master Minuman Soya
+94_Frisian Flag Nutribrain stroberi
+95_Nabati Wafer chocolate
+96_Unibis Bon Bon Chocolate Cream Biscuits
+97_Kellogg's Froot Loops
+98_Cho Cho Chocolate Egg Telur Surprise Toy
+99_Delfi TOP Black In White
+9_Buavita Mango Juice

@@ -22,7 +22,11 @@ class ProductAdapter(
         fun bind(item: DataItem) {
             binding.txtProductName.text = item.name
             binding.txtSugar.text = "Gula ${item.grSugarContent}g"
-            binding.txtMl.text = "${item.netWeight} ml"
+            binding.txtMl.text = when (item.category) {
+                "food" -> "${item.servSize} g"
+                "drink" -> "${item.servSize} ml"
+                else -> "${item.servSize}"
+            }
             binding.txtSugarGrade.text = item.sugarGrade
 
             Glide.with(binding.ivProductImage.context)

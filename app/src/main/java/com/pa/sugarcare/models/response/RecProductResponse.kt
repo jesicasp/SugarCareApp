@@ -17,7 +17,7 @@ import com.google.gson.annotations.SerializedName
 	val name: String,
 
 	@field:SerializedName("gr_sugar_content")
-	val grSugarContent: Int,
+	val grSugarContent: Double,
 
 	@field:SerializedName("net_weight")
 	val netWeight: String

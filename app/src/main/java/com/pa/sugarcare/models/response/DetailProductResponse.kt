@@ -26,13 +26,13 @@ import com.google.gson.annotations.SerializedName
 	val id: Int,
 
 	@field:SerializedName("gr_sugar_content")
-	val grSugarContent: Int,
+	val grSugarContent: Double,
 
 	@field:SerializedName("category")
 	val category: String,
 
 	@field:SerializedName("net_weight")
-	val netWeight: Int
+	val netWeight: Double
 )
 
  class VariansItem(

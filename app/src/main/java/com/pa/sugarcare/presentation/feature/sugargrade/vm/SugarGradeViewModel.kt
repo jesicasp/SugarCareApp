@@ -31,8 +31,8 @@ class SugarGradeViewModel(private val productRepository: ProductRepository, priv
     val todaySugarCons: LiveData<Resources<CommonResponse<Double?>>> =
         _todaySugarCons
 
-    private val _gramProduct = MutableLiveData<Resources<Int>>()
-    val gramProduct: LiveData<Resources<Int>> =_gramProduct
+    private val _gramProduct = MutableLiveData<Resources<Double>>()
+    val gramProduct: LiveData<Resources<Double>> =_gramProduct
 
 
 

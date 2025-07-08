@@ -28,12 +28,20 @@ import com.google.gson.annotations.SerializedName
 	@field:SerializedName("name")
 	val name: String,
 
+	@field:SerializedName("category")
+	val category: String,
+
 	@field:SerializedName("id")
 	val id: Int,
 
 	@field:SerializedName("gr_sugar_content")
-	val grSugarContent: Int,
+	val grSugarContent: Double,
 
 	@field:SerializedName("net_weight")
-	val netWeight: Int
+	val netWeight: Double,
+
+	@field:SerializedName("serving_size_ml")
+	val servSize: Double,
+
+
 )

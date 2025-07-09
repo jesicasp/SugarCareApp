@@ -95,10 +95,6 @@ class CommonViewModelFactory(
                 WeeklyChartRepVm(userRepo) as T
             }
 
-            HomeViewModel::class.java -> {
-                HomeViewModel(productRepo) as T
-            }
-
             else -> throw IllegalArgumentException("Class does't match")
         }
     }

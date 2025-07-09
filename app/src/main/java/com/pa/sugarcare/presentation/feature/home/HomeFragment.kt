@@ -13,7 +13,6 @@ import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import com.pa.sugarcare.databinding.FragmentHomeBinding
 import com.pa.sugarcare.presentation.feature.home.screen.Information1
 import com.pa.sugarcare.presentation.feature.home.screen.Information2
@@ -22,9 +21,7 @@ import com.pa.sugarcare.presentation.feature.onboarding.OnBoardingViewPagerAdapt
 import com.pa.sugarcare.presentation.feature.report.ReportActivity
 import com.pa.sugarcare.presentation.feature.searchproduct.SearchProductActivity
 import com.pa.sugarcare.presentation.feature.sugargrade.ProductResultActivity
-import com.pa.sugarcare.repository.di.CommonVmInjector
 import com.pa.sugarcare.utility.ImageClassifierHelper
-import com.pa.sugarcare.utility.Resources
 
 
 class HomeFragment : Fragment() {
@@ -37,9 +34,6 @@ class HomeFragment : Fragment() {
         Information2(),
         Information3()
     )
-//    private val viewModel: HomeViewModel by viewModels {
-//        CommonVmInjector.common(requireContext())
-//    }
 
     private var currentImageUri: Uri? = null
 
@@ -130,14 +124,6 @@ class HomeFragment : Fragment() {
             null
         }
     }
-
-
-
-
-    private fun getProductGrade(): String {
-        return "red"
-    }
-
 
     private fun setupSearchBar() {
         with(binding) {

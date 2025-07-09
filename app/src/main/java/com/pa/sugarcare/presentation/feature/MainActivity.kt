@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -14,6 +15,8 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.pa.sugarcare.R
 import com.pa.sugarcare.databinding.ActivityMainBinding
+import com.pa.sugarcare.presentation.feature.sugargrade.ProductResultActivity
+import com.pa.sugarcare.utility.ImageClassifierHelper
 
 
 class MainActivity : AppCompatActivity() {
@@ -62,7 +65,20 @@ class MainActivity : AppCompatActivity() {
                 if (result.resultCode == Activity.RESULT_OK) {
                     val imageBitmap = result.data?.extras?.get("data") as Bitmap?
                     imageBitmap?.let {
-                        // TODO: Handle imageBitmap
+                        // Inisialisasi ImageClassifierHelper
+                        val imageClassifierHelper = ImageClassifierHelper(this)
+
+                        // Jalankan klasifikasi
+                        val result = imageClassifierHelper.classifyImage(imageBitmap)
+
+                        // Tampilkan hasil
+                        //Toast.makeText(context, result, Toast.LENGTH_LONG).show()
+                        Log.d("CLASSIFY_RESULT", result)
+                        val productId = result.toInt()
+
+                        val intent = Intent(this, ProductResultActivity::class.java)
+                        intent.putExtra("PRODUCT_ID", productId)
+                        startActivity(intent)
                     }
                 }
             }
@@ -74,19 +90,16 @@ class MainActivity : AppCompatActivity() {
         binding.navView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.navigation_camera -> {
-                    binding.fabHistory.hide()
                     openCamera()
                     true
                 }
 
                 R.id.navigation_home -> {
-                    binding.fabHistory.show()
                     navController.navigate(item.itemId)
                     true
                 }
 
                 else -> {
-                    binding.fabHistory.hide()
                     navController.navigate(item.itemId)
                     true
                 }

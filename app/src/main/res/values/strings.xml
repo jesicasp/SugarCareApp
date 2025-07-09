@@ -90,4 +90,23 @@
     <string name="edit_profil">Edit Profil</string>
     <string name="done">Done</string>
     <string name="image_classifier_failed">Image classifier failed to initialize. See error logs for details</string>
+    <string name="sugargradedef">Sugar Grade adalah sistem penilaian kadar gula pada minuman, dibagi menjadi 3 kategori: Hijau (rendah), Kuning (sedang), dan Merah (tinggi). Tujuannya adalah membantu Anda memilih minuman yang lebih sehat dan mencegah konsumsi gula berlebihan.</string>
+    <string name="hijau">Hijau</string>
+    <string name="kuning">Kuning</string>
+    <string name="merah">Merah</string>
+    <string name="rendah">Rendah</string>
+    <string name="sedang">Sedang</string>
+    <string name="tinggi">Tinggi</string>
+    <string name="tabel_kriteria_minuman">Tabel Kriteria untuk Minuman Kemasan</string>
+    <string name="hijau_drink">≤ 2.5 gram gula per 100 mL</string>
+    <string name="kuning_drink"><![CDATA[> 2.5 – 11.25 gram gula per 100 mL]]></string>
+    <string name="merah_drink"><![CDATA[> 11.25 gram gula per 100 mL atau > 13.5 gram per porsi (berlaku untuk ukuran sajian > 150 mL)]]></string>
+    <string name="hijau_food">≤ 5.0 gram gula per 100 gram</string>
+    <string name="kuning_food"><![CDATA[> 5.0 – 22.5 gram gula per 100 gram]]></string>
+    <string name="merah_food"><![CDATA[> 22.5 gram gula per 100 gram atau> 27 gram per porsi (berlaku untuk ukuran sajian > 100 gram)]]></string>
+    <string name="warna">Warna</string>
+    <string name="kategori">Kategori</string>
+    <string name="kriteria">Kriteria</string>
+    <string name="kriteria_makanan_kemasan">Tabel Kriteria untuk Makanan Kemasan</string>
+
 </resources>

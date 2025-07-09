@@ -19,6 +19,7 @@ import com.pa.sugarcare.presentation.feature.home.screen.Information2
 import com.pa.sugarcare.presentation.feature.home.screen.Information3
 import com.pa.sugarcare.presentation.feature.onboarding.OnBoardingViewPagerAdapter
 import com.pa.sugarcare.presentation.feature.report.ReportActivity
+import com.pa.sugarcare.presentation.feature.scinfo.SugarInfoActivity
 import com.pa.sugarcare.presentation.feature.searchproduct.SearchProductActivity
 import com.pa.sugarcare.presentation.feature.sugargrade.ProductResultActivity
 import com.pa.sugarcare.utility.ImageClassifierHelper
@@ -70,6 +71,22 @@ class HomeFragment : Fragment() {
             goToReport()
         }
 
+        binding.cvMenuInfo.setOnClickListener {
+            goToInfo()
+        }
+
+        binding.btnMenu1.setOnClickListener {
+            startGallery()
+        }
+
+        binding.btnMenu2.setOnClickListener {
+            goToInfo()
+        }
+
+        binding.btnMenu3.setOnClickListener {
+            goToReport()
+        }
+
         setupSearchBar()
 
     }
@@ -80,6 +97,11 @@ class HomeFragment : Fragment() {
 
     private fun goToReport() {
         val intent = Intent(requireContext(), ReportActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun goToInfo() {
+        val intent = Intent(requireContext(), SugarInfoActivity::class.java)
         startActivity(intent)
     }
 

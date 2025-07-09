@@ -52,7 +52,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/dots_indicator" />
 
-        <!-- MENU 1 -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cvMenuOpenGallery"
             android:layout_width="match_parent"

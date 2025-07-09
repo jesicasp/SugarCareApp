@@ -2,6 +2,7 @@ package com.pa.sugarcare.utility
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.pa.sugarcare.presentation.feature.home.HomeViewModel
 import com.pa.sugarcare.presentation.feature.report.vm.MonthlyChartRepVm
 import com.pa.sugarcare.presentation.feature.report.vm.MonthlyRepVm
 import com.pa.sugarcare.presentation.feature.report.vm.ReportViewModel
@@ -92,6 +93,10 @@ class CommonViewModelFactory(
 
             WeeklyChartRepVm::class.java -> {
                 WeeklyChartRepVm(userRepo) as T
+            }
+
+            HomeViewModel::class.java -> {
+                HomeViewModel(productRepo) as T
             }
 
             else -> throw IllegalArgumentException("Class does't match")

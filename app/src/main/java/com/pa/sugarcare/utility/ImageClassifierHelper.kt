@@ -119,7 +119,8 @@ class ImageClassifierHelper(private val context: Context) {
 
             // Mapping hasil ke label
             return if (maxIndex < labels.size) {
-                "${labels[maxIndex]} (${String.format("%.2f", confidence)}%)"
+                //"${labels[maxIndex]} (${String.format("%.2f", confidence)}%)"
+                labels[maxIndex]
             } else {
                 Log.w(TAG, "maxIndex $maxIndex out of bounds for label size ${labels.size}")
                 "Unknown object"

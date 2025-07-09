@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.pa.sugarcare.databinding.FragmentHomeBinding
 import com.pa.sugarcare.presentation.feature.home.screen.Information1
 import com.pa.sugarcare.presentation.feature.home.screen.Information2
@@ -20,7 +21,10 @@ import com.pa.sugarcare.presentation.feature.home.screen.Information3
 import com.pa.sugarcare.presentation.feature.onboarding.OnBoardingViewPagerAdapter
 import com.pa.sugarcare.presentation.feature.report.ReportActivity
 import com.pa.sugarcare.presentation.feature.searchproduct.SearchProductActivity
+import com.pa.sugarcare.presentation.feature.sugargrade.ProductResultActivity
+import com.pa.sugarcare.repository.di.CommonVmInjector
 import com.pa.sugarcare.utility.ImageClassifierHelper
+import com.pa.sugarcare.utility.Resources
 
 
 class HomeFragment : Fragment() {
@@ -33,6 +37,9 @@ class HomeFragment : Fragment() {
         Information2(),
         Information3()
     )
+//    private val viewModel: HomeViewModel by viewModels {
+//        CommonVmInjector.common(requireContext())
+//    }
 
     private var currentImageUri: Uri? = null
 
@@ -81,64 +88,6 @@ class HomeFragment : Fragment() {
         val intent = Intent(requireContext(), ReportActivity::class.java)
         startActivity(intent)
     }
-//
-//    private val launcherGallery = registerForActivityResult(
-//        ActivityResultContracts.PickVisualMedia()
-//    ) { uri: Uri? ->
-//        if (uri != null) {
-//            currentImageUri = uri
-//
-//            imageClassifierHelper = com.pa.sugarcare.utility.ImageClassifierHelper(
-//                context = requireContext(),
-//                classifierListener = object : com.pa.sugarcare.utility.ImageClassifierHelper.ClassifierListener {
-//                    override fun onError(error: String) {
-//                        viewLifecycleOwner.lifecycleScope.launch {
-//                            Toast.makeText(requireContext(), error, Toast.LENGTH_SHORT).show()
-//                        }
-//                    }
-//
-//                    override fun onResults(results: List<Classifications>?, inferenceTime: Long) {
-//                        viewLifecycleOwner.lifecycleScope.launch {
-//                            results?.let { it ->
-//                                if (it.isNotEmpty() && it[0].categories.isNotEmpty()) {
-//                                    val sortedCategories =
-//                                        it[0].categories.sortedByDescending { it?.score }
-//                                    val displayResult =
-//                                        sortedCategories.joinToString("\n") {
-//                                            "${it.label} " + NumberFormat.getPercentInstance()
-//                                                .format(it.score).trim()
-//                                        }
-////                                    binding.tvResult.text = displayResult
-////                                    binding.tvInferenceTime.text = "$inferenceTime ms"
-//                                } else {
-////                                    binding.tvResult.text = ""
-////                                    binding.tvInferenceTime.text = ""
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//            )
-//            try {
-//                imageClassifierHelper.classifyImage(currentImageUri!!)
-//            } catch (e: Exception) {
-//                Log.e("Classifier", "Error classifying image", e)
-//                Toast.makeText(requireContext(), "Failed to classify image", Toast.LENGTH_SHORT)
-//                    .show()
-//            }
-//
-//
-////            val productGrade = getProductGrade()
-//            Log.d("Photo Picker", "Uri + $currentImageUri")
-////            Log.d("Sugar Grade", "grade : + $productGrade")
-////            val intent = Intent(requireContext(), ProductResultActivity::class.java)
-////            intent.putExtra(ProductResultActivity.IMAGE_URI, currentImageUri.toString())
-////            intent.putExtra(ProductResultActivity.PRODUCT_GRADE, productGrade)
-////            startActivity(intent)
-//        } else {
-//            Log.d("Photo Picker", "No media selected")
-//        }
-//    }
 
     private val launcherGallery = registerForActivityResult(
         ActivityResultContracts.PickVisualMedia()
@@ -160,8 +109,14 @@ class HomeFragment : Fragment() {
             val result = imageClassifierHelper.classifyImage(bitmap)
 
             // Tampilkan hasil
-            Toast.makeText(context, result, Toast.LENGTH_LONG).show()
+            //Toast.makeText(context, result, Toast.LENGTH_LONG).show()
             Log.d("CLASSIFY_RESULT", result)
+            val productId = result.toInt()
+
+            val intent = Intent(requireActivity(), ProductResultActivity::class.java)
+            intent.putExtra("PRODUCT_ID", productId)
+            startActivity(intent)
+
         }
     }
 
@@ -177,9 +132,12 @@ class HomeFragment : Fragment() {
     }
 
 
+
+
     private fun getProductGrade(): String {
         return "red"
     }
+
 
     private fun setupSearchBar() {
         with(binding) {
@@ -193,5 +151,9 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    companion object {
+        private const val TAG = "HomeFragment"
     }
 }

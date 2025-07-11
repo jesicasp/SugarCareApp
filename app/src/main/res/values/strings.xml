@@ -120,5 +120,6 @@
     <string name="submit">Kirim</string>
     <string name="food">Food</string>
     <string name="drink">Drink</string>
+    <string name="sproduct_errormessage">Silakan ambil gambar terlebih dahulu</string>
 
 </resources>

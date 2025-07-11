@@ -1,5 +1,6 @@
 package com.pa.sugarcare.presentation.feature.searchproduct
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -16,6 +17,7 @@ import com.pa.sugarcare.databinding.ActivitySearchProductBinding
 import com.pa.sugarcare.models.response.DataItem
 import com.pa.sugarcare.presentation.adapter.ProductAdapter
 import com.pa.sugarcare.presentation.feature.searchproduct.vm.SearchProductViewModel
+import com.pa.sugarcare.presentation.feature.suggestproduct.SuggestProductActivity
 import com.pa.sugarcare.repository.di.CommonVmInjector
 import com.pa.sugarcare.utility.Resources
 
@@ -40,6 +42,7 @@ class SearchProductActivity : AppCompatActivity() {
         listProduct()
         setupSearch()
         observeSearchResults()
+        addSuggestProduct()
 
         viewModel.productsResult.observe(this) { resource ->
             when (resource) {
@@ -47,9 +50,11 @@ class SearchProductActivity : AppCompatActivity() {
                     val products = resource.data.data
                     setListProduct(products)
                 }
+
                 is Resources.Error -> {
                     Toast.makeText(this, "Gagal memuat produk", Toast.LENGTH_SHORT).show()
                 }
+
                 is Resources.Loading -> {
                     binding.progressBar.visibility = View.VISIBLE
 
@@ -64,6 +69,13 @@ class SearchProductActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+    }
+
+    private fun addSuggestProduct() {
+        binding.fabHistory.setOnClickListener {
+            val intent = Intent(this, SuggestProductActivity::class.java)
+            startActivity(intent)
         }
     }
 
@@ -146,13 +158,17 @@ class SearchProductActivity : AppCompatActivity() {
                     if (dataList.isNotEmpty()) {
                         showRec(dataList)
                     } else {
-                        Toast.makeText(this, "Tidak ada produk ditemukan", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Tidak ada produk ditemukan", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }
+
                 is Resources.Error -> {
                     binding.progressBar.visibility = View.GONE
-                    Toast.makeText(this, "Gagal memuat data: ${result.error}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Gagal memuat data: ${result.error}", Toast.LENGTH_SHORT)
+                        .show()
                 }
+
                 is Resources.Loading -> {
                     binding.progressBar.visibility = View.VISIBLE
                 }

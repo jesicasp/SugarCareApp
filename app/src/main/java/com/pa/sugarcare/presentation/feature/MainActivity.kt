@@ -109,10 +109,24 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun openCamera() {
-        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        cameraLauncher.launch(intent)
+        val alertDialog = androidx.appcompat.app.AlertDialog.Builder(this)
+            .setTitle("Petunjuk Pemotretan")
+            .setMessage(
+                "• Gunakanlah ukuran 1:1\n" +
+                        "• Potret produk hingga terlihat keseluruhan sisi depannya\n" +
+                        "• Hindari background yang mencolok saat memotret produk"
+            )
+            .setPositiveButton("Lanjutkan") { _, _ ->
+                val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                cameraLauncher.launch(intent)
+            }
+            .setCancelable(false)
+            .create()
+
+        alertDialog.show()
     }
 
+    
 
     companion object {
         private const val TAG = "MainActivity"

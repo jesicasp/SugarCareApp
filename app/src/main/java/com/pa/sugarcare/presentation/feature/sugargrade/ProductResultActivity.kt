@@ -1,5 +1,6 @@
 package com.pa.sugarcare.presentation.feature.sugargrade
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -14,7 +15,10 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.pa.sugarcare.R
 import com.pa.sugarcare.databinding.ActivityProductResultBinding
 import com.pa.sugarcare.models.request.SearchProductRequest
+import com.pa.sugarcare.presentation.feature.searchproduct.SearchProductActivity
+import com.pa.sugarcare.presentation.feature.sugargrade.alert.ConfirmationAlertFragment
 import com.pa.sugarcare.presentation.feature.sugargrade.alert.GradeAlertFragment
+import com.pa.sugarcare.presentation.feature.sugargrade.alert.ManualSearchAlertFragment
 import com.pa.sugarcare.presentation.feature.sugargrade.vm.ProductResultViewModel
 import com.pa.sugarcare.repository.di.CommonVmInjector
 import com.pa.sugarcare.utility.Resources
@@ -22,6 +26,8 @@ import com.pa.sugarcare.utility.Resources
 class ProductResultActivity : AppCompatActivity() {
     private var _binding: ActivityProductResultBinding? = null
     private val binding get() = _binding!!
+    private var isUsingCamera: Boolean = false
+
 
     private val viewModel: ProductResultViewModel by viewModels {
         CommonVmInjector.common(this)
@@ -33,6 +39,10 @@ class ProductResultActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(binding.root)
         val productId = intent.getIntExtra("PRODUCT_ID", -1)
+
+        if (intent.hasExtra("IS_USING_CAMERA")) {
+            isUsingCamera = intent.getBooleanExtra("IS_USING_CAMERA", false)
+        }
 
 
         val sectionsPagerAdapter = SugarGradePagerAdapter(this, productId)
@@ -81,23 +91,25 @@ class ProductResultActivity : AppCompatActivity() {
                         Log.d("IMAGE", "$imageUri")
                         binding.ivProduct.setImageURI(imageUri)
                     } else {
-                        val image = dataProduct?.image
+                        val image = dataProduct!!.image
 
-                        if (image != null) {
-                            Glide.with(this)
-                                .load(image)
-                                .into(binding.ivProduct)
-                        } else {
-                            binding.ivProduct.setImageResource(R.drawable.screen1)
-                        }
+                        Glide.with(this)
+                            .load(image)
+                            .into(binding.ivProduct)
                     }
 
-                    val grade = dataProduct?.sugarGrade?.lowercase()
-                    Log.d("CEKSUGARGRADE", "$grade")
+                    val grade = dataProduct!!.sugarGrade.lowercase()
+                    Log.d("CEKSUGARGRADE", grade)
 
-                    grade?.let { showAlert(it) }
+                    if (isUsingCamera) {
 
-                    binding.toolbarTitle.text = dataProduct?.name
+                        confirmProductIdentification(dataProduct.name, grade)
+
+                    } else {
+                        showAlert(grade)
+                    }
+
+                    binding.toolbarTitle.text = dataProduct.name
 
                     Log.d(TAG, "Successfully get Detail product")
                 }
@@ -120,6 +132,42 @@ class ProductResultActivity : AppCompatActivity() {
             val dialog = GradeAlertFragment.newInstance(color)
             dialog.show(supportFragmentManager, "GRADE_ALERT")
         }
+    }
+
+    private fun confirmProductIdentification(productName: String, grade: String) {
+        if (!isFinishing && !isDestroyed) {
+            val dialog = ConfirmationAlertFragment.newInstance(productName)
+            dialog.setOnAlertConfirmedListener(object :
+                ConfirmationAlertFragment.OnAlertConfirmedListener {
+                override fun onAlertConfirmed() {
+                    showAlert(grade)
+                }
+
+                override fun onAlertCancelled() {
+                    showAlertGoManual()
+                }
+            })
+            dialog.show(supportFragmentManager, "ConfirmDialog")
+
+        }
+    }
+
+    private fun showAlertGoManual() {
+        if (!isFinishing && !isDestroyed) {
+            val dialog = ManualSearchAlertFragment.newInstance()
+            dialog.setOnAlertConfirmedListener(object :
+                ManualSearchAlertFragment.OnAlertConfirmedListener {
+                override fun onAlertConfirmed() {
+                    goToSearchActivity()
+                }
+            })
+            dialog.show(supportFragmentManager, "MANUAL_SEARCH_ALERT")
+        }
+    }
+
+    private fun goToSearchActivity() {
+        val intent = Intent(this, SearchProductActivity::class.java)
+        startActivity(intent)
     }
 
     override fun onDestroy() {

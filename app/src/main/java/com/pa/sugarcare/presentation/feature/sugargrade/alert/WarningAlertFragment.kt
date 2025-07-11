@@ -69,7 +69,7 @@ class WarningAlertFragment : DialogFragment() {
             negativeButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.teal_green))
 
             val positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE)
-            positiveButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))  // Ganti dengan warna yang kamu mau
+            positiveButton.setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
 
         }
 

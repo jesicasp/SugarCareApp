@@ -108,5 +108,17 @@
     <string name="kategori">Kategori</string>
     <string name="kriteria">Kriteria</string>
     <string name="kriteria_makanan_kemasan">Tabel Kriteria untuk Makanan Kemasan</string>
+    <string name="saran_produk_baru">Saran Produk Baru</string>
+    <string name="nama_produk">Nama Produk</string>
+    <string name="grsugar">Kandungan Gula Per Sajian</string>
+    <string name="netweight">Berat Bersih</string>
+    <string name="servings">Jumlah Sajian Per Kemasan</string>
+    <string name="servingsVol">Volume Sajian Per Kemasan</string>
+    <string name="category">Kategori Produk</string>
+    <string name="addPict">Tambahkan Gambar Produk</string>
+    <string name="ambil_gambar">Ambil Gambar</string>
+    <string name="submit">Kirim</string>
+    <string name="food">Food</string>
+    <string name="drink">Drink</string>
 
 </resources>

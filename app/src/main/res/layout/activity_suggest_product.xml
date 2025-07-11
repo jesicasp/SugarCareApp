@@ -12,7 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
+        android:gravity="center_horizontal"
         android:orientation="vertical">
 
         <com.google.android.material.appbar.AppBarLayout
@@ -52,93 +52,78 @@
             </com.google.android.material.appbar.MaterialToolbar>
         </com.google.android.material.appbar.AppBarLayout>
 
-        <ScrollView
-            android:id="@+id/scrollView"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:fillViewport="true">
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingHorizontal="10dp">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/EditTextCustom_allradius_12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="@string/nama_produk">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edPName"
+                    style="@style/Theme.SugarCare.Poppins_12_bold_onPrimary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:ems="30"
+                    android:inputType="text"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:orientation="vertical"
-                android:paddingHorizontal="10dp">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/EditTextCustom_allradius_12"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:hint="@string/nama_produk">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edPName"
-                        style="@style/Theme.SugarCare.Poppins_12_bold_onPrimary"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="10dp"
-                        android:ems="30"
-                        android:inputType="text"
-                        android:textColor="@color/black" />
-                </com.google.android.material.textfield.TextInputLayout>
+                android:gravity="center"
+                android:layout_marginVertical="10dp"
+                android:orientation="horizontal">
 
                 <TextView
                     style="@style/Theme.SugarCare.Poppins_14_bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginStart="15dp"
                     android:text="@string/category" />
 
                 <androidx.appcompat.widget.AppCompatSpinner
                     android:id="@+id/spinnerCategory"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="12dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="10dp" />
+                    android:layout_marginHorizontal="5dp"
+                     />
+            </LinearLayout>
 
-                <TextView
-                    android:id="@+id/tvImage"
-                    style="@style/Theme.SugarCare.Poppins_14_bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="@string/addPict" />
+            <TextView
+                android:id="@+id/tvImageError"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:text="@string/sproduct_errormessage"
+                android:textColor="@android:color/holo_red_dark"
+                android:textSize="12sp"
+                android:visibility="gone" />
 
-                <ImageView
-                    android:id="@+id/imageCapturePreview"
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:layout_marginBottom="10dp"
-                    android:clickable="true"
-                    android:contentDescription="@string/ambil_gambar"
-                    android:focusable="true"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/baseline_insert_photo_24" />
-
-                <TextView
-                    android:id="@+id/tvImageError"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@android:color/holo_red_dark"
-                    android:text="@string/sproduct_errormessage"
-                    android:textSize="12sp"
-                    android:visibility="gone"
-                    android:paddingStart="10dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp"
+                android:layout_marginTop="5dp"
+                android:weightSum="2">
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/EditTextCustom_allradius_12"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
                     android:hint="@string/grsugar">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -146,18 +131,17 @@
                         style="@style/Theme.SugarCare.Poppins_12_bold_onPrimary"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="10dp"
-                        android:ems="30"
+                        android:ems="10"
                         android:inputType="numberDecimal"
                         android:textColor="@color/black" />
-
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/EditTextCustom_allradius_12"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
                     android:hint="@string/netweight">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -165,17 +149,28 @@
                         style="@style/Theme.SugarCare.Poppins_12_bold_onPrimary"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="10dp"
-                        android:ems="30"
+                        android:ems="10"
                         android:inputType="numberDecimal"
                         android:textColor="@color/black" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal"
+                android:paddingHorizontal="16dp"
+                android:layout_marginTop="5dp"
+                android:weightSum="2">
+
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/EditTextCustom_allradius_12"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
                     android:hint="@string/servings">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -183,17 +178,16 @@
                         style="@style/Theme.SugarCare.Poppins_12_bold_onPrimary"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="10dp"
-                        android:ems="30"
                         android:inputType="numberDecimal"
                         android:textColor="@color/black" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/EditTextCustom_allradius_12"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
                     android:hint="@string/servingsVol">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -201,13 +195,34 @@
                         style="@style/Theme.SugarCare.Poppins_12_bold_onPrimary"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="10dp"
-                        android:ems="30"
                         android:inputType="numberDecimal"
                         android:textColor="@color/black" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
-        </ScrollView>
+
+            <TextView
+                android:id="@+id/tvImage"
+                style="@style/Theme.SugarCare.Poppins_14_bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                android:text="@string/addPict" />
+
+
+            <ImageView
+                android:id="@+id/imageCapturePreview"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginBottom="10dp"
+                android:clickable="true"
+                android:contentDescription="@string/ambil_gambar"
+                android:focusable="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/baseline_insert_photo_24" />
+        </LinearLayout>
     </LinearLayout>
 
     <ProgressBar

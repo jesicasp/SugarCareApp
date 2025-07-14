@@ -131,6 +131,7 @@ class HomeFragment : Fragment() {
 
             val intent = Intent(requireActivity(), ProductResultActivity::class.java)
             intent.putExtra("PRODUCT_ID", productId)
+            intent.putExtra("IS_USING_CAMERA", true)
             startActivity(intent)
 
         }

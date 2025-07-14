@@ -71,7 +71,7 @@ class SignInActivity : AppCompatActivity() {
 
                 is Resources.Error -> {
                     binding.progressBar.visibility = View.GONE
-                    Toast.makeText(this, "Login failed: ${result.error}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, result.error, Toast.LENGTH_SHORT).show()
                     Log.e(TAG, result.error)
                 }
             }

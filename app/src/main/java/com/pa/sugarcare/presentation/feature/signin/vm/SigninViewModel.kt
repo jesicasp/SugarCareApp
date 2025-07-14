@@ -11,6 +11,7 @@ import com.pa.sugarcare.models.response.DataUserToken
 import com.pa.sugarcare.repository.network.UserRepository
 import com.pa.sugarcare.utility.Resources
 import kotlinx.coroutines.launch
+import org.json.JSONObject
 
 class SigninViewModel(private val userRepository: UserRepository) : ViewModel() {
     private val _loginResult = MutableLiveData<Resources<CommonResponse<DataUserToken>>>()
@@ -28,22 +29,30 @@ class SigninViewModel(private val userRepository: UserRepository) : ViewModel() 
 
                 if (response.isSuccessful && response.body() != null) {
                     val token = response.body()?.data?.token
-
                     _loginResult.postValue(Resources.Success(response.body()!!))
                 } else {
-                    val errorMessage = response.errorBody()?.string() ?: "Unknown error"
-                    Log.e(TAG, "Error body: $errorMessage")
-                    _loginResult.postValue(Resources.Error("Login failed: $errorMessage"))
+                    val errorBody = response.errorBody()?.string()
+                    var message = "Terjadi kesalahan"
+
+                    errorBody?.let {
+                        try {
+                            val jsonObject = JSONObject(it)
+                            message = jsonObject.optString("message", message)
+                        } catch (e: Exception) {
+                            Log.e(TAG, "Gagal parsing errorBody: ${e.message}")
+                        }
+                    }
+
+                    Log.e(TAG, "Error message: $message")
+                    _loginResult.postValue(Resources.Error(message))
                 }
             } catch (e: Exception) {
                 Log.e(TAG, "Exception occurred: ${e.message}")
-                _loginResult.postValue(Resources.Error(e.message ?: "Unexpected error occurred"))
+                _loginResult.postValue(Resources.Error(e.message ?: "Terjadi kesalahan tak terduga"))
             }
-
-
         }
-
     }
+
 
     companion object {
         private const val TAG = "SignInViewModel"

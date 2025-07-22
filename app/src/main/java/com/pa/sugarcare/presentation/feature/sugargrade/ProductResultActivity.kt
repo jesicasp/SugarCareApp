@@ -15,11 +15,10 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.pa.sugarcare.R
 import com.pa.sugarcare.databinding.ActivityProductResultBinding
 import com.pa.sugarcare.models.request.SearchProductRequest
-import com.pa.sugarcare.presentation.feature.searchproduct.SearchProductActivity
 import com.pa.sugarcare.presentation.feature.sugargrade.alert.ConfirmationAlertFragment
 import com.pa.sugarcare.presentation.feature.sugargrade.alert.GradeAlertFragment
-import com.pa.sugarcare.presentation.feature.sugargrade.alert.ManualSearchAlertFragment
 import com.pa.sugarcare.presentation.feature.sugargrade.vm.ProductResultViewModel
+import com.pa.sugarcare.presentation.feature.suggestproduct.SuggestProductActivity
 import com.pa.sugarcare.repository.di.CommonVmInjector
 import com.pa.sugarcare.utility.Resources
 
@@ -144,7 +143,7 @@ class ProductResultActivity : AppCompatActivity() {
                 }
 
                 override fun onAlertCancelled() {
-                    showAlertGoManual()
+                    goToSuggestProduct()
                 }
             })
             dialog.show(supportFragmentManager, "ConfirmDialog")
@@ -152,21 +151,8 @@ class ProductResultActivity : AppCompatActivity() {
         }
     }
 
-    private fun showAlertGoManual() {
-        if (!isFinishing && !isDestroyed) {
-            val dialog = ManualSearchAlertFragment.newInstance()
-            dialog.setOnAlertConfirmedListener(object :
-                ManualSearchAlertFragment.OnAlertConfirmedListener {
-                override fun onAlertConfirmed() {
-                    goToSearchActivity()
-                }
-            })
-            dialog.show(supportFragmentManager, "MANUAL_SEARCH_ALERT")
-        }
-    }
-
-    private fun goToSearchActivity() {
-        val intent = Intent(this, SearchProductActivity::class.java)
+    private fun goToSuggestProduct() {
+        val intent = Intent(this, SuggestProductActivity::class.java)
         startActivity(intent)
     }
 

@@ -40,7 +40,7 @@
         <ImageView
             android:id="@+id/iv_product"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="300dp"
             android:contentDescription="@string/gambar_produk_kemasan"
             android:scaleType="centerCrop"
            />

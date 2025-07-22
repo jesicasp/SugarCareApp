@@ -28,7 +28,6 @@ class OtherInfoFragment : Fragment() {
 
     private var productId: Int = -1
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         productId = arguments?.getInt("product_id") ?: -1
@@ -50,7 +49,6 @@ class OtherInfoFragment : Fragment() {
             getDetailProduct(productId)
         }
         observeDetailProduct()
-
         getProduct()
 
         viewModel.listRecProduct.observe(viewLifecycleOwner) { resource ->
@@ -58,8 +56,12 @@ class OtherInfoFragment : Fragment() {
                 is Resources.Success -> {
                     val products = resource.data.data
                     products?.let {
-                        setListProduct(it)
-                        binding.progressBar.visibility = View.GONE
+                        if (it.isEmpty()) {
+                            binding.tvTitle.visibility = View.GONE
+                        } else {
+                            binding.tvTitle.visibility = View.VISIBLE
+                            setListProduct(it)
+                        }
                     }
                 }
 

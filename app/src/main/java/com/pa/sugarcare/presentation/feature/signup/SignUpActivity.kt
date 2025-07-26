@@ -21,6 +21,8 @@ import com.pa.sugarcare.presentation.feature.signin.SignInActivity
 import com.pa.sugarcare.presentation.feature.signup.vm.SignUpViewModel
 import com.pa.sugarcare.repository.di.CommonVmInjector
 import com.pa.sugarcare.utility.Resources
+import android.util.Patterns
+
 
 class SignUpActivity : AppCompatActivity() {
     private var _binding: ActivitySignUpBinding? = null
@@ -105,7 +107,11 @@ class SignUpActivity : AppCompatActivity() {
                 if (email.isEmpty()) {
                     binding.txtEmailError.text = getString(R.string.fill_this_field)
                     isValid = false
+                } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                    binding.txtEmailError.text = getString(R.string.invalid_email_format)
+                    isValid = false
                 }
+
                 if (password.isEmpty()) {
                     binding.txtPassError.text = getString(R.string.fill_this_field)
                     isValid = false
@@ -153,11 +159,23 @@ class SignUpActivity : AppCompatActivity() {
                     isPasswordVisible = !isPasswordVisible
 
                     if (isPasswordVisible) {
-                        editText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-                        editText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.baseline_remove_red_eye_24, 0)
+                        editText.inputType =
+                            InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                        editText.setCompoundDrawablesWithIntrinsicBounds(
+                            0,
+                            0,
+                            R.drawable.baseline_remove_red_eye_24,
+                            0
+                        )
                     } else {
-                        editText.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
-                        editText.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.baseline_visibility_off_24, 0)
+                        editText.inputType =
+                            InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                        editText.setCompoundDrawablesWithIntrinsicBounds(
+                            0,
+                            0,
+                            R.drawable.baseline_visibility_off_24,
+                            0
+                        )
                     }
 
                     editText.setSelection(editText.text?.length ?: 0)
@@ -178,11 +196,23 @@ class SignUpActivity : AppCompatActivity() {
                     isPasswordConfVisible = !isPasswordConfVisible
 
                     if (isPasswordConfVisible) {
-                        editTextConf.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-                        editTextConf.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.baseline_remove_red_eye_24, 0)
+                        editTextConf.inputType =
+                            InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+                        editTextConf.setCompoundDrawablesWithIntrinsicBounds(
+                            0,
+                            0,
+                            R.drawable.baseline_remove_red_eye_24,
+                            0
+                        )
                     } else {
-                        editTextConf.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
-                        editTextConf.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.baseline_visibility_off_24, 0)
+                        editTextConf.inputType =
+                            InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+                        editTextConf.setCompoundDrawablesWithIntrinsicBounds(
+                            0,
+                            0,
+                            R.drawable.baseline_visibility_off_24,
+                            0
+                        )
                     }
 
                     editTextConf.setSelection(editTextConf.text?.length ?: 0)

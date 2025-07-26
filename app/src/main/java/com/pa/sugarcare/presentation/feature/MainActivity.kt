@@ -120,7 +120,6 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
                 cameraLauncher.launch(intent)
             }
-            .setCancelable(false)
             .create()
 
         alertDialog.show()

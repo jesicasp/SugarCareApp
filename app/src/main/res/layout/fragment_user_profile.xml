@@ -23,6 +23,7 @@
             style="@style/Theme.SugarCare.Poppins_12_bold_black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp" />
 
         <TextView
@@ -30,7 +31,7 @@
             style="@style/Theme.SugarCare.Poppins_12_normal_black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp" />
+            android:layout_marginBottom="15dp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
